@@ -1,0 +1,26 @@
+.feld{
+	
+	height: 50px;
+	width: 50px;
+	border: 2px solid blue;
+	float:left;
+	
+}
+
+.white{
+	
+	background:white;
+	color:black;
+}
+
+.black{
+	
+	background:black;
+	color:white;
+}
+
+body>div:nth-child(8n+1){
+	
+	clear:left;
+}
+
