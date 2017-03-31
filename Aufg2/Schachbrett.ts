@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let reis: number = 1;
         element.innerText = "" + reis;
-        reis *= 2;
+        reis= reis * 2;
         document.body.appendChild(element);
     }
 
