@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         let reis = 1;
         element.innerText = "" + reis;
-        reis *= 2;
+        reis = reis * 2;
         document.body.appendChild(element);
     }
     //    let rice: number = 1;
