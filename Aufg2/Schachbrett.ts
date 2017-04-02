@@ -1,30 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    let zeile: number = 0;
+    let reis: number = 1;
     let element: HTMLElement;
 
     for (let i: number = 0; i < 64; i++) {
         element = document.createElement("div");
 
-        if (i % 2 == 0) {
-            element.className = "feld white";
+        if (((i + zeile) % 2) == 0) {
+            element.className = "feld weiss";
         }
 
         else {
-            element.className = "feld black";
+            element.className = "feld schwarz";
         }
 
 
-        let reis: number = 1;
+        if (((i + 1) % 8) == 0) {
+            zeile++;
+        }
+
+
+
         element.innerText = "" + reis;
-        reis= reis * 2;
+        reis = reis * 2;
         document.body.appendChild(element);
     }
 
-    
-    
-    
-//    let rice: number = 1;
-//    element.innerText = "" + rice;//    rice *= 2;
-//    document.body.appendChild(element);
+
+
 
 });
