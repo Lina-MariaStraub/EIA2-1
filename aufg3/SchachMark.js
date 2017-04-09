@@ -1,3 +1,4 @@
+// In Kooperation mit Christian Saile
 document.addEventListener("DOMContentLoaded", function () {
     let sum = 0;
     let rice = 1;
