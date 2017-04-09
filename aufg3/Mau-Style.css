@@ -22,10 +22,12 @@ div {
 	background-color: blue;
 	margin-left: 10px;
 	margin-top: 300px;
+	color:white; 
 }
 
 #discard {
 	background-color: steelblue;
 	margin-left: 10px;
 	margin-top: 0px;
+	color:white; 
 }
