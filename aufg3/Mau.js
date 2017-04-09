@@ -1,18 +1,18 @@
-//In Zusammenarbeit mit Sara Kalinic, Christian Saile und Janett St�we die Lehrerin gespielt hat :P
+//In Zusammenarbeit mit Sara Kalinic, Christian Saile und Janett Stüwe die Lehrerin gespielt hat :P
 document.addEventListener("DOMContentLoaded", function () {
     //Array anlegen
     let kartenSammlung = ['Pik 7', 'Pik 8', 'Pik 9',
         'Pik 10', 'Pik Bube', 'Pik Dame',
-        'Pik K�nig', 'Pik As',
+        'Pik König', 'Pik As',
         'Kreuz 7', 'Kreuz 8', 'Kreuz 9',
         'Kreuz 10', 'Kreuz Bube', 'Kreuz Dame',
-        'Kreuz K�nig', 'Kreuz As',
+        'Kreuz König', 'Kreuz As',
         'Karo 7', 'Karo 8', 'Karo 9',
         'Karo 10', 'Karo Bube', 'Karo Dame',
-        'Karo K�nig', 'Karo As',
+        'Karo König', 'Karo As',
         'Herz 7', 'Herz 8', 'Herz 9',
         'Herz 10', 'Herz Bube', 'Herz Dame',
-        'Herz K�nig', 'Herz As'];
+        'Herz König', 'Herz As'];
     // Nachziehstapel (deck) 
     let nachziehStapel = document.getElementById("deck");
     //Eventlistener auf den Nachziehstapel
