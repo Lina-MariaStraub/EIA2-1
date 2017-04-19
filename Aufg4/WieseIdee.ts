@@ -13,6 +13,7 @@ namespace Aufg4_Canvas {
 
 
         zeichneHimmel();
+        machsGruen();
 
         sonnenStrahlen(25, 190);
         sonnenStrahlen(75, 250);
@@ -25,8 +26,20 @@ namespace Aufg4_Canvas {
         sonnenStrahlen(225, 70);
         sonnenStrahlen(190, 15);
         sonnenStrahlen(280, 50);
-
         zeichneSonne();
+
+        zuckerwatte(420, 75, 25, 0);
+        zuckerwatte(455, 85, 25, 0);
+        zuckerwatte(455, 65, 25, 0);
+        zuckerwatte(475, 75, 25, 0);
+
+        zuckerwatte(700, 100, 35, 0);
+        zuckerwatte(740, 80, 35, 0);
+        zuckerwatte(750, 110, 35, 0);
+        zuckerwatte(770, 90, 25, 0);
+
+        erdbeerBaum(1300, 360, 50, 150);
+        baumKrone(1300,360);
 
     }
 
@@ -66,5 +79,48 @@ namespace Aufg4_Canvas {
 
 
     }
+
+    function machsGruen(): void {
+
+        inhalt.beginPath();
+        inhalt.rect(0, 510, inhalt.canvas.width, 200);
+        inhalt.closePath();
+        inhalt.fillStyle = "    #7cfc00";
+        inhalt.fill();
+
+    }
+
+    function zuckerwatte(_x: number, _y: number, _radius: number, _winkel: number): void {
+
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
+        inhalt.fillStyle = "#ffdab9";
+        inhalt.fill();
+        inhalt.closePath();
+
+    }
+
+    function erdbeerBaum(_x: number, _y: number, _width: number, _height: number): void {
+
+        inhalt.beginPath();
+        inhalt.rect(_x, _y, _width, _height);
+        inhalt.closePath();
+        inhalt.fillStyle = " #ffa54f ";
+        inhalt.fill();
+
+    }
+
+    function baumKrone(_x: number, _y: number): void {
+
+        inhalt.beginPath();
+        inhalt.fillStyle = "green";
+        inhalt.moveTo(_x , _y );
+        inhalt.lineTo(_x, _y - 100);
+        inhalt.lineTo(_x + 500, _y + 150);
+        inhalt.closePath();
+        inhalt.fill();
+    }
+
 }
 
