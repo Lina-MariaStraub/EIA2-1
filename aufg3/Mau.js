@@ -1,4 +1,6 @@
-document.addEventListener('DOMContentLoaded', function () {
+//In Zusammenarbeit mit Sara Kalinic, Christian Saile und Janett St�we die Lehrerin gespielt hat :P
+document.addEventListener("DOMContentLoaded", function () {
+    //Array anlegen
     let kartenSammlung = ['Pik 7', 'Pik 8', 'Pik 9',
         'Pik 10', 'Pik Bube', 'Pik Dame',
         'Pik K�nig', 'Pik As',
@@ -11,43 +13,39 @@ document.addEventListener('DOMContentLoaded', function () {
         'Herz 7', 'Herz 8', 'Herz 9',
         'Herz 10', 'Herz Bube', 'Herz Dame',
         'Herz K�nig', 'Herz As'];
-    //    kartenSammlung.length(); zufallsza   
-    document.getElementById("anfang").addEventListener("click", ichmachewas);
-    function ichmachewas() {
-        let a = kartenSammlung.length - 1;
-        let n = Math.floor(Math.random() * a);
-        if (kartenSammlung.length > 0) {
-            let x = kartenSammlung.splice(n, 1);
-            let hand = document.getElementsByClassName("hand");
-            if (hand[0].textContent == "") {
-                hand[0].textContent = x[0];
-                console.log(x[0]);
-            }
-            else {
-                if (hand[1].textContent == "") {
-                    hand[1].textContent = x[0];
-                    console.log(x[0]);
-                }
-                else {
-                    if (hand[2].textContent == "") {
-                        hand[2].textContent = x[0];
-                        console.log(x[0]);
-                    }
-                    else {
-                        if (hand[3].textContent == "") {
-                            hand[3].textContent = x[0];
-                            console.log(x[0]);
-                        }
-                        else {
-                            if (hand[4].textContent == "") {
-                                hand[4].textContent = x[0];
-                                console.log(x[0]);
-                            }
-                        }
-                    }
+    // Nachziehstapel (deck) 
+    let nachziehStapel = document.getElementById("deck");
+    //Eventlistener auf den Nachziehstapel
+    nachziehStapel.addEventListener("click", function () {
+        //Zufallskarte generieren
+        let zufallsKarte = kartenSammlung.splice(Math.round(Math.random() * (kartenSammlung.length - 1)), 1)[0];
+        // Variable f�r funktion anlegen
+        let leerKarte = sucheLeerKarte();
+        function sucheLeerKarte() {
+            for (let i = 0; i < handKarten.length; i++) {
+                if (handKarten[i].textContent === "") {
+                    return handKarten[i];
                 }
             }
+            return null;
         }
+        if (leerKarte != null) {
+            leerKarte.innerText = zufallsKarte;
+        }
+        if (kartenSammlung.length === 0) {
+            nachziehStapel.innerText = "leer";
+        }
+    });
+    // ABLAGE 
+    let ablage = document.getElementById("discard");
+    let handKarten = document.getElementsByClassName("Handkarten");
+    for (let v = 0; v < handKarten.length; v++) {
+        //Karten von Hand in die Ablage
+        handKarten[v].addEventListener("click", function (event) {
+            let karteHand = event.target;
+            ablage.textContent = karteHand.textContent;
+            karteHand.textContent = "";
+        });
     }
 });
 //# sourceMappingURL=Mau.js.map
