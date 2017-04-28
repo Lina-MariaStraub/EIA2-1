@@ -6,6 +6,7 @@ namespace Aufg4_Canvas {
     let x: number[] = [];
     let y: number[] = [];
     let n: number = 11;
+    let _menge: number = 1;
 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement;
@@ -14,9 +15,10 @@ namespace Aufg4_Canvas {
 
         inhalt = canvas.getContext("2d");
 
+        let imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
         for (let i: number = 0; i < n; i++) {
-            x[i] = Math.random() * 250;
-            y[i] = Math.random() * 250;
+            x[i] = 1250;
+            y[i] = 420;
         }
 
         zeichneHimmel();
@@ -65,6 +67,7 @@ namespace Aufg4_Canvas {
 
         biene(1250, 420);
         window.setTimeout(animate, 20);
+        canvas.addEventListener("click", neueBiene);
     }
     
     function biene(_x: number, _y: number): void {
@@ -74,24 +77,64 @@ namespace Aufg4_Canvas {
         inhalt.closePath();
         inhalt.fillStyle = " black ";
         inhalt.fill();
+        
+        if (x[i].y > inhalt.canvas.width + 5) {
+            
+            x[i].y = 0 - 5;
 
-    }
+    }}
+    
+    function neueBiene (_x:number, _y:number):void{
+        
+        x.push(1250);
+        y.push(420);
+        
+        }
 
     function animate(): void {
         console.log("Animate called");
 
-        // Das ist praktisch dann der Hintergrund der drüber gelegt wird 
-        //        inhalt.fillStyle = "#ff0000";
-        //        inhalt.fillRect(0, 0, inhalt.canvas.width, inhalt.canvas.height);
-
+        inhalt.putImageData(imgData, 0, 0);   
+           
         for (let i: number = 0; i < n; i++) {
-            x[i] += Math.random() * 6 - 2;
+            x[i] += Math.random() * 2 - 2;
             y[i] += Math.random() * 4 - 2;
-            biene(x[i], y[i] + 35);
+            biene(x[i], y[i]);
+            
+            if (x[i] < 0) {
+                x[i] = canvas.width;
+            }
+            if (y[i] < 0) {
+                y[i] = canvas.hight;
+            }
+            if (y[i] > canvas.hight) {
+                y[i] = 0;
+            }
+            biene(x[i], y[i]);
         }
+        
 
         window.setTimeout(animate, 20);
     }
+    
+   
+        function erstelleBienen(_menge: number): void {
+        for (let i: number = 0; i < _menge; i++) {
+            let x: number = Math.random(0, inhalt.canvas.width);
+            let y: number =  Math.random(0, inhalt.canvas.height);
+
+            biene(x, y);
+        }
+    
+        function plusBiene(_event: MouseEvent): void {
+        for (let i: number = 0; i < 1; i++) {
+            let x: number = Math.random(_event.offsetX, _event.offsetX);
+            let y: number =  Math.random(_event.offsetY, _event.offsetY);
+
+            erstelleBienen(x, y);
+        }
+    }
+    
     
 
 function drawSweetRandom(): void {

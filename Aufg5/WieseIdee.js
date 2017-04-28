@@ -11,8 +11,8 @@ var Aufg4_Canvas;
         console.log(canvas);
         inhalt = canvas.getContext("2d");
         for (let i = 0; i < n; i++) {
-            x[i] = Math.random() * 250;
-            y[i] = Math.random() * 250;
+            x[i] = 1250;
+            y[i] = 420;
         }
         zeichneHimmel();
         zeichneBerg(1100, 510, "grey");
@@ -63,9 +63,9 @@ var Aufg4_Canvas;
         //        inhalt.fillStyle = "#ff0000";
         //        inhalt.fillRect(0, 0, inhalt.canvas.width, inhalt.canvas.height);
         for (let i = 0; i < n; i++) {
-            x[i] += Math.random() * 6 - 2;
+            x[i] += Math.random() * 2 - 2;
             y[i] += Math.random() * 4 - 2;
-            biene(x[i], y[i] + 35);
+            biene(x[i], y[i]);
         }
         window.setTimeout(animate, 20);
     }
