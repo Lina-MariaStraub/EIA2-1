@@ -101,16 +101,6 @@ namespace Aufg4_Canvas {
             y[i] += Math.random() * 4 - 2;
             biene(x[i], y[i]);
             
-            if (x[i] < 0) {
-                x[i] = canvas.width;
-            }
-            if (y[i] < 0) {
-                y[i] = canvas.hight;
-            }
-            if (y[i] > canvas.hight) {
-                y[i] = 0;
-            }
-            biene(x[i], y[i]);
         }
         
 
