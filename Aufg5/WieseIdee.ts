@@ -85,8 +85,8 @@ namespace Aufg4_Canvas {
         //        inhalt.fillRect(0, 0, inhalt.canvas.width, inhalt.canvas.height);
 
         for (let i: number = 0; i < n; i++) {
-            x[i] = Math.random() * 6 - 2;
-            y[i] = Math.random() * 4 - 2;
+            x[i] += Math.random() * 6 - 2;
+            y[i] += Math.random() * 4 - 2;
             biene(x[i], y[i] + 35);
         }
 
