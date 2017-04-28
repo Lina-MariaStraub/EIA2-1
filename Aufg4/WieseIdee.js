@@ -38,7 +38,19 @@ var Aufg4_Canvas;
         baumKrone(1170, 340, 35, 0);
         baumstamm(1300, 360, 50, 150);
         baumKrone(1270, 340, 35, 0);
+        zeichneKorb(1250, 420, 7);
         drawSweetRandom();
+    }
+    //    function saveBg(_x: number, _y: number, _width: number, _height: number): ImageData {
+    //
+    //        let imgData = inhalt.getImageData(10, 10, 50, 50);
+    //    }
+    function biene(_x, _y) {
+        inhalt.beginPath();
+        inhalt.rect(_x, _y, 25, 25);
+        inhalt.closePath();
+        inhalt.fillStyle = " yellow ";
+        inhalt.fill();
     }
     function drawSweetRandom() {
         let numberSweets = Math.floor((Math.random() * 30) + 5);
@@ -65,6 +77,49 @@ var Aufg4_Canvas;
                     break;
             }
         }
+    }
+    function zeichneKorb(_x, _y, _radius) {
+        inhalt.beginPath();
+        inhalt.rect(_x, _y, 25, 25);
+        inhalt.closePath();
+        inhalt.fillStyle = " brown ";
+        inhalt.fill();
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 12, _y - 3, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fill();
+        inhalt.closePath();
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 2, _y + 4, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fill();
+        inhalt.closePath();
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x - 2, _y + 15, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fill();
+        inhalt.closePath();
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 1, _y + 24, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fill();
+        inhalt.closePath();
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 12, _y + 30, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fill();
+        inhalt.closePath();
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 18, _y + 35, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fill();
+        inhalt.closePath();
     }
     function zeichneBerg(_x, _y, _farbe) {
         inhalt.beginPath();

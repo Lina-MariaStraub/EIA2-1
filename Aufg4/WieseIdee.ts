@@ -3,6 +3,9 @@ namespace Aufg4_Canvas {
     window.addEventListener("load", init);
 
     let inhalt: CanvasRenderingContext2D;
+    let x: number[] = [];
+    let y: number[] = [];
+    let n: number = 300;
 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement;
@@ -10,7 +13,11 @@ namespace Aufg4_Canvas {
         console.log(canvas);
 
         inhalt = canvas.getContext("2d");
-
+        
+       for (let i: number = 0; i < n; i++) {
+          x[i] = Math.random() * 200;
+          y[i] = Math.random() * 200;+       
+       }
 
         zeichneHimmel();
 
@@ -45,18 +52,68 @@ namespace Aufg4_Canvas {
         zuckerwatte(740, 80, 35, 0);
         zuckerwatte(750, 110, 35, 0);
         zuckerwatte(770, 90, 25, 0);
-        
+
         baumstamm(1200, 360, 50, 150);
         baumKrone(1170, 340, 35, 0);
-        
+
         baumstamm(1300, 360, 50, 150);
         baumKrone(1270, 340, 35, 0);
 
-        drawSweetRandom();
+        zeichneKorb(1250, 420, 7)
 
+        drawSweetRandom();
+        
+        biene(1250, 420);
+        window.setTimeout(animate, 20);
+        
+       
     }
 
-    function drawSweetRandom() {
+//    function saveBg(_x: number, _y: number, _width: number, _height: number): ImageData {
+//
+//        let imgData = inhalt.getImageData(10, 10, 50, 50);
+//    }
+    
+    function biene (_x:number, _y:number):void{
+        
+        inhalt.beginPath();
+        inhalt.rect(_x, _y, 25, 25);
+        inhalt.closePath();
+        inhalt.fillStyle = " yellow ";
+        inhalt.fill();
+        
++
++        for (let i: number = 0; i < n; i++) {
++            x[i] = Math.random() * 200;
++            y[i] = Math.random() * 200;
++        }
++
++        window.setTimeout(animate, 20);
++    }
++
++    function animate(): void {
++        console.log("Animate called");
++
++        crc2.fillStyle = "#ff0000";
++        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
++
++        for (let i: number = 0; i < n; i++) {
++            x[i] += Math.random() * 4 - 2;
++            y[i] += Math.random() * 4 - 2;
++            drawObject(x[i], y[i]);
++        }
++
++        window.setTimeout(animate, 20);
++    }
++
++    function drawObject(_x: number, _y: number): void {
++        crc2.fillStyle = "#000000";
++        crc2.fillRect(_x, _y, 10, 10);
++    }
++}
+        
+
+    function drawSweetRandom(): void {
         let numberSweets: any = Math.floor((Math.random() * 30) + 5);
         let _x: number;
         let _y: number;
@@ -82,6 +139,58 @@ namespace Aufg4_Canvas {
                     break;
             }
         }
+    }
+
+    function zeichneKorb(_x: number, _y: number, _radius: number): void {
+
+        inhalt.beginPath();
+        inhalt.rect(_x, _y, 25, 25);
+        inhalt.closePath();
+        inhalt.fillStyle = " brown ";
+        inhalt.fill();
+
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 12, _y - 3, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fill();
+        inhalt.closePath();
+
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 2, _y + 4, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fill();
+        inhalt.closePath();
+
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x - 2, _y + 15, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fill();
+        inhalt.closePath();
+
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 1, _y + 24, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fill();
+        inhalt.closePath();
+
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 12, _y + 30, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fill();
+        inhalt.closePath();
+
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 18, _y + 35, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fill();
+        inhalt.closePath();
+
     }
 
     function zeichneBerg(_x: number, _y: number, _farbe: any): void {
@@ -153,31 +262,31 @@ namespace Aufg4_Canvas {
         inhalt.closePath();
 
     }
-    
-    function wolkenZusammen (_x:number, _y:number, _radius:number, _winkel:number):void {
-        
+
+    function wolkenZusammen(_x: number, _y: number, _radius: number, _winkel: number): void {
+
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
         inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
         inhalt.fillStyle = "#FFFFFF";
         inhalt.fill();
         inhalt.closePath();
-        
+
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
-        inhalt.arc(_x+15, _y+10, _radius, _winkel, 2 * Math.PI);
+        inhalt.arc(_x + 15, _y + 10, _radius, _winkel, 2 * Math.PI);
         inhalt.fillStyle = "#FFFFFF";
         inhalt.fill();
         inhalt.closePath();
-        
+
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
-        inhalt.arc(_x+20, _y+10, _radius, _winkel, 2 * Math.PI);
+        inhalt.arc(_x + 20, _y + 10, _radius, _winkel, 2 * Math.PI);
         inhalt.fillStyle = "#FFFFFF";
         inhalt.fill();
         inhalt.closePath();
-        
-        }
+
+    }
 
     function baumstamm(_x: number, _y: number, _width: number, _height: number): void {
 
@@ -190,42 +299,42 @@ namespace Aufg4_Canvas {
     }
 
 
-function drawDropsBlume(_x: number, _y: number, _radius: number, _winkel: number): void {
+    function drawDropsBlume(_x: number, _y: number, _radius: number, _winkel: number): void {
 
-    inhalt.moveTo(0, 0);
-    inhalt.beginPath();
-    inhalt.arc(_x - 3, _y + 10, _radius, _winkel, 2 * Math.PI);
-    inhalt.fillStyle = "#e066ff";
-    inhalt.fill();
-    inhalt.closePath();
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x - 3, _y + 10, _radius, _winkel, 2 * Math.PI);
+        inhalt.fillStyle = "#e066ff";
+        inhalt.fill();
+        inhalt.closePath();
 
-    inhalt.moveTo(0, 0);
-    inhalt.beginPath();
-    inhalt.arc(_x + 7, _y + 9, _radius, _winkel, 2 * Math.PI);
-    inhalt.fillStyle = "#ff6347";
-    inhalt.fill();
-    inhalt.closePath();
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 7, _y + 9, _radius, _winkel, 2 * Math.PI);
+        inhalt.fillStyle = "#ff6347";
+        inhalt.fill();
+        inhalt.closePath();
 
-    inhalt.moveTo(0, 0);
-    inhalt.beginPath();
-    inhalt.arc(_x + 10, _y, _radius, _winkel, 2 * Math.PI);
-    inhalt.fillStyle = "#e066ff";
-    inhalt.fill();
-    inhalt.closePath();
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 10, _y, _radius, _winkel, 2 * Math.PI);
+        inhalt.fillStyle = "#e066ff";
+        inhalt.fill();
+        inhalt.closePath();
 
-    inhalt.moveTo(0, 0);
-    inhalt.beginPath();
-    inhalt.arc(_x + 3, _y - 8, _radius, _winkel, 2 * Math.PI);
-    inhalt.fillStyle = "#ff6347";
-    inhalt.fill();
-    inhalt.closePath();
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 3, _y - 8, _radius, _winkel, 2 * Math.PI);
+        inhalt.fillStyle = "#ff6347";
+        inhalt.fill();
+        inhalt.closePath();
 
-    inhalt.moveTo(0, 0);
-    inhalt.beginPath();
-    inhalt.arc(_x - 8, _y - 8, _radius, _winkel, 2 * Math.PI);
-    inhalt.fillStyle = "#e066ff";
-    inhalt.fill();
-    inhalt.closePath();
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x - 8, _y - 8, _radius, _winkel, 2 * Math.PI);
+        inhalt.fillStyle = "#e066ff";
+        inhalt.fill();
+        inhalt.closePath();
 
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
