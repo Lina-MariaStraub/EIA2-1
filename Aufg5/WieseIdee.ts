@@ -15,12 +15,6 @@ namespace Aufg4_Canvas {
 
         inhalt = canvas.getContext("2d");
 
-        let imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i: number = 0; i < n; i++) {
-            x[i] = 1250;
-            y[i] = 420;
-        }
-
         zeichneHimmel();
 
         zeichneBerg(1100, 510, "grey");
@@ -66,10 +60,17 @@ namespace Aufg4_Canvas {
         drawSweetRandom();
 
         biene(1250, 420);
+
+        let imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
+        for (let i: number = 0; i < n; i++) {
+            x[i] = 1250;
+            y[i] = 420;
+        }
+
         window.setTimeout(animate, 20);
         canvas.addEventListener("click", neueBiene);
     }
-    
+
     function biene(_x: number, _y: number): void {
 
         inhalt.beginPath();
@@ -77,91 +78,92 @@ namespace Aufg4_Canvas {
         inhalt.closePath();
         inhalt.fillStyle = " black ";
         inhalt.fill();
-        
+
         if (x[i].y > inhalt.canvas.width + 5) {
-            
+
             x[i].y = 0 - 5;
 
-    }}
-    
-    function neueBiene (_x:number, _y:number):void{
-        
+        }
+    }
+
+    function neueBiene(_x: number, _y: number): void {
+
         x.push(1250);
         y.push(420);
-        
-        }
+
+    }
 
     function animate(): void {
         console.log("Animate called");
 
-        inhalt.putImageData(imgData, 0, 0);   
-           
+        inhalt.putImageData(imgData, 0, 0);
+
         for (let i: number = 0; i < n; i++) {
             x[i] += Math.random() * 2 - 2;
             y[i] += Math.random() * 4 - 2;
             biene(x[i], y[i]);
-            
+
         }
-        
+
 
         window.setTimeout(animate, 20);
     }
-    
-   
-        function erstelleBienen(_menge: number): void {
+
+
+    function erstelleBienen(_menge: number): void {
         for (let i: number = 0; i < _menge; i++) {
-            let x: number = Math.random(0, inhalt.canvas.width);
-            let y: number =  Math.random(0, inhalt.canvas.height);
+            let x: number = random (0, inhalt.canvas.width);
+            let y: number = random (0, inhalt.canvas.height);
 
             biene(x, y);
         }
-    
+
         function plusBiene(_event: MouseEvent): void {
-        for (let i: number = 0; i < 1; i++) {
-            let x: number = Math.random(_event.offsetX, _event.offsetX);
-            let y: number =  Math.random(_event.offsetY, _event.offsetY);
+            for (let i: number = 0; i < 1; i++) {
+                let x: number = Math.random(_event.offsetX, _event.offsetX);
+                let y: number = Math.random(_event.offsetY, _event.offsetY);
 
-            erstelleBienen(x, y);
+                erstelleBienen(x, y);
+            }
         }
-    }
-    
-    
 
-function drawSweetRandom(): void {
-    let numberSweets: any = Math.floor((Math.random() * 30) + 5);
-    let _x: number;
-    let _y: number;
-    let _p: number;
-    let _radius: number;
-    let _winkel: number;
 
-    for (var i: number = 0; i < numberSweets; i++) {
-        _x = Math.round((Math.random() * inhalt.canvas.width) - 30);
-        _y = Math.round((Math.random() * 200) + 520);
-        _p = Math.round((Math.random() * 3) + 0);
-        switch (_p) {
-            case 0:
-                drawDropsBlume(_x, _y, 10, 0);
-                break;
-            case 1:
-                drawBonBon(_x, _y, 12, 0);
-                break;
-            case 2:
-                drawlollipop(_x, _y, 5, 0);
-                break;
-            default:
-                break;
+
+        function drawSweetRandom(): void {
+            let numberSweets: any = Math.floor((Math.random() * 30) + 5);
+            let _x: number;
+            let _y: number;
+            let _p: number;
+            let _radius: number;
+            let _winkel: number;
+
+            for (var i: number = 0; i < numberSweets; i++) {
+                _x = Math.round((Math.random() * inhalt.canvas.width) - 30);
+                _y = Math.round((Math.random() * 200) + 520);
+                _p = Math.round((Math.random() * 3) + 0);
+                switch (_p) {
+                    case 0:
+                        drawDropsBlume(_x, _y, 10, 0);
+                        break;
+                    case 1:
+                        drawBonBon(_x, _y, 12, 0);
+                        break;
+                    case 2:
+                        drawlollipop(_x, _y, 5, 0);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
-    }
-}
 
-function zeichneKorb(_x: number, _y: number, _radius: number): void {
+        function zeichneKorb(_x: number, _y: number, _radius: number): void {
 
-    inhalt.beginPath();
-    inhalt.rect(_x, _y, 25, 25);
-    inhalt.closePath();
-    inhalt.fillStyle = " brown ";
-    inhalt.fill();
+            inhalt.beginPath();
+            inhalt.rect(_x, _y, 25, 25);
+            inhalt.closePath();
+            inhalt.fillStyle = " brown ";
+            inhalt.fill();
 
     inhalt.moveTo(0, 0);
     inhalt.beginPath();
@@ -511,4 +513,4 @@ function baumKrone(_x: number, _y: number, _radius: number, _winkel: number): vo
     inhalt.closePath();
 
 }}
-
+}
