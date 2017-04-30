@@ -8,7 +8,7 @@ namespace Aufg4_Canvas {
     let n: number = 11;
     let _menge: number = 1;
     let radius: number = 10;
-    let imgData: ImageData = inhalt.getImageData(0, 0, 0, 0);
+    let imgData: ImageData;
 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement;
@@ -88,17 +88,19 @@ namespace Aufg4_Canvas {
 
         x.push(1250);
         y.push(420);
+        n++;
 
     }
 
     function animate(): void {
         console.log("Animate called");
-
-        inhalt.putImageData(imgData, 0, 0);
+//
+//        inhalt.putImageData(imgData, 0, 0);
 
         for (let i: number = 0; i < n; i++) {
-            x[i] += Math.random() * 2 - 2;
+            x[i] += Math.random() * 4 - 2;
             y[i] += Math.random() * 4 - 2;
+            x[i] --;
             biene(x[i], y[i]);
 
             if (x[i] < 0) {
