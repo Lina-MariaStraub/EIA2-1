@@ -63,27 +63,75 @@ namespace Aufg4_Canvas {
 
         biene(1250, 420);
 
-        let imgData: ImageData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
+        imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
         for (let i: number = 0; i < n; i++) {
             x[i] = 1250;
             y[i] = 420;
         }
 
-        window.setTimeout(animate, 60);
+        window.setTimeout(animate);
         canvas.addEventListener("click", neueBiene);
 
     }
 
     function biene(_x: number, _y: number): void {
 
+//        inhalt.beginPath();
+//        inhalt.rect(_x, _y, 10, 10);
+//        inhalt.closePath();
+//        inhalt.fillStyle = " black ";
+//        inhalt.fill();
+
         inhalt.beginPath();
-        inhalt.rect(_x, _y, 10, 10);
+        inhalt.fillStyle = "white";
+        inhalt.strokeStyle = "white";
+        inhalt.moveTo(_x + 2 , _y - 12);
+        inhalt.arc(_x + 2 , _y - 12 , 2, 180, 270); 
+        inhalt.moveTo(_x + 9 , _y - 12);
+        inhalt.arc(_x + 9 , _y - 12 , 2, 180, 270);    
         inhalt.closePath();
-        inhalt.fillStyle = " black ";
         inhalt.fill();
-
+        inhalt.stroke();
+             
+        inhalt.beginPath();
+        inhalt.fillStyle = "yellow";
+        inhalt.strokeStyle = "yellow";
+        inhalt.moveTo(_x + 9 , _y);
+        inhalt.arc(_x + 9 , _y ,4 , 180, 270); 
+        inhalt.closePath();
+        inhalt.fill();
+        inhalt.stroke();   
+           
+        inhalt.beginPath();
+        inhalt.fillStyle = "black";
+        inhalt.strokeStyle = "black";
+        inhalt.moveTo(_x + 4 , _y);
+        inhalt.arc(_x + 4 , _y , 4, 180, 270); 
+        inhalt.closePath();
+        inhalt.fill();
+        inhalt.stroke(); 
+           
+        inhalt.beginPath();
+        inhalt.fillStyle = "yellow";
+        inhalt.strokeStyle = "yellow";
+        inhalt.moveTo(_x , _y);
+        inhalt.arc(_x , _y , 4, 180, 270); 
+        inhalt.closePath();
+        inhalt.fill();
+        inhalt.stroke();
+           
+        inhalt.beginPath();
+        inhalt.fillStyle = "black";
+        inhalt.strokeStyle = "black";
+        inhalt.moveTo(_x - 5 , _y - 2);
+        inhalt.arc(_x - 5 , _y - 2, 3, 180, 270);      
+        inhalt.closePath();
+        inhalt.fill();
+        inhalt.stroke();   
     }
+        
 
+   
     function neueBiene(): void {
 
         x.push(1250);
@@ -114,7 +162,7 @@ namespace Aufg4_Canvas {
             }
 
             biene(x[i], y[i]);
-            window.setTimeout(animate,60);
+            window.setTimeout(animate);
         }
     }
 
@@ -131,17 +179,6 @@ namespace Aufg4_Canvas {
             biene(x, y);
         }
     }
-
-    //        function plusBiene(_event: MouseEvent): void {
-    //            for (let i: number = 0; i < 1; i++) {
-    //                let x: number = random(_event.offsetX, _event.clientX);
-    //                let y: number = random(_event.clientY, _event.clientY);
-    //
-    //                biene(x, y);
-    //            }}
-
-
-
 
     function drawSweetRandom(): void {
         let numberSweets: any = Math.floor((Math.random() * 30) + 5);
@@ -183,44 +220,73 @@ namespace Aufg4_Canvas {
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
         inhalt.arc(_x + 12, _y - 3, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fillStyle = "brown";
         inhalt.fill();
         inhalt.closePath();
 
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
         inhalt.arc(_x + 2, _y + 4, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fillStyle = "brown";
         inhalt.fill();
         inhalt.closePath();
 
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
         inhalt.arc(_x - 2, _y + 15, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fillStyle = "brown";
         inhalt.fill();
         inhalt.closePath();
 
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
         inhalt.arc(_x + 1, _y + 24, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fillStyle = "brown";
         inhalt.fill();
         inhalt.closePath();
 
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
         inhalt.arc(_x + 12, _y + 30, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
+        inhalt.fillStyle = "brown";
         inhalt.fill();
         inhalt.closePath();
 
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
-        inhalt.arc(_x + 18, _y + 35, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
+        inhalt.arc(_x + 18, _y + 30, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "brown";
         inhalt.fill();
         inhalt.closePath();
+        
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 27, _y + 24, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "brown";
+        inhalt.fill();
+        inhalt.closePath();
+
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 27, _y + 15, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "brown";
+        inhalt.fill();
+        inhalt.closePath();  
+        
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x + 24, _y + 4, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "brown";
+        inhalt.fill();
+        inhalt.closePath();
+
+        inhalt.moveTo(0, 0);
+        inhalt.beginPath();
+        inhalt.arc(_x +18, _y + 15, _radius, 0, 2 * Math.PI);
+        inhalt.fillStyle = "brown";
+        inhalt.fill();
+        inhalt.closePath();        
+        
     }
 
     function zeichneBerg(_x: number, _y: number, _farbe: any): void {
