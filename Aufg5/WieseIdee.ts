@@ -62,7 +62,7 @@ namespace Aufg4_Canvas {
 
         biene(1250, 420);
 
-        let bild: ImageData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
+        let imgData: ImageData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
         for (let i: number = 0; i < n; i++) {
             x[i] = 1250;
             y[i] = 420;
@@ -93,7 +93,7 @@ namespace Aufg4_Canvas {
     function animate(): void {
         console.log("Animate called");
 
-        inhalt.putImageData(bild, 0, 0);
+        inhalt.putImageData(imgData, 0, 0);
 
         for (let i: number = 0; i < n; i++) {
             x[i] += Math.random() * 2 - 2;
