@@ -1,17 +1,12 @@
-
-document.addEventListener("DOMContentLoaded", function() {
-
-
-    let n: number = 5;
-    let c: string;
-    let x: number = 0;
-    let y: number = 0;
-
-    function placeDiv(_color: string, _x: number, _y: number, _width: number, _height: number){
-        let div: HTMLDivElement = document.createElement("div");
+document.addEventListener("DOMContentLoaded", function () {
+    let n = 5;
+    let c;
+    let x = 0;
+    let y = 0;
+    function placeDiv(_color, _x, _y, _width, _height) {
+        let div = document.createElement("div");
         document.body.appendChild(div);
-
-        let s: CSSStyleDeclaration = div.style;
+        let s = div.style;
         s.borderStyle = "solid";
         s.borderColor = "#000000";
         s.borderWidth = "1px";
@@ -23,8 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
         s.left = _x + "px";
         s.top = _y + "px";
     }
-
-    for (let i: number = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
         y += (i == 2) ? 20 : 50;
         x = (x + 170) % 400;
         switch (i) {
@@ -40,11 +34,11 @@ document.addEventListener("DOMContentLoaded", function() {
             default:
                 c = "#0000ff";
         }
-        for (let a: number = 50; a > 0; a -= 20) {
+        for (let a = 50; a > 0; a -= 20) {
             placeDiv(c, x, y, a, a);
             if (i == 4)
                 break;
         }
     }
-
 });
+//# sourceMappingURL=Code.js.map

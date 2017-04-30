@@ -3,9 +3,7 @@ namespace Aufg4_Canvas {
     window.addEventListener("load", init);
 
     let inhalt: CanvasRenderingContext2D;
-    let x: number[] = [];
-    let y: number[] = [];
-    let n: number = 300;
+
 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement;
@@ -13,11 +11,6 @@ namespace Aufg4_Canvas {
         console.log(canvas);
 
         inhalt = canvas.getContext("2d");
-        
-       for (let i: number = 0; i < n; i++) {
-          x[i] = Math.random() * 200;
-          y[i] = Math.random() * 200;+       
-       }
 
         zeichneHimmel();
 
@@ -59,87 +52,40 @@ namespace Aufg4_Canvas {
         baumstamm(1300, 360, 50, 150);
         baumKrone(1270, 340, 35, 0);
 
-        zeichneKorb(1250, 420, 7)
+        zeichneKorb(1250, 420, 7);
 
         drawSweetRandom();
-        
-        biene(1250, 420);
-        window.setTimeout(animate, 20);
-        
-       
     }
 
-//    function saveBg(_x: number, _y: number, _width: number, _height: number): ImageData {
-//
-//        let imgData = inhalt.getImageData(10, 10, 50, 50);
-//    }
-    
-    function biene (_x:number, _y:number):void{
-        
-        inhalt.beginPath();
-        inhalt.rect(_x, _y, 25, 25);
-        inhalt.closePath();
-        inhalt.fillStyle = " yellow ";
-        inhalt.fill();
-        
-+
-+        for (let i: number = 0; i < n; i++) {
-+            x[i] = Math.random() * 200;
-+            y[i] = Math.random() * 200;
-+        }
-+
-+        window.setTimeout(animate, 20);
-+    }
-+
-+    function animate(): void {
-+        console.log("Animate called");
-+
-+        crc2.fillStyle = "#ff0000";
-+        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-+
-+        for (let i: number = 0; i < n; i++) {
-+            x[i] += Math.random() * 4 - 2;
-+            y[i] += Math.random() * 4 - 2;
-+            drawObject(x[i], y[i]);
-+        }
-+
-+        window.setTimeout(animate, 20);
-+    }
-+
-+    function drawObject(_x: number, _y: number): void {
-+        crc2.fillStyle = "#000000";
-+        crc2.fillRect(_x, _y, 10, 10);
-+    }
-+}
-        
 
-    function drawSweetRandom(): void {
-        let numberSweets: any = Math.floor((Math.random() * 30) + 5);
-        let _x: number;
-        let _y: number;
-        let _p: number;
-        let _radius: number;
-        let _winkel: number;
 
-        for (var i: number = 0; i < numberSweets; i++) {
-            _x = Math.round((Math.random() * inhalt.canvas.width) - 30);
-            _y = Math.round((Math.random() * 200) + 520);
-            _p = Math.round((Math.random() * 3) + 0);
-            switch (_p) {
-                case 0:
-                    drawDropsBlume(_x, _y, 10, 0);
-                    break;
-                case 1:
-                    drawBonBon(_x, _y, 12, 0);
-                    break;
-                case 2:
-                    drawlollipop(_x, _y, 5, 0);
-                    break;
-                default:
-                    break;
-            }
+function drawSweetRandom(): void {
+    let numberSweets: any = Math.floor((Math.random() * 30) + 5);
+    let _x: number;
+    let _y: number;
+    let _p: number;
+    let _radius: number;
+    let _winkel: number;
+
+    for (var i: number = 0; i < numberSweets; i++) {
+        _x = Math.round((Math.random() * inhalt.canvas.width) - 30);
+        _y = Math.round((Math.random() * 200) + 520);
+        _p = Math.round((Math.random() * 3) + 0);
+        switch (_p) {
+            case 0:
+                drawDropsBlume(_x, _y, 10, 0);
+                break;
+            case 1:
+                drawBonBon(_x, _y, 12, 0);
+                break;
+            case 2:
+                drawlollipop(_x, _y, 5, 0);
+                break;
+            default:
+                break;
         }
     }
+}
 
     function zeichneKorb(_x: number, _y: number, _radius: number): void {
 
@@ -220,7 +166,7 @@ namespace Aufg4_Canvas {
 
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
-        inhalt.arc(0, 0, 150, 0, 2 * Math.PI)
+        inhalt.arc(0, 0, 150, 0, 2 * Math.PI);
         inhalt.fillStyle = "#ffff00";
         inhalt.fill();
         inhalt.strokeStyle = "#C4E4F5";
@@ -497,6 +443,3 @@ namespace Aufg4_Canvas {
         inhalt.closePath();
 
     }
-
-}
-
