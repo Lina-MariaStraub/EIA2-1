@@ -100,18 +100,19 @@ namespace Aufg4_Canvas {
             y[i] += Math.random() * 4 - 2;
             biene(x[i], y[i]);
 
+            if (x[i] < 0) {
+                x[i] = 1500;
+            }
+            if (y[i] < 0) {
+                y[i] = 710;
+            }
+            if (y[i] > 710) {
+                y[i] = 0;
+            }
+
+            biene(x[i], y[i]);
+            window.setTimeout(animate, 20);
         }
-        if (x[i] < 0) {
-            x[i] = 1500;
-        }
-        if (y[i] < 0) {
-            y[i] = 710;
-        }
-        if (y[i] > 710) {
-            y[i] = 0;
-        }
-        drawBee(x[i], y[i]);
-        window.setTimeout(animate, 20);
     }
 
 
@@ -513,3 +514,4 @@ namespace Aufg4_Canvas {
 
     }
 
+}
