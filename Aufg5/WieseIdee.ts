@@ -56,13 +56,13 @@ namespace Aufg4_Canvas {
         baumstamm(1300, 360, 50, 150);
         baumKrone(1270, 340, 35, 0);
 
-        zeichneKorb(1250, 420, 7)
+        zeichneKorb(1250, 420, 7);
 
         drawSweetRandom();
 
         biene(1250, 420);
 
-        let bild = inhalt.getImageData(0, 0, canvas.width, canvas.height);
+        let bild: ImageData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
         for (let i: number = 0; i < n; i++) {
             x[i] = 1250;
             y[i] = 420;
