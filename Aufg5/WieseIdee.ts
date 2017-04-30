@@ -8,6 +8,7 @@ namespace Aufg4_Canvas {
     let n: number = 11;
     let _menge: number = 1;
     let radius: number = 10;
+    let imgData: ImageData = inhalt.getImageData(0, 0, 0, 0);
 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement;
@@ -68,7 +69,7 @@ namespace Aufg4_Canvas {
             y[i] = 420;
         }
 
-        window.setTimeout(animate, 20);
+        window.setTimeout(animate, 60);
         canvas.addEventListener("click", neueBiene);
 
     }
@@ -76,7 +77,7 @@ namespace Aufg4_Canvas {
     function biene(_x: number, _y: number): void {
 
         inhalt.beginPath();
-        inhalt.arc(_x, _y, radius, 0, 2 * Math.PI);
+        inhalt.rect(_x, _y, 10, 10);
         inhalt.closePath();
         inhalt.fillStyle = " black ";
         inhalt.fill();
@@ -111,7 +112,7 @@ namespace Aufg4_Canvas {
             }
 
             biene(x[i], y[i]);
-            window.setTimeout(animate, 20);
+            window.setTimeout(animate,60);
         }
     }
 
