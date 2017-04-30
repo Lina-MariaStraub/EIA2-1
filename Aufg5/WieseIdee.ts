@@ -94,8 +94,8 @@ namespace Aufg4_Canvas {
 
     function animate(): void {
         console.log("Animate called");
-//
-//        inhalt.putImageData(imgData, 0, 0);
+
+        inhalt.putImageData(imgData, 0, 0);
 
         for (let i: number = 0; i < n; i++) {
             x[i] += Math.random() * 4 - 2;
