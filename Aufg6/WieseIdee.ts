@@ -1,4 +1,4 @@
-namespace Aufg4_Canvas {
+namespace Aufg6_Wiese {
 
     window.addEventListener("load", init);
 
