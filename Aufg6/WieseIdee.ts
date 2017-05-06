@@ -14,11 +14,10 @@ namespace Aufg6_Wiese {
     }
 
     let bees: Bee[] = [];
-    let b: Bee = { x: 0, y: 0, g: 0, farbe: "#0000ff" }; 
+
 
     let n: number = 11;
-    let _menge: number = 1;
-    let radius: number = 10;
+    let menge: number = 1;
     let imgData: ImageData;
 
     function init(_event: Event): void {
@@ -29,6 +28,7 @@ namespace Aufg6_Wiese {
         inhalt = canvas.getContext("2d");
         
         for (let i: number = 0; i < n; i++) {
+            let b: Bee = { x: 0, y: 0, g: 0, farbe: "#0000ff" };
             b.x = Math.random() * 200;
             b.y = Math.random() * 200; 
             b.g = Math.random() * 30 + 10;
@@ -94,7 +94,7 @@ namespace Aufg6_Wiese {
 
     }
 
-    function biene(bees[0], bees[1], bees[2], bees[3]): void {
+    function biene(_b: Bee): void {
 
         inhalt.beginPath();
         inhalt.fillStyle = _b.farbe;
@@ -187,7 +187,7 @@ namespace Aufg6_Wiese {
     }
 
     function erstelleBienen(_menge: number): void {
-        for (let i: number = 0; i < _menge; i++) {
+        for (let i: number = 0; i < menge; i++) {
             let b: Bee = bees[i];
             b.x = random(0, inhalt.canvas.width);
             b.y = random(0, inhalt.canvas.height);
