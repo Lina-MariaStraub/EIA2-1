@@ -14,6 +14,7 @@ namespace Aufg6_Wiese {
     }
 
     let bees: Bee[] = [];
+    let b: Bee = { x: 0, y: 0, g: 0, farbe: "#0000ff" }; 
 
     let n: number = 11;
     let _menge: number = 1;
@@ -28,7 +29,6 @@ namespace Aufg6_Wiese {
         inhalt = canvas.getContext("2d");
         
         for (let i: number = 0; i < n; i++) {
-            let b: Bee = { x: 0, y: 0, g: 0, farbe: "#0000ff" }; 
             b.x = Math.random() * 200;
             b.y = Math.random() * 200; 
             b.g = Math.random() * 30 + 10;
@@ -94,7 +94,7 @@ namespace Aufg6_Wiese {
 
     }
 
-    function biene(_b: Bee): void {
+    function biene(bees[0], bees[1], bees[2], bees[3]): void {
 
         inhalt.beginPath();
         inhalt.fillStyle = _b.farbe;
@@ -164,7 +164,7 @@ namespace Aufg6_Wiese {
             b.x += Math.random() * 4 - 2;
             b.y += Math.random() * 4 - 2;
             b.x--;
-            biene(b.x, b.y);
+            biene(b.x, b.y, 10, b.farbe);
 
             if (b.x < 0) {
                 b.x = 1500;
