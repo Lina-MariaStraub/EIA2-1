@@ -35,17 +35,17 @@ namespace StudiVZ {
 
     function saveData(_input: string): string {
         
-    let probeStr: string = "254307, Credidio, Nadia, 20, super humorvoll";
-    let strArr: string[] = probeStr.split(",");
-
-    let student: StudentData = {
-        matrikel: parseInt(strArr[0]),
-        nName: strArr[1],
-        vName: strArr[2],
-        alter: parseInt(strArr[3]),
-        geschlecht: parseInt(strArr[4]) == 1,
-        kommentar: strArr[5]
-    };
+//    let probeStr: string = "254307, Credidio, Nadia, 20, super humorvoll";
+//    let strArr: string[] = probeStr.split(",");
+//
+//    let student: StudentData = {
+//        matrikel: parseInt(strArr[0]),
+//        nName: strArr[1],
+//        vName: strArr[2],
+//        alter: parseInt(strArr[3]),
+//        geschlecht: parseInt(strArr[4]) == 1,
+//        kommentar: strArr[5]
+//    };
         return "Hier fehlt noch der richtige Code...";
     }
     function queryData(_matrikel: number): string {

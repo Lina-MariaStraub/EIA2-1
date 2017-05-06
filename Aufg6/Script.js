@@ -2,8 +2,6 @@ var StudiVZ;
 (function (StudiVZ) {
     var students = [];
     var stop = false;
-    let probeStr = "254307, Credidio, Nadia, 20, super humorvoll";
-    let strArr = probeStr.split(",");
     while (!stop) {
         var action = prompt("Datensatz anlegen (n), abfragen(a) oder Programm beenden (s)\nn,a oder s eingeben");
         switch (action) {
@@ -23,6 +21,17 @@ var StudiVZ;
         }
     }
     function saveData(_input) {
+        //    let probeStr: string = "254307, Credidio, Nadia, 20, super humorvoll";
+        //    let strArr: string[] = probeStr.split(",");
+        //
+        //    let student: StudentData = {
+        //        matrikel: parseInt(strArr[0]),
+        //        nName: strArr[1],
+        //        vName: strArr[2],
+        //        alter: parseInt(strArr[3]),
+        //        geschlecht: parseInt(strArr[4]) == 1,
+        //        kommentar: strArr[5]
+        //    };
         return "Hier fehlt noch der richtige Code...";
     }
     function queryData(_matrikel) {

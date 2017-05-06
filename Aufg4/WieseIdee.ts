@@ -443,3 +443,4 @@ function drawSweetRandom(): void {
         inhalt.closePath();
 
     }
+}
