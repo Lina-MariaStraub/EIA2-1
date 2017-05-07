@@ -143,9 +143,9 @@ namespace Aufg6_Wiese {
 
         function neueBiene(): void {
         
-           b.x = 1250;
-           b.y = 420;
-           n++;
+        bees.push({ x: 1250, y: 420, g: 0, farbe: "" });
+        n++;
+
         }
 
         

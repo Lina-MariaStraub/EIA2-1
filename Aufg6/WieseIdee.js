@@ -100,8 +100,7 @@ var Aufg6_Wiese;
             inhalt.stroke();
         }
         function neueBiene() {
-            b.x = 1250;
-            b.y = 420;
+            bees.push({ x: 1250, y: 420, g: 0, farbe: "" });
             n++;
         }
         function animate() {
