@@ -79,7 +79,7 @@ namespace Aufg6_Wiese {
             b.x = 1250;
             b.y = 420;
             b.g = Math.random() * 5 + 2;
-            b.farbe = "hsl(" + Math.random() * 360 + ", 80%, 30%)";
+            b.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             bees[i] = b;
 
         }

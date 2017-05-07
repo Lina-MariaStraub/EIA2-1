@@ -1,3 +1,4 @@
+//In zusammenarbeit mit Sara Kalinic//
 namespace StudiVZ {
     interface StudentData {
         matrikel: number;

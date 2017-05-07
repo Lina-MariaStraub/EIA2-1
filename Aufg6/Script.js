@@ -1,3 +1,4 @@
+//In zusammenarbeit mit Sara Kalinic//
 var StudiVZ;
 (function (StudiVZ) {
     var students = [];
