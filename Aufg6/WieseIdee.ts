@@ -80,7 +80,6 @@ namespace Aufg6_Wiese {
 
         drawSweetRandom();
 
-        biene(1250, 420, 10, "00FF00");
 
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
         for (let i: number = 0; i < n; i++) {
