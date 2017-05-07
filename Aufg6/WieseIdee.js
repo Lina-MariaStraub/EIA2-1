@@ -100,7 +100,11 @@ var Aufg6_Wiese;
             inhalt.stroke();
         }
         function neueBiene() {
-            bees.push({ x: 1250, y: 420, g: 0, farbe: "" });
+            b.x = 1250;
+            b.y = 420;
+            b.g = Math.random() * 5 + 2;
+            b.farbe = "white";
+            bees.push(b);
             n++;
         }
         function animate() {

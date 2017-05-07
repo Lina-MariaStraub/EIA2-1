@@ -147,7 +147,7 @@ namespace Aufg6_Wiese {
            b.y = 420;
            b.g = Math.random() * 5 + 2;
            b.farbe = "white";
-           Bee.push(b);
+           bees.push(b);
            n++;
         }
 
@@ -599,3 +599,4 @@ namespace Aufg6_Wiese {
         }
 
     }
+}
