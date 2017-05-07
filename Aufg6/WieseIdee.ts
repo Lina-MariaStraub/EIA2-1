@@ -81,11 +81,12 @@ namespace Aufg6_Wiese {
             b.g = Math.random() * 5 + 2;
             b.farbe = "hsl(" + Math.random() * 360 + ", 80%, 30%)";
             bees[i] = b;
-            canvas.addEventListener("click", neueBiene);
 
         }
 
         window.setTimeout(animate, 35);
+        canvas.addEventListener("click", neueBiene);
+
 
 
 

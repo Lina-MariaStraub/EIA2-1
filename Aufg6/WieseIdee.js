@@ -52,9 +52,9 @@ var Aufg6_Wiese;
             b.g = Math.random() * 5 + 2;
             b.farbe = "hsl(" + Math.random() * 360 + ", 80%, 30%)";
             bees[i] = b;
-            canvas.addEventListener("click", neueBiene);
         }
         window.setTimeout(animate, 35);
+        canvas.addEventListener("click", neueBiene);
         function biene(_x, _y, _g, _farbe) {
             inhalt.beginPath();
             inhalt.fillStyle = _farbe;
