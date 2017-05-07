@@ -1,12 +1,11 @@
-var Aufg4_Canvas;
-(function (Aufg4_Canvas) {
+var Aufg6_Wiese;
+(function (Aufg6_Wiese) {
     window.addEventListener("load", init);
     let inhalt;
-    let x = [];
-    let y = [];
+    let bees = [];
+    let b = { x: 0, y: 0, g: 0, farbe: "#0000ff" };
     let n = 11;
-    let _menge = 1;
-    let radius = 10;
+    let menge = 1;
     let imgData;
     function init(_event) {
         let canvas;
@@ -46,436 +45,435 @@ var Aufg4_Canvas;
         baumKrone(1270, 340, 35, 0);
         zeichneKorb(1250, 420, 7);
         drawSweetRandom();
-        biene(1250, 420);
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
         for (let i = 0; i < n; i++) {
-            x[i] = 1250;
-            y[i] = 420;
+            b.x = 1250;
+            b.y = 420;
+            b.g = Math.random() * 5 + 2;
+            b.farbe = "hsl(" + Math.random() * 360 + ", 80%, 30%)";
+            bees[i] = b;
         }
-        window.setTimeout(animate);
-        canvas.addEventListener("click", neueBiene);
-    }
-    function biene(_x, _y) {
-        //        inhalt.beginPath();
-        //        inhalt.rect(_x, _y, 10, 10);
-        //        inhalt.closePath();
-        //        inhalt.fillStyle = " black ";
-        //        inhalt.fill();
-        inhalt.beginPath();
-        inhalt.fillStyle = "white";
-        inhalt.strokeStyle = "white";
-        inhalt.moveTo(_x + 2, _y - 12);
-        inhalt.arc(_x + 2, _y - 12, 2, 180, 270);
-        inhalt.moveTo(_x + 9, _y - 12);
-        inhalt.arc(_x + 9, _y - 12, 2, 180, 270);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-        inhalt.beginPath();
-        inhalt.fillStyle = "yellow";
-        inhalt.strokeStyle = "yellow";
-        inhalt.moveTo(_x + 9, _y);
-        inhalt.arc(_x + 9, _y, 4, 180, 270);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-        inhalt.beginPath();
-        inhalt.fillStyle = "black";
-        inhalt.strokeStyle = "black";
-        inhalt.moveTo(_x + 4, _y);
-        inhalt.arc(_x + 4, _y, 4, 180, 270);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-        inhalt.beginPath();
-        inhalt.fillStyle = "yellow";
-        inhalt.strokeStyle = "yellow";
-        inhalt.moveTo(_x, _y);
-        inhalt.arc(_x, _y, 4, 180, 270);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-        inhalt.beginPath();
-        inhalt.fillStyle = "black";
-        inhalt.strokeStyle = "black";
-        inhalt.moveTo(_x - 5, _y - 2);
-        inhalt.arc(_x - 5, _y - 2, 3, 180, 270);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-    }
-    function neueBiene() {
-        x.push(1250);
-        y.push(420);
-        n++;
-    }
-    function animate() {
-        console.log("Animate called");
-        inhalt.putImageData(imgData, 0, 0);
-        for (let i = 0; i < n; i++) {
-            x[i] += Math.random() * 4 - 2;
-            y[i] += Math.random() * 4 - 2;
-            x[i]--;
-            biene(x[i], y[i]);
-            if (x[i] < 0) {
-                x[i] = 1500;
-            }
-            if (y[i] < 0) {
-                y[i] = 710;
-            }
-            if (y[i] > 710) {
-                y[i] = 0;
-            }
-            biene(x[i], y[i]);
-            window.setTimeout(animate);
+        window.setTimeout(animate, 35);
+        //        canvas.addEventListener("click", neueBiene);
+        function biene(_x, _y, _g, _farbe) {
+            inhalt.beginPath();
+            inhalt.fillStyle = _farbe;
+            inhalt.strokeStyle = _farbe;
+            inhalt.moveTo(_x + 2, _y - 12);
+            inhalt.arc(_x + 2, _y - 12, _g, 180, 270);
+            inhalt.moveTo(_x + 9, _y - 12);
+            inhalt.arc(_x + 9, _y - 12, _g, 180, 270);
+            inhalt.closePath();
+            inhalt.fill();
+            inhalt.stroke();
+            inhalt.beginPath();
+            inhalt.fillStyle = "yellow";
+            inhalt.strokeStyle = "yellow";
+            inhalt.moveTo(_x + 9, _y);
+            inhalt.arc(_x + 9, _y, _g, 180, 270);
+            inhalt.closePath();
+            inhalt.fill();
+            inhalt.stroke();
+            inhalt.beginPath();
+            inhalt.fillStyle = _farbe;
+            inhalt.strokeStyle = _farbe;
+            inhalt.moveTo(_x + 4, _y);
+            inhalt.arc(_x + 4, _y, _g, 180, 270);
+            inhalt.closePath();
+            inhalt.fill();
+            inhalt.stroke();
+            inhalt.beginPath();
+            inhalt.fillStyle = "yellow";
+            inhalt.strokeStyle = "yellow";
+            inhalt.moveTo(_x, _y);
+            inhalt.arc(_x, _y, _g, 180, 270);
+            inhalt.closePath();
+            inhalt.fill();
+            inhalt.stroke();
+            inhalt.beginPath();
+            inhalt.fillStyle = _farbe;
+            inhalt.strokeStyle = _farbe;
+            inhalt.moveTo(_x - 5, _y - 2);
+            inhalt.arc(_x - 5, _y - 2, _g, 180, 270);
+            inhalt.closePath();
+            inhalt.fill();
+            inhalt.stroke();
         }
-    }
-    function random(_min, _max) {
-        return Math.random() * (_max - _min) + _min;
-    }
-    function erstelleBienen(_menge) {
-        for (let i = 0; i < _menge; i++) {
-            let x = random(0, inhalt.canvas.width);
-            let y = random(0, inhalt.canvas.height);
-            biene(x, y);
+        //        function neueBiene(_b: Bee): void {
+        //
+        //            b.x(1250);
+        //            b.y(420);
+        //            n++;
+        //
+        //        }
+        function animate() {
+            console.log("Animate called");
+            inhalt.putImageData(imgData, 0, 0);
+            for (let i = 0; i < n; i++) {
+                b.x += Math.random() * 4 - 2;
+                b.y += Math.random() * 4 - 2;
+                b.x--;
+                if (b.x < 0) {
+                    b.x = 1500;
+                }
+                if (b.y < 0) {
+                    b.y = 710;
+                }
+                if (b.y > 710) {
+                    b.y = 0;
+                }
+                biene(b.x, b.y, b.g, b.farbe);
+            }
+            window.setTimeout(animate, 35);
         }
-    }
-    function drawSweetRandom() {
-        let numberSweets = Math.floor((Math.random() * 30) + 5);
-        let _x;
-        let _y;
-        let _p;
-        let _radius;
-        let _winkel;
-        for (var i = 0; i < numberSweets; i++) {
-            _x = Math.round((Math.random() * inhalt.canvas.width) - 30);
-            _y = Math.round((Math.random() * 200) + 520);
-            _p = Math.round((Math.random() * 3) + 0);
-            switch (_p) {
-                case 0:
-                    drawDropsBlume(_x, _y, 10, 0);
-                    break;
-                case 1:
-                    drawBonBon(_x, _y, 12, 0);
-                    break;
-                case 2:
-                    drawlollipop(_x, _y, 5, 0);
-                    break;
-                default:
-                    break;
+        function random(_min, _max) {
+            return Math.random() * (_max - _min) + _min;
+        }
+        function erstelleBienen(menge) {
+            for (let i = 0; i < menge; i++) {
+                let b = bees[i];
+                b.x = random(0, inhalt.canvas.width);
+                b.y = random(0, inhalt.canvas.height);
+                biene(b.x, b.y, b.g, b.farbe);
             }
         }
+        function drawSweetRandom() {
+            let numberSweets = Math.floor((Math.random() * 30) + 5);
+            let _x;
+            let _y;
+            let _p;
+            let _radius;
+            let _winkel;
+            for (var i = 0; i < numberSweets; i++) {
+                _x = Math.round((Math.random() * inhalt.canvas.width) - 30);
+                _y = Math.round((Math.random() * 200) + 520);
+                _p = Math.round((Math.random() * 3) + 0);
+                switch (_p) {
+                    case 0:
+                        drawDropsBlume(_x, _y, 10, 0);
+                        break;
+                    case 1:
+                        drawBonBon(_x, _y, 12, 0);
+                        break;
+                    case 2:
+                        drawlollipop(_x, _y, 5, 0);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        function zeichneKorb(_x, _y, _radius) {
+            inhalt.beginPath();
+            inhalt.rect(_x, _y, 25, 25);
+            inhalt.closePath();
+            inhalt.fillStyle = " brown ";
+            inhalt.fill();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 12, _y - 3, _radius, 0, 2 * Math.PI);
+            inhalt.fillStyle = "brown";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 2, _y + 4, _radius, 0, 2 * Math.PI);
+            inhalt.fillStyle = "brown";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x - 2, _y + 15, _radius, 0, 2 * Math.PI);
+            inhalt.fillStyle = "brown";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 1, _y + 24, _radius, 0, 2 * Math.PI);
+            inhalt.fillStyle = "brown";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 12, _y + 30, _radius, 0, 2 * Math.PI);
+            inhalt.fillStyle = "brown";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 18, _y + 30, _radius, 0, 2 * Math.PI);
+            inhalt.fillStyle = "brown";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 27, _y + 24, _radius, 0, 2 * Math.PI);
+            inhalt.fillStyle = "brown";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 27, _y + 15, _radius, 0, 2 * Math.PI);
+            inhalt.fillStyle = "brown";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 24, _y + 4, _radius, 0, 2 * Math.PI);
+            inhalt.fillStyle = "brown";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 18, _y + 15, _radius, 0, 2 * Math.PI);
+            inhalt.fillStyle = "brown";
+            inhalt.fill();
+            inhalt.closePath();
+        }
+        function zeichneBerg(_x, _y, _farbe) {
+            inhalt.beginPath();
+            inhalt.fillStyle = _farbe;
+            inhalt.strokeStyle = _farbe;
+            inhalt.moveTo(_x, _y);
+            inhalt.lineTo(_x + 200, _y - 350);
+            inhalt.lineTo(_x + 400, _y);
+            inhalt.closePath();
+            inhalt.fill();
+            inhalt.stroke();
+        }
+        function zeichneHimmel() {
+            inhalt.beginPath();
+            inhalt.rect(0, 0, inhalt.canvas.width, inhalt.canvas.height);
+            inhalt.closePath();
+            inhalt.fillStyle = "#C4E4F5";
+            inhalt.fill();
+        }
+        function zeichneSonne() {
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(0, 0, 150, 0, 2 * Math.PI);
+            inhalt.fillStyle = "#ffff00";
+            inhalt.fill();
+            inhalt.strokeStyle = "#C4E4F5";
+            inhalt.lineWidth = 10;
+            inhalt.stroke();
+            inhalt.closePath();
+        }
+        function sonnenStrahlen(_x, _y) {
+            inhalt.beginPath();
+            inhalt.moveTo(0, 0);
+            inhalt.lineTo(_x, _y);
+            inhalt.closePath();
+            inhalt.strokeStyle = "#ffff00";
+            inhalt.lineWidth = 5;
+            inhalt.stroke();
+        }
+        function machsGruen() {
+            inhalt.beginPath();
+            inhalt.rect(0, 510, inhalt.canvas.width, 200);
+            inhalt.closePath();
+            inhalt.fillStyle = "    #7cfc00";
+            inhalt.fill();
+        }
+        function zuckerwatte(_x, _y, _radius, _winkel) {
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#FFFFFF";
+            inhalt.fill();
+            inhalt.closePath();
+        }
+        function wolkenZusammen(_x, _y, _radius, _winkel) {
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#FFFFFF";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 15, _y + 10, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#FFFFFF";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 20, _y + 10, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#FFFFFF";
+            inhalt.fill();
+            inhalt.closePath();
+        }
+        function baumstamm(_x, _y, _width, _height) {
+            inhalt.beginPath();
+            inhalt.rect(_x, _y, _width, _height);
+            inhalt.closePath();
+            inhalt.fillStyle = " #ffa54f ";
+            inhalt.fill();
+        }
+        function drawDropsBlume(_x, _y, _radius, _winkel) {
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x - 3, _y + 10, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#e066ff";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 7, _y + 9, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#ff6347";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 10, _y, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#e066ff";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 3, _y - 8, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#ff6347";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x - 8, _y - 8, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#e066ff";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x - 12, _y, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#ff6347";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#FFFFFF";
+            inhalt.fill();
+            inhalt.closePath();
+        }
+        function drawBonBon(_x, _y, _radius, _winkel) {
+            inhalt.beginPath();
+            inhalt.fillStyle = " #c71585 ";
+            inhalt.strokeStyle = "#c71585";
+            inhalt.moveTo(_x, _y);
+            inhalt.lineTo(_x + 15, _y - 15);
+            inhalt.lineTo(_x + 15, _y + 15);
+            inhalt.closePath();
+            inhalt.fill();
+            inhalt.stroke();
+            inhalt.beginPath();
+            inhalt.fillStyle = " #c71585 ";
+            inhalt.strokeStyle = "#c71585";
+            inhalt.moveTo(_x, _y);
+            inhalt.lineTo(_x - 15, _y + 15);
+            inhalt.lineTo(_x - 15, _y - 15);
+            inhalt.closePath();
+            inhalt.fill();
+            inhalt.stroke();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#ff69b4";
+            inhalt.fill();
+            inhalt.closePath();
+        }
+        function drawlollipop(_x, _y, _radius, _winkel) {
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x, _y, _radius + 20, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#8b0000";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x, _y, _radius + 15, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#FFFFFF";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x, _y, _radius + 10, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#8b0000";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x, _y, _radius + 5, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#FFFFFF";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#8b0000";
+            inhalt.fill();
+            inhalt.closePath();
+        }
+        function baumKrone(_x, _y, _radius, _winkel) {
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#008b00";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 20, _y - 20, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#008b00";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 20, _y + 20, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#008b00";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 30, _y + 35, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#008b00";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 30, _y - 30, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#008b00";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 50, _y - 50, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#008b00";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 80, _y - 30, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#008b00";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 45, _y, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#008b00";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 90, _y, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#008b00";
+            inhalt.fill();
+            inhalt.closePath();
+            inhalt.moveTo(0, 0);
+            inhalt.beginPath();
+            inhalt.arc(_x + 80, _y + 30, _radius, _winkel, 2 * Math.PI);
+            inhalt.fillStyle = "#008b00";
+            inhalt.fill();
+            inhalt.closePath();
+        }
     }
-    function zeichneKorb(_x, _y, _radius) {
-        inhalt.beginPath();
-        inhalt.rect(_x, _y, 25, 25);
-        inhalt.closePath();
-        inhalt.fillStyle = " brown ";
-        inhalt.fill();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 12, _y - 3, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 2, _y + 4, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x - 2, _y + 15, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 1, _y + 24, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 12, _y + 30, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 18, _y + 30, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 27, _y + 24, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 27, _y + 15, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 24, _y + 4, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 18, _y + 15, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
-    }
-    function zeichneBerg(_x, _y, _farbe) {
-        inhalt.beginPath();
-        inhalt.fillStyle = _farbe;
-        inhalt.strokeStyle = _farbe;
-        inhalt.moveTo(_x, _y);
-        inhalt.lineTo(_x + 200, _y - 350);
-        inhalt.lineTo(_x + 400, _y);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-    }
-    function zeichneHimmel() {
-        inhalt.beginPath();
-        inhalt.rect(0, 0, inhalt.canvas.width, inhalt.canvas.height);
-        inhalt.closePath();
-        inhalt.fillStyle = "#C4E4F5";
-        inhalt.fill();
-    }
-    function zeichneSonne() {
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(0, 0, 150, 0, 2 * Math.PI);
-        inhalt.fillStyle = "#ffff00";
-        inhalt.fill();
-        inhalt.strokeStyle = "#C4E4F5";
-        inhalt.lineWidth = 10;
-        inhalt.stroke();
-        inhalt.closePath();
-    }
-    function sonnenStrahlen(_x, _y) {
-        inhalt.beginPath();
-        inhalt.moveTo(0, 0);
-        inhalt.lineTo(_x, _y);
-        inhalt.closePath();
-        inhalt.strokeStyle = "#ffff00";
-        inhalt.lineWidth = 5;
-        inhalt.stroke();
-    }
-    function machsGruen() {
-        inhalt.beginPath();
-        inhalt.rect(0, 510, inhalt.canvas.width, 200);
-        inhalt.closePath();
-        inhalt.fillStyle = "    #7cfc00";
-        inhalt.fill();
-    }
-    function zuckerwatte(_x, _y, _radius, _winkel) {
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
-        inhalt.fill();
-        inhalt.closePath();
-    }
-    function wolkenZusammen(_x, _y, _radius, _winkel) {
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 15, _y + 10, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 20, _y + 10, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
-        inhalt.fill();
-        inhalt.closePath();
-    }
-    function baumstamm(_x, _y, _width, _height) {
-        inhalt.beginPath();
-        inhalt.rect(_x, _y, _width, _height);
-        inhalt.closePath();
-        inhalt.fillStyle = " #ffa54f ";
-        inhalt.fill();
-    }
-    function drawDropsBlume(_x, _y, _radius, _winkel) {
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x - 3, _y + 10, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#e066ff";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 7, _y + 9, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#ff6347";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 10, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#e066ff";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 3, _y - 8, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#ff6347";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x - 8, _y - 8, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#e066ff";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x - 12, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#ff6347";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
-        inhalt.fill();
-        inhalt.closePath();
-    }
-    function drawBonBon(_x, _y, _radius, _winkel) {
-        inhalt.beginPath();
-        inhalt.fillStyle = " #c71585 ";
-        inhalt.strokeStyle = "#c71585";
-        inhalt.moveTo(_x, _y);
-        inhalt.lineTo(_x + 15, _y - 15);
-        inhalt.lineTo(_x + 15, _y + 15);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-        inhalt.beginPath();
-        inhalt.fillStyle = " #c71585 ";
-        inhalt.strokeStyle = "#c71585";
-        inhalt.moveTo(_x, _y);
-        inhalt.lineTo(_x - 15, _y + 15);
-        inhalt.lineTo(_x - 15, _y - 15);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#ff69b4";
-        inhalt.fill();
-        inhalt.closePath();
-    }
-    function drawlollipop(_x, _y, _radius, _winkel) {
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius + 20, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#8b0000";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius + 15, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius + 10, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#8b0000";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius + 5, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#8b0000";
-        inhalt.fill();
-        inhalt.closePath();
-    }
-    function baumKrone(_x, _y, _radius, _winkel) {
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#008b00";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 20, _y - 20, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#008b00";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 20, _y + 20, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#008b00";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 30, _y + 35, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#008b00";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 30, _y - 30, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#008b00";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 50, _y - 50, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#008b00";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 80, _y - 30, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#008b00";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 45, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#008b00";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 90, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#008b00";
-        inhalt.fill();
-        inhalt.closePath();
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 80, _y + 30, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#008b00";
-        inhalt.fill();
-        inhalt.closePath();
-    }
-})(Aufg4_Canvas || (Aufg4_Canvas = {}));
+})(Aufg6_Wiese || (Aufg6_Wiese = {}));
 //# sourceMappingURL=WieseIdee.js.map

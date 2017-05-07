@@ -26,8 +26,8 @@ namespace Aufg6_Wiese {
         console.log(canvas);
 
         inhalt = canvas.getContext("2d");
-        
-    
+
+
 
         zeichneHimmel();
 
@@ -76,29 +76,28 @@ namespace Aufg6_Wiese {
 
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
         for (let i: number = 0; i < n; i++) {
-            let b: Bee = { x: 0, y: 0, g: 0, farbe: "#0000ff" };
             b.x = 1250;
             b.y = 420;
-            b.g = Math.random() * 30 + 10;
-            b.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+            b.g = Math.random() * 5 + 2;
+            b.farbe = "hsl(" + Math.random() * 360 + ", 80%, 30%)";
             bees[i] = b;
 
         }
 
-        window.setTimeout(animate);
+        window.setTimeout(animate,35);
         //        canvas.addEventListener("click", neueBiene);
 
 
 
-        function biene(_b: Bee): void {
+        function biene(_x: number, _y: number, _g: number, _farbe: string): void {
 
             inhalt.beginPath();
-            inhalt.fillStyle = _b.farbe;
-            inhalt.strokeStyle = _b.farbe;
-            inhalt.moveTo(_b.x + 2, _b.y - 12);
-            inhalt.arc(_b.x + 2, _b.y - 12, 2, 180, 270);
-            inhalt.moveTo(_b.x + 9, _b.y - 12);
-            inhalt.arc(_b.x + 9, _b.y - 12, 2, 180, 270);
+            inhalt.fillStyle = _farbe;
+            inhalt.strokeStyle = _farbe;
+            inhalt.moveTo(_x + 2, _y - 12);
+            inhalt.arc(_x + 2, _y - 12, _g, 180, 270);
+            inhalt.moveTo(_x + 9, _y - 12);
+            inhalt.arc(_x + 9, _y - 12, _g, 180, 270);
             inhalt.closePath();
             inhalt.fill();
             inhalt.stroke();
@@ -106,17 +105,17 @@ namespace Aufg6_Wiese {
             inhalt.beginPath();
             inhalt.fillStyle = "yellow";
             inhalt.strokeStyle = "yellow";
-            inhalt.moveTo(_b.x + 9, _b.y);
-            inhalt.arc(_b.x + 9, _b.y, 4, 180, 270);
+            inhalt.moveTo(_x + 9, _y);
+            inhalt.arc(_x + 9, _y, _g, 180, 270);
             inhalt.closePath();
             inhalt.fill();
             inhalt.stroke();
 
             inhalt.beginPath();
-            inhalt.fillStyle = _b.farbe;
-            inhalt.strokeStyle = _b.farbe;
-            inhalt.moveTo(_b.x + 4, _b.y);
-            inhalt.arc(_b.x + 4, _b.y, 4, 180, 270);
+            inhalt.fillStyle = _farbe;
+            inhalt.strokeStyle = _farbe;
+            inhalt.moveTo(_x + 4, _y);
+            inhalt.arc(_x + 4, _y, _g, 180, 270);
             inhalt.closePath();
             inhalt.fill();
             inhalt.stroke();
@@ -124,31 +123,30 @@ namespace Aufg6_Wiese {
             inhalt.beginPath();
             inhalt.fillStyle = "yellow";
             inhalt.strokeStyle = "yellow";
-            inhalt.moveTo(_b.x, _b.y);
-            inhalt.arc(_b.x, _b.y, 4, 180, 270);
+            inhalt.moveTo(_x, _y);
+            inhalt.arc(_x, _y, _g, 180, 270);
             inhalt.closePath();
             inhalt.fill();
             inhalt.stroke();
 
             inhalt.beginPath();
-            inhalt.fillStyle = _b.farbe;
-            inhalt.strokeStyle = _b.farbe;
-            inhalt.moveTo(_b.x - 5, _b.y - 2);
-            inhalt.arc(_b.x - 5, _b.y - 2, 3, 180, 270);
+            inhalt.fillStyle = _farbe;
+            inhalt.strokeStyle = _farbe;
+            inhalt.moveTo(_x - 5, _y - 2);
+            inhalt.arc(_x - 5, _y - 2, _g, 180, 270);
             inhalt.closePath();
             inhalt.fill();
             inhalt.stroke();
         }
+        
 
-
-
-        //    function neueBiene(_b: Bee): void {
-        //
-        //        _b.x.push(1250);
-        //        _b.y.push(420);
-        //        n++;
-        //
-        //    }
+//        function neueBiene(_b: Bee): void {
+//
+//            b.x(1250);
+//            b.y(420);
+//            n++;
+//
+//        }
 
         function animate(): void {
             console.log("Animate called");
@@ -172,8 +170,9 @@ namespace Aufg6_Wiese {
                 }
 
                 biene(b.x, b.y, b.g, b.farbe);
-                window.setTimeout(animate);
+
             }
+            window.setTimeout(animate,35);
         }
 
 
@@ -181,13 +180,13 @@ namespace Aufg6_Wiese {
             return Math.random() * (_max - _min) + _min;
         }
 
-        function erstelleBienen(_menge: number): void {
+        function erstelleBienen(menge: number): void {
             for (let i: number = 0; i < menge; i++) {
                 let b: Bee = bees[i];
                 b.x = random(0, inhalt.canvas.width);
                 b.y = random(0, inhalt.canvas.height);
 
-                biene(b.x, b.y);
+                biene(b.x, b.y, b.g, b.farbe);
             }
         }
 
@@ -594,4 +593,5 @@ namespace Aufg6_Wiese {
 
         }
 
-}}
+    }
+}
