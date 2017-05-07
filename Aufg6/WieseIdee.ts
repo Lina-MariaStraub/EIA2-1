@@ -8,14 +8,14 @@ namespace Aufg6_Wiese {
 
         x: number;
         y: number;
-        g: number;
+        g: number; // Was ist g?
         farbe: string;
 
     }
 
-    let bees: Bee[] = [];
+    let bees: Bee[] = []; 
 
-    let b: Bee = { x: 0, y: 0, g: 0, farbe: "#0000ff" };
+    let b: Bee = { x: 0, y: 0, g: 0, farbe: "#0000ff" }; // Hier erstellst du eine Biene und arbeitest nur mit dieser....
     let n: number = 11;
     let menge: number = 1;
     let imgData: ImageData;
@@ -75,12 +75,18 @@ namespace Aufg6_Wiese {
 
 
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i: number = 0; i < n; i++) {
+        for (let i: number = 0; i < n; i++) { 
+            // Hier änderst Du die eine Biene immer wieder und füllst .... 
             b.x = 1250;
             b.y = 420;
             b.g = Math.random() * 5 + 2;
             b.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-            bees[i] = b;
+            bees[i] = b; // ... das Array bees auf.
+            
+            
+            // Schöner lesbar wäre hier evtl. folgender Code (ersetzt Zeilen 80-84):
+            erzeugeBieneAmBienenkorb(); // Funktion in Zeile 161 
+           
 
         }
 
@@ -143,11 +149,26 @@ namespace Aufg6_Wiese {
         
 
         function neueBiene(): void {
-        
+        // unschön zu Lesen und nicht elegant. Außerdem wird die Farbe nicht gesetzt!
         bees.push({ x: 1250, y: 420, g: 0, farbe: "" });
         n++;
-
+            
+        // besser wäre hier sowas (ersetzt Zeile 160 & 161):
+        erzeugeBieneAmBienenkorb(); // Zeile 161
         }
+    
+
+    function erzeugeBieneAmBienenkorb(): void {
+         let bienenKorbX: number = 1250;
+         let bienenKorby: number = 420;
+         let bienenG: number = Math.random() * 5 + 2; // Anmerkung: Variablenname g nicht wirklich aussagekräftig. Größe?
+         let bienenFarbe: string = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+            
+         // Erzeuge neue Biene
+         let tempNewBee = { x: bienenKorbX, y: bienenKorby, g: bienenG, farbe: bienenFarbe };
+         // Fülle Array mit erzeugter Biene
+         bees.push(tempNewBee);        
+    }
 
         
 
@@ -156,7 +177,7 @@ namespace Aufg6_Wiese {
 
             inhalt.putImageData(imgData, 0, 0);
 
-            for (let i: number = 0; i < n; i++) {
+            for (let i: number = 0; i < n; i++) { // die komplette Schleife ist eigentlich falsch.
 
                 b.x += Math.random() * 4 - 2;
                 b.y += Math.random() * 4 - 2;
@@ -172,9 +193,19 @@ namespace Aufg6_Wiese {
                     b.y = 0;
                 }
 
-                biene(b.x, b.y, b.g, b.farbe);
+                biene(b.x, b.y, b.g, b.farbe); // hier benutzt du ständig die eine Biene und zeichnest diese!
 
             }
+            
+            // Besser und richtig wäre hier sowas (ersetzt Zeile 196-214):
+            for(let i: number = 0; i < bees.length; i++) { // mit bees.length brauchst du keine Zählvariable zu überwachen und anzupassen.
+             let currentBee: Bee = bees[i];
+                currentBee.x += Math.random() * 4 - 2;
+               // [...] usw. usw.
+                
+            }
+            
+            
             window.setTimeout(animate, 20);
         }
 
