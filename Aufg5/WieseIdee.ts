@@ -76,62 +76,62 @@ namespace Aufg4_Canvas {
 
     function biene(_x: number, _y: number): void {
 
-//        inhalt.beginPath();
-//        inhalt.rect(_x, _y, 10, 10);
-//        inhalt.closePath();
-//        inhalt.fillStyle = " black ";
-//        inhalt.fill();
+        //        inhalt.beginPath();
+        //        inhalt.rect(_x, _y, 10, 10);
+        //        inhalt.closePath();
+        //        inhalt.fillStyle = " black ";
+        //        inhalt.fill();
 
         inhalt.beginPath();
         inhalt.fillStyle = "white";
         inhalt.strokeStyle = "white";
-        inhalt.moveTo(_x + 2 , _y - 12);
-        inhalt.arc(_x + 2 , _y - 12 , 2, 180, 270); 
-        inhalt.moveTo(_x + 9 , _y - 12);
-        inhalt.arc(_x + 9 , _y - 12 , 2, 180, 270);    
+        inhalt.moveTo(_x + 2, _y - 12);
+        inhalt.arc(_x + 2, _y - 12, 2, 180, 270);
+        inhalt.moveTo(_x + 9, _y - 12);
+        inhalt.arc(_x + 9, _y - 12, 2, 180, 270);
         inhalt.closePath();
         inhalt.fill();
         inhalt.stroke();
-             
-        inhalt.beginPath();
-        inhalt.fillStyle = "yellow";
-        inhalt.strokeStyle = "yellow";
-        inhalt.moveTo(_x + 9 , _y);
-        inhalt.arc(_x + 9 , _y ,4 , 180, 270); 
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();   
-           
-        inhalt.beginPath();
-        inhalt.fillStyle = "black";
-        inhalt.strokeStyle = "black";
-        inhalt.moveTo(_x + 4 , _y);
-        inhalt.arc(_x + 4 , _y , 4, 180, 270); 
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke(); 
-           
-        inhalt.beginPath();
-        inhalt.fillStyle = "yellow";
-        inhalt.strokeStyle = "yellow";
-        inhalt.moveTo(_x , _y);
-        inhalt.arc(_x , _y , 4, 180, 270); 
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-           
-        inhalt.beginPath();
-        inhalt.fillStyle = "black";
-        inhalt.strokeStyle = "black";
-        inhalt.moveTo(_x - 5 , _y - 2);
-        inhalt.arc(_x - 5 , _y - 2, 3, 180, 270);      
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();   
-    }
-        
 
-   
+        inhalt.beginPath();
+        inhalt.fillStyle = "yellow";
+        inhalt.strokeStyle = "yellow";
+        inhalt.moveTo(_x + 9, _y);
+        inhalt.arc(_x + 9, _y, 4, 180, 270);
+        inhalt.closePath();
+        inhalt.fill();
+        inhalt.stroke();
+
+        inhalt.beginPath();
+        inhalt.fillStyle = "black";
+        inhalt.strokeStyle = "black";
+        inhalt.moveTo(_x + 4, _y);
+        inhalt.arc(_x + 4, _y, 4, 180, 270);
+        inhalt.closePath();
+        inhalt.fill();
+        inhalt.stroke();
+
+        inhalt.beginPath();
+        inhalt.fillStyle = "yellow";
+        inhalt.strokeStyle = "yellow";
+        inhalt.moveTo(_x, _y);
+        inhalt.arc(_x, _y, 4, 180, 270);
+        inhalt.closePath();
+        inhalt.fill();
+        inhalt.stroke();
+
+        inhalt.beginPath();
+        inhalt.fillStyle = "black";
+        inhalt.strokeStyle = "black";
+        inhalt.moveTo(_x - 5, _y - 2);
+        inhalt.arc(_x - 5, _y - 2, 3, 180, 270);
+        inhalt.closePath();
+        inhalt.fill();
+        inhalt.stroke();
+    }
+
+
+
     function neueBiene(): void {
 
         x.push(1250);
@@ -148,7 +148,7 @@ namespace Aufg4_Canvas {
         for (let i: number = 0; i < n; i++) {
             x[i] += Math.random() * 4 - 2;
             y[i] += Math.random() * 4 - 2;
-            x[i] --;
+            x[i]--;
             biene(x[i], y[i]);
 
             if (x[i] < 0) {
@@ -258,7 +258,7 @@ namespace Aufg4_Canvas {
         inhalt.fillStyle = "brown";
         inhalt.fill();
         inhalt.closePath();
-        
+
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
         inhalt.arc(_x + 27, _y + 24, _radius, 0, 2 * Math.PI);
@@ -271,8 +271,8 @@ namespace Aufg4_Canvas {
         inhalt.arc(_x + 27, _y + 15, _radius, 0, 2 * Math.PI);
         inhalt.fillStyle = "brown";
         inhalt.fill();
-        inhalt.closePath();  
-        
+        inhalt.closePath();
+
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
         inhalt.arc(_x + 24, _y + 4, _radius, 0, 2 * Math.PI);
@@ -282,11 +282,11 @@ namespace Aufg4_Canvas {
 
         inhalt.moveTo(0, 0);
         inhalt.beginPath();
-        inhalt.arc(_x +18, _y + 15, _radius, 0, 2 * Math.PI);
+        inhalt.arc(_x + 18, _y + 15, _radius, 0, 2 * Math.PI);
         inhalt.fillStyle = "brown";
         inhalt.fill();
-        inhalt.closePath();        
-        
+        inhalt.closePath();
+
     }
 
     function zeichneBerg(_x: number, _y: number, _farbe: any): void {

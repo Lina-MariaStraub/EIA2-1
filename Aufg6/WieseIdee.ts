@@ -15,7 +15,7 @@ namespace Aufg6_Wiese {
 
     let bees: Bee[] = [];
 
-
+    let b: Bee = { x: 0, y: 0, g: 0, farbe: "#0000ff" };
     let n: number = 11;
     let menge: number = 1;
     let imgData: ImageData;
@@ -27,124 +27,121 @@ namespace Aufg6_Wiese {
 
         inhalt = canvas.getContext("2d");
         
-        for (let i: number = 0; i < n; i++) {
-            let b: Bee = { x: 0, y: 0, g: 0, farbe: "#0000ff" };
-            b.x = Math.random() * 200;
-            b.y = Math.random() * 200; 
-            b.g = Math.random() * 30 + 10;
-            b.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+    }
 
-        }
+    zeichneHimmel();
 
-        zeichneHimmel();
+    zeichneBerg(1100, 510, "grey");
+    zeichneBerg(900, 510, "darkgrey");
+    zeichneBerg(1000, 650, "lightgrey");
+    zeichneBerg(680, 650, "lightgrey");
 
-        zeichneBerg(1100, 510, "grey");
-        zeichneBerg(900, 510, "darkgrey");
-        zeichneBerg(1000, 650, "lightgrey");
-        zeichneBerg(680, 650, "lightgrey");
+    wolkenZusammen(1000, 640, 15, 0);
 
-        wolkenZusammen(1000, 640, 15, 0);
+    machsGruen();
 
-        machsGruen();
+    sonnenStrahlen(25, 190);
+    sonnenStrahlen(75, 250);
+    sonnenStrahlen(90, 190);
+    sonnenStrahlen(175, 250);
+    sonnenStrahlen(225, 190);
+    sonnenStrahlen(240, 250);
+    sonnenStrahlen(300, 190);
+    sonnenStrahlen(390, 190);
+    sonnenStrahlen(225, 70);
+    sonnenStrahlen(190, 15);
+    sonnenStrahlen(280, 50);
+    zeichneSonne();
 
-        sonnenStrahlen(25, 190);
-        sonnenStrahlen(75, 250);
-        sonnenStrahlen(90, 190);
-        sonnenStrahlen(175, 250);
-        sonnenStrahlen(225, 190);
-        sonnenStrahlen(240, 250);
-        sonnenStrahlen(300, 190);
-        sonnenStrahlen(390, 190);
-        sonnenStrahlen(225, 70);
-        sonnenStrahlen(190, 15);
-        sonnenStrahlen(280, 50);
-        zeichneSonne();
+    zuckerwatte(420, 75, 25, 0);
+    zuckerwatte(455, 85, 25, 0);
+    zuckerwatte(455, 65, 25, 0);
+    zuckerwatte(475, 75, 25, 0);
 
-        zuckerwatte(420, 75, 25, 0);
-        zuckerwatte(455, 85, 25, 0);
-        zuckerwatte(455, 65, 25, 0);
-        zuckerwatte(475, 75, 25, 0);
+    zuckerwatte(700, 100, 35, 0);
+    zuckerwatte(740, 80, 35, 0);
+    zuckerwatte(750, 110, 35, 0);
+    zuckerwatte(770, 90, 25, 0);
 
-        zuckerwatte(700, 100, 35, 0);
-        zuckerwatte(740, 80, 35, 0);
-        zuckerwatte(750, 110, 35, 0);
-        zuckerwatte(770, 90, 25, 0);
+    baumstamm(1200, 360, 50, 150);
+    baumKrone(1170, 340, 35, 0);
 
-        baumstamm(1200, 360, 50, 150);
-        baumKrone(1170, 340, 35, 0);
+    baumstamm(1300, 360, 50, 150);
+    baumKrone(1270, 340, 35, 0);
 
-        baumstamm(1300, 360, 50, 150);
-        baumKrone(1270, 340, 35, 0);
+    zeichneKorb(1250, 420, 7);
 
-        zeichneKorb(1250, 420, 7);
-
-        drawSweetRandom();
+    drawSweetRandom();
 
 
-        imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i: number = 0; i < n; i++) {
-            let b: Bee = bees[i];
-            b.x = 1250;
-            b.y = 420;
-        }
-
-        window.setTimeout(animate);
-//        canvas.addEventListener("click", neueBiene);
+    imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
+    for (let i: number = 0; i < n; i++) {
+        b.x = 1250;
+        b.y = 420;
+        b.g = Math.random() * 30 + 10;
+        b.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+        biene(b.x, b.y, b.g, b.farbe);
+        bees[i] = b;
 
     }
 
-    function biene(_b: Bee): void {
+    window.setTimeout(animate);
+    //        canvas.addEventListener("click", neueBiene);
 
-        inhalt.beginPath();
-        inhalt.fillStyle = _b.farbe;
-        inhalt.strokeStyle = _b.farbe;
-        inhalt.moveTo(_b.x + 2 , _b.y - 12);
-        inhalt.arc(_b.x  + 2 , _b.y - 12 , 2, 180, 270); 
-        inhalt.moveTo(_b.x  + 9 , _b.y - 12);
-        inhalt.arc(_b.x  + 9 , _b.y - 12 , 2, 180, 270);    
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-             
-        inhalt.beginPath();
-        inhalt.fillStyle = "yellow";
-        inhalt.strokeStyle = "yellow";
-        inhalt.moveTo(_b.x + 9 , _b.y);
-        inhalt.arc(_b.x  + 9 , _b.y ,4 , 180, 270); 
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();   
-           
-        inhalt.beginPath();
-        inhalt.fillStyle = _b.farbe;
-        inhalt.strokeStyle = _b.farbe;
-        inhalt.moveTo(_b.x  + 4 , _b.y);
-        inhalt.arc(_b.x  + 4 , _b.y , 4, 180, 270); 
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke(); 
-           
-        inhalt.beginPath();
-        inhalt.fillStyle = "yellow";
-        inhalt.strokeStyle = "yellow";
-        inhalt.moveTo(_b.x  , _b.y);
-        inhalt.arc(_b.x  , _b.y , 4, 180, 270); 
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-           
-        inhalt.beginPath();
-        inhalt.fillStyle = _b.farbe;
-        inhalt.strokeStyle = _b.farbe;
-        inhalt.moveTo(_b.x  - 5 , _b.y - 2);
-        inhalt.arc(_b.x  - 5 , _b.y - 2, 3, 180, 270);      
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();   
-    }
-        
 
-   
+
+function biene(_b: Bee): void {
+
+    inhalt.beginPath();
+    inhalt.fillStyle = _b.farbe;
+    inhalt.strokeStyle = _b.farbe;
+    inhalt.moveTo(_b.x + 2, _b.y - 12);
+    inhalt.arc(_b.x + 2, _b.y - 12, 2, 180, 270);
+    inhalt.moveTo(_b.x + 9, _b.y - 12);
+    inhalt.arc(_b.x + 9, _b.y - 12, 2, 180, 270);
+    inhalt.closePath();
+    inhalt.fill();
+    inhalt.stroke();
+
+    inhalt.beginPath();
+    inhalt.fillStyle = "yellow";
+    inhalt.strokeStyle = "yellow";
+    inhalt.moveTo(_b.x + 9, _b.y);
+    inhalt.arc(_b.x + 9, _b.y, 4, 180, 270);
+    inhalt.closePath();
+    inhalt.fill();
+    inhalt.stroke();
+
+    inhalt.beginPath();
+    inhalt.fillStyle = _b.farbe;
+    inhalt.strokeStyle = _b.farbe;
+    inhalt.moveTo(_b.x + 4, _b.y);
+    inhalt.arc(_b.x + 4, _b.y, 4, 180, 270);
+    inhalt.closePath();
+    inhalt.fill();
+    inhalt.stroke();
+
+    inhalt.beginPath();
+    inhalt.fillStyle = "yellow";
+    inhalt.strokeStyle = "yellow";
+    inhalt.moveTo(_b.x, _b.y);
+    inhalt.arc(_b.x, _b.y, 4, 180, 270);
+    inhalt.closePath();
+    inhalt.fill();
+    inhalt.stroke();
+
+    inhalt.beginPath();
+    inhalt.fillStyle = _b.farbe;
+    inhalt.strokeStyle = _b.farbe;
+    inhalt.moveTo(_b.x - 5, _b.y - 2);
+    inhalt.arc(_b.x - 5, _b.y - 2, 3, 180, 270);
+    inhalt.closePath();
+    inhalt.fill();
+    inhalt.stroke();
+}
+
+
+
 //    function neueBiene(_b: Bee): void {
 //
 //        _b.x.push(1250);
@@ -153,168 +150,168 @@ namespace Aufg6_Wiese {
 //
 //    }
 
-    function animate(): void {
-        console.log("Animate called");
+function animate(): void {
+    console.log("Animate called");
 
-        inhalt.putImageData(imgData, 0, 0);
+    inhalt.putImageData(imgData, 0, 0);
 
-        for (let i: number = 0; i < n; i++) {
-            let b= bees[i];
-            b.x += Math.random() * 4 - 2;
-            b.y += Math.random() * 4 - 2;
-            b.x--;
+    for (let i: number = 0; i < n; i++) {
 
-            if (b.x < 0) {
-                b.x = 1500;
-            }
-            if (b.y < 0) {
-                b.y = 710;
-            }
-            if (b.y > 710) {
-                b.y = 0;
-            }
+        b.x += Math.random() * 4 - 2;
+        b.y += Math.random() * 4 - 2;
+        b.x--;
 
-            biene(_x, _y,_g, _farbe);
-            window.setTimeout(animate);
+        if (b.x < 0) {
+            b.x = 1500;
+        }
+        if (b.y < 0) {
+            b.y = 710;
+        }
+        if (b.y > 710) {
+            b.y = 0;
+        }
+
+        biene(b.x, b.y, b.g, b.farbe);
+        window.setTimeout(animate);
+    }
+}
+
+
+function random(_min: number, _max: number): number {
+    return Math.random() * (_max - _min) + _min;
+}
+
+function erstelleBienen(_menge: number): void {
+    for (let i: number = 0; i < menge; i++) {
+        let b: Bee = bees[i];
+        b.x = random(0, inhalt.canvas.width);
+        b.y = random(0, inhalt.canvas.height);
+
+        biene(b.x, b.y);
+    }
+}
+
+function drawSweetRandom(): void {
+    let numberSweets: any = Math.floor((Math.random() * 30) + 5);
+    let _x: number;
+    let _y: number;
+    let _p: number;
+    let _radius: number;
+    let _winkel: number;
+
+    for (var i: number = 0; i < numberSweets; i++) {
+        _x = Math.round((Math.random() * inhalt.canvas.width) - 30);
+        _y = Math.round((Math.random() * 200) + 520);
+        _p = Math.round((Math.random() * 3) + 0);
+        switch (_p) {
+            case 0:
+                drawDropsBlume(_x, _y, 10, 0);
+                break;
+            case 1:
+                drawBonBon(_x, _y, 12, 0);
+                break;
+            case 2:
+                drawlollipop(_x, _y, 5, 0);
+                break;
+            default:
+                break;
         }
     }
+}
 
 
-    function random(_min: number, _max: number): number {
-        return Math.random() * (_max - _min) + _min;
-    }
+function zeichneKorb(_x: number, _y: number, _radius: number): void {
 
-    function erstelleBienen(_menge: number): void {
-        for (let i: number = 0; i < menge; i++) {
-            let b: Bee = bees[i];
-            b.x = random(0, inhalt.canvas.width);
-            b.y = random(0, inhalt.canvas.height);
+    inhalt.beginPath();
+    inhalt.rect(_x, _y, 25, 25);
+    inhalt.closePath();
+    inhalt.fillStyle = " brown ";
+    inhalt.fill();
 
-            biene(b.x, b.y);
-        }
-    }
+    inhalt.moveTo(0, 0);
+    inhalt.beginPath();
+    inhalt.arc(_x + 12, _y - 3, _radius, 0, 2 * Math.PI);
+    inhalt.fillStyle = "brown";
+    inhalt.fill();
+    inhalt.closePath();
 
-    function drawSweetRandom(): void {
-        let numberSweets: any = Math.floor((Math.random() * 30) + 5);
-        let _x: number;
-        let _y: number;
-        let _p: number;
-        let _radius: number;
-        let _winkel: number;
+    inhalt.moveTo(0, 0);
+    inhalt.beginPath();
+    inhalt.arc(_x + 2, _y + 4, _radius, 0, 2 * Math.PI);
+    inhalt.fillStyle = "brown";
+    inhalt.fill();
+    inhalt.closePath();
 
-        for (var i: number = 0; i < numberSweets; i++) {
-            _x = Math.round((Math.random() * inhalt.canvas.width) - 30);
-            _y = Math.round((Math.random() * 200) + 520);
-            _p = Math.round((Math.random() * 3) + 0);
-            switch (_p) {
-                case 0:
-                    drawDropsBlume(_x, _y, 10, 0);
-                    break;
-                case 1:
-                    drawBonBon(_x, _y, 12, 0);
-                    break;
-                case 2:
-                    drawlollipop(_x, _y, 5, 0);
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
+    inhalt.moveTo(0, 0);
+    inhalt.beginPath();
+    inhalt.arc(_x - 2, _y + 15, _radius, 0, 2 * Math.PI);
+    inhalt.fillStyle = "brown";
+    inhalt.fill();
+    inhalt.closePath();
 
+    inhalt.moveTo(0, 0);
+    inhalt.beginPath();
+    inhalt.arc(_x + 1, _y + 24, _radius, 0, 2 * Math.PI);
+    inhalt.fillStyle = "brown";
+    inhalt.fill();
+    inhalt.closePath();
 
-    function zeichneKorb(_x: number, _y: number, _radius: number): void {
+    inhalt.moveTo(0, 0);
+    inhalt.beginPath();
+    inhalt.arc(_x + 12, _y + 30, _radius, 0, 2 * Math.PI);
+    inhalt.fillStyle = "brown";
+    inhalt.fill();
+    inhalt.closePath();
 
-        inhalt.beginPath();
-        inhalt.rect(_x, _y, 25, 25);
-        inhalt.closePath();
-        inhalt.fillStyle = " brown ";
-        inhalt.fill();
+    inhalt.moveTo(0, 0);
+    inhalt.beginPath();
+    inhalt.arc(_x + 18, _y + 30, _radius, 0, 2 * Math.PI);
+    inhalt.fillStyle = "brown";
+    inhalt.fill();
+    inhalt.closePath();
 
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 12, _y - 3, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
+    inhalt.moveTo(0, 0);
+    inhalt.beginPath();
+    inhalt.arc(_x + 27, _y + 24, _radius, 0, 2 * Math.PI);
+    inhalt.fillStyle = "brown";
+    inhalt.fill();
+    inhalt.closePath();
 
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 2, _y + 4, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
+    inhalt.moveTo(0, 0);
+    inhalt.beginPath();
+    inhalt.arc(_x + 27, _y + 15, _radius, 0, 2 * Math.PI);
+    inhalt.fillStyle = "brown";
+    inhalt.fill();
+    inhalt.closePath();
 
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x - 2, _y + 15, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
+    inhalt.moveTo(0, 0);
+    inhalt.beginPath();
+    inhalt.arc(_x + 24, _y + 4, _radius, 0, 2 * Math.PI);
+    inhalt.fillStyle = "brown";
+    inhalt.fill();
+    inhalt.closePath();
 
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 1, _y + 24, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
+    inhalt.moveTo(0, 0);
+    inhalt.beginPath();
+    inhalt.arc(_x + 18, _y + 15, _radius, 0, 2 * Math.PI);
+    inhalt.fillStyle = "brown";
+    inhalt.fill();
+    inhalt.closePath();
 
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 12, _y + 30, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
+}
 
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 18, _y + 30, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
-        
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 27, _y + 24, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
+function zeichneBerg(_x: number, _y: number, _farbe: any): void {
 
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 27, _y + 15, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();  
-        
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 24, _y + 4, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x +18, _y + 15, _radius, 0, 2 * Math.PI);
-        inhalt.fillStyle = "brown";
-        inhalt.fill();
-        inhalt.closePath();        
-        
-    }
-
-    function zeichneBerg(_x: number, _y: number, _farbe: any): void {
-
-        inhalt.beginPath();
-        inhalt.fillStyle = _farbe;
-        inhalt.strokeStyle = _farbe;
-        inhalt.moveTo(_x, _y);
-        inhalt.lineTo(_x + 200, _y - 350);
-        inhalt.lineTo(_x + 400, _y);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-    }
+    inhalt.beginPath();
+    inhalt.fillStyle = _farbe;
+    inhalt.strokeStyle = _farbe;
+    inhalt.moveTo(_x, _y);
+    inhalt.lineTo(_x + 200, _y - 350);
+    inhalt.lineTo(_x + 400, _y);
+    inhalt.closePath();
+    inhalt.fill();
+    inhalt.stroke();
+}
 
     function zeichneHimmel(): void {
         inhalt.beginPath();
