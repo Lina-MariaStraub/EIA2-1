@@ -52,9 +52,9 @@ var Aufg6_Wiese;
             b.g = Math.random() * 5 + 2;
             b.farbe = "hsl(" + Math.random() * 360 + ", 80%, 30%)";
             bees[i] = b;
+            canvas.addEventListener("click", neueBiene);
         }
         window.setTimeout(animate, 35);
-        //        canvas.addEventListener("click", neueBiene);
         function biene(_x, _y, _g, _farbe) {
             inhalt.beginPath();
             inhalt.fillStyle = _farbe;
@@ -99,13 +99,10 @@ var Aufg6_Wiese;
             inhalt.fill();
             inhalt.stroke();
         }
-        //        function neueBiene(_b: Bee): void {
-        //
-        //            b.x(1250);
-        //            b.y(420);
-        //            n++;
-        //
-        //        }
+        function neueBiene() {
+            bees.push({ x: 1250, y: 420, g: 0, farbe: "" });
+            n++;
+        }
         function animate() {
             console.log("Animate called");
             inhalt.putImageData(imgData, 0, 0);

@@ -1,17 +1,15 @@
 namespace StudiVZ {
     interface StudentData {
-        
-    matrikel: number;
-    nName: string;
-    vName: string;
-    alter: number;
-    geschlecht: string; 
-    kommentar: string;
-        // hier ist noch die richtige Datenstruktur festzulegen
+        matrikel: number;
+        name: string;
+        firstname: string;
+        age: number;
+        sex: boolean;
+        comment: string;
     }
+
     var students: StudentData[] = [];
     var stop: boolean = false;
-
 
     while (!stop) {
         var action: string = prompt("Datensatz anlegen (n), abfragen(a) oder Programm beenden (s)\nn,a oder s eingeben");
@@ -19,12 +17,12 @@ namespace StudiVZ {
         switch (action) {
             case "n":
             case "N":
-                var input: string = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 oder 1) und Kommentar");
-                alert(saveData(input));
+                var input: string = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 für weiblich oder 1 für männlich) und Kommentar");
+                alert(saveData(input)); 
                 break;
             case "a":
             case "A":
-                var matrikel: number = parseInt(prompt("Eingabe Matrikelnummer"));
+                var matrikel: number = parseInt(prompt("Eingabe Matrikelnummer")); 
                 alert(queryData(matrikel));
                 break;
             case "s":
@@ -34,21 +32,41 @@ namespace StudiVZ {
     }
 
     function saveData(_input: string): string {
+        let strArr: string[] = _input.split(","); 
+        let student: StudentData = {                      
+            matrikel: parseInt(strArr[0]),        
+            name: strArr[1],
+            firstname: strArr[2],
+            age: parseInt(strArr[3]),
+            sex: parseInt(strArr[4]) == 1,
+            comment: strArr[5]
+        };
+
+        students.push(student);  
+
+        let sex: string;
+        if (parseInt(strArr[4]) == 1) {   
+            sex = "m";
+        }
+        else {                      
+            sex = "w";
+        }
         
-//    let probeStr: string = "254307, Credidio, Nadia, 20, super humorvoll";
-//    let strArr: string[] = probeStr.split(",");
-//
-//    let student: StudentData = {
-//        matrikel: parseInt(strArr[0]),
-//        nName: strArr[1],
-//        vName: strArr[2],
-//        alter: parseInt(strArr[3]),
-//        geschlecht: parseInt(strArr[4]) == 1,
-//        kommentar: strArr[5]
-//    };
-        return "Hier fehlt noch der richtige Code...";
+        return "Deine Daten: \n" + "\n Matrikelnummer: " + student.matrikel + "\n Name: " + student.name + "\n Vorname: " + student.firstname + "\n Alter: " + student.age + "\n Geschlecht: " + sex + "\n Kommentar: " + student.comment + "\n Vielen Dank" ;
     }
+
     function queryData(_matrikel: number): string {
-        return "Hier fehlt noch der richtige Code...";
+
+        for (let i: number = 0; i < students.length; i++) {  
+
+            if (students[i].matrikel == _matrikel) {        
+                let sex: string = students[i].sex ? "m" : "w"; 
+                return "Deine Daten zur Matrikelnummer: " + students[i].matrikel + "\n Name: " + students[i].name + "\n Vorname: " + students[i].firstname + "\n Alter: " + students[i].age + "\n Geschlecht: " + sex + "\n Kommentar: " + students[i].comment;
+            }
+
+            else {                
+                return "Diese Matrikelnummer konnte nicht gefunden werden. ";
+            }
+        }
     }
 }

@@ -81,11 +81,12 @@ namespace Aufg6_Wiese {
             b.g = Math.random() * 5 + 2;
             b.farbe = "hsl(" + Math.random() * 360 + ", 80%, 30%)";
             bees[i] = b;
+            canvas.addEventListener("click", neueBiene);
 
         }
 
-        window.setTimeout(animate,35);
-        //        canvas.addEventListener("click", neueBiene);
+        window.setTimeout(animate, 35);
+
 
 
 
@@ -140,13 +141,17 @@ namespace Aufg6_Wiese {
         }
         
 
-//        function neueBiene(_b: Bee): void {
-//
-//            b.x(1250);
-//            b.y(420);
-//            n++;
-//
-//        }
+        function neueBiene(): void {
+        
+           b.x = 1250;
+           b.y = 420;
+           b.g = Math.random() * 5 + 2;
+           b.farbe = "white";
+           Bee.push(b);
+           n++;
+        }
+
+        
 
         function animate(): void {
             console.log("Animate called");
@@ -172,7 +177,7 @@ namespace Aufg6_Wiese {
                 biene(b.x, b.y, b.g, b.farbe);
 
             }
-            window.setTimeout(animate,35);
+            window.setTimeout(animate, 35);
         }
 
 
@@ -594,4 +599,3 @@ namespace Aufg6_Wiese {
         }
 
     }
-}
