@@ -94,8 +94,8 @@ namespace Aufg6_Wiese {
         function biene(_x: number, _y: number, _g: number, _farbe: string): void {
 
             inhalt.beginPath();
-            inhalt.fillStyle = _farbe;
-            inhalt.strokeStyle = _farbe;
+            inhalt.fillStyle = "black";
+            inhalt.strokeStyle = "black";
             inhalt.moveTo(_x + 2, _y - 12);
             inhalt.arc(_x + 2, _y - 12, _g, 180, 270);
             inhalt.moveTo(_x + 9, _y - 12);
@@ -105,8 +105,8 @@ namespace Aufg6_Wiese {
             inhalt.stroke();
 
             inhalt.beginPath();
-            inhalt.fillStyle = "yellow";
-            inhalt.strokeStyle = "yellow";
+            inhalt.fillStyle = _farbe;
+            inhalt.strokeStyle = _farbe;
             inhalt.moveTo(_x + 9, _y);
             inhalt.arc(_x + 9, _y, _g, 180, 270);
             inhalt.closePath();
@@ -114,8 +114,8 @@ namespace Aufg6_Wiese {
             inhalt.stroke();
 
             inhalt.beginPath();
-            inhalt.fillStyle = _farbe;
-            inhalt.strokeStyle = _farbe;
+            inhalt.fillStyle = "black";
+            inhalt.strokeStyle = "black";
             inhalt.moveTo(_x + 4, _y);
             inhalt.arc(_x + 4, _y, _g, 180, 270);
             inhalt.closePath();
@@ -123,8 +123,8 @@ namespace Aufg6_Wiese {
             inhalt.stroke();
 
             inhalt.beginPath();
-            inhalt.fillStyle = "yellow";
-            inhalt.strokeStyle = "yellow";
+            inhalt.fillStyle = _farbe;
+            inhalt.strokeStyle = _farbe;
             inhalt.moveTo(_x, _y);
             inhalt.arc(_x, _y, _g, 180, 270);
             inhalt.closePath();
@@ -132,8 +132,8 @@ namespace Aufg6_Wiese {
             inhalt.stroke();
 
             inhalt.beginPath();
-            inhalt.fillStyle = _farbe;
-            inhalt.strokeStyle = _farbe;
+            inhalt.fillStyle = "black";
+            inhalt.strokeStyle = "black";
             inhalt.moveTo(_x - 5, _y - 2);
             inhalt.arc(_x - 5, _y - 2, _g, 180, 270);
             inhalt.closePath();
