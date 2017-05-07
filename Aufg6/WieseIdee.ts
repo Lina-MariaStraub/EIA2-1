@@ -84,10 +84,10 @@ namespace Aufg6_Wiese {
 
         }
 
-        window.setTimeout(animate, 35);
+        window.setTimeout(animate, 20);
         canvas.addEventListener("click", neueBiene);
 
-
+}
 
 
 
@@ -175,7 +175,7 @@ namespace Aufg6_Wiese {
                 biene(b.x, b.y, b.g, b.farbe);
 
             }
-            window.setTimeout(animate, 35);
+            window.setTimeout(animate, 20);
         }
 
 
@@ -597,4 +597,3 @@ namespace Aufg6_Wiese {
         }
 
     }
-}
