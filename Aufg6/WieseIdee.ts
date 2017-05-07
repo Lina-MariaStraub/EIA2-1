@@ -33,7 +33,7 @@ namespace Aufg6_Wiese {
             b.y = Math.random() * 200; 
             b.g = Math.random() * 30 + 10;
             b.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-            bees[i] = b;
+
         }
 
         zeichneHimmel();
@@ -159,11 +159,10 @@ namespace Aufg6_Wiese {
         inhalt.putImageData(imgData, 0, 0);
 
         for (let i: number = 0; i < n; i++) {
-            let b: Bee = bees[i];
+            let b= bees[i];
             b.x += Math.random() * 4 - 2;
             b.y += Math.random() * 4 - 2;
             b.x--;
-            biene(b.x, b.y, 10, b.farbe);
 
             if (b.x < 0) {
                 b.x = 1500;
@@ -175,7 +174,7 @@ namespace Aufg6_Wiese {
                 b.y = 0;
             }
 
-            biene(b.x, b.y);
+            biene(_x, _y,_g, _farbe);
             window.setTimeout(animate);
         }
     }
