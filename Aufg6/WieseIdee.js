@@ -102,9 +102,6 @@ var Aufg6_Wiese;
         function neueBiene() {
             b.x = 1250;
             b.y = 420;
-            b.g = Math.random() * 5 + 2;
-            b.farbe = "white";
-            bees.push(b);
             n++;
         }
         function animate() {
