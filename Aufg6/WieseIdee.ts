@@ -15,9 +15,8 @@ namespace Aufg6_Wiese {
 
     let bees: Bee[] = []; 
 
-    let b: Bee = { x: 0, y: 0, g: 0, farbe: "#0000ff" }; // Hier erstellst du eine Biene und arbeitest nur mit dieser....
-    let n: number = 11;
-    let menge: number = 1;
+//    let n: number = 11;
+    let menge: number = 10;
     let imgData: ImageData;
 
     function init(_event: Event): void {
@@ -75,17 +74,17 @@ namespace Aufg6_Wiese {
 
 
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i: number = 0; i < n; i++) { 
-            // Hier änderst Du die eine Biene immer wieder und füllst .... 
+        for (let i: number = 0; i < menge; i++) { 
+            let b: Bee = { x: 0, y: 0, g: 0, farbe: "#0000ff" };
             b.x = 1250;
             b.y = 420;
             b.g = Math.random() * 5 + 2;
             b.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             bees[i] = b; // ... das Array bees auf.
             
-            
-            // Schöner lesbar wäre hier evtl. folgender Code (ersetzt Zeilen 80-84):
-            erzeugeBieneAmBienenkorb(); // Funktion in Zeile 161 
+//            
+//            // Schöner lesbar wäre hier evtl. folgender Code (ersetzt Zeilen 80-84):
+//            erzeugeBieneAmBienenkorb(); // Funktion in Zeile 161 
            
 
         }
@@ -150,25 +149,25 @@ namespace Aufg6_Wiese {
 
         function neueBiene(): void {
         // unschön zu Lesen und nicht elegant. Außerdem wird die Farbe nicht gesetzt!
-        bees.push({ x: 1250, y: 420, g: 0, farbe: "" });
-        n++;
-            
-        // besser wäre hier sowas (ersetzt Zeile 160 & 161):
-        erzeugeBieneAmBienenkorb(); // Zeile 161
-        }
-    
+        bees.push({ x: 1250, y: 420, g: 0, farbe: "red" });
 
-    function erzeugeBieneAmBienenkorb(): void {
-         let bienenKorbX: number = 1250;
-         let bienenKorby: number = 420;
-         let bienenG: number = Math.random() * 5 + 2; // Anmerkung: Variablenname g nicht wirklich aussagekräftig. Größe?
-         let bienenFarbe: string = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             
-         // Erzeuge neue Biene
-         let tempNewBee = { x: bienenKorbX, y: bienenKorby, g: bienenG, farbe: bienenFarbe };
-         // Fülle Array mit erzeugter Biene
-         bees.push(tempNewBee);        
-    }
+//        // besser wäre hier sowas (ersetzt Zeile 160 & 161):
+//        erzeugeBieneAmBienenkorb(); // Zeile 161
+//        }
+    
+//
+//    function erzeugeBieneAmBienenkorb(): void {
+//         let bienenKorbX: number = 1250;
+//         let bienenKorby: number = 420;
+//         let bienenG: number = Math.random() * 5 + 2; // Anmerkung: Variablenname g nicht wirklich aussagekräftig. Größe?
+//         let bienenFarbe: string = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+//            
+//         // Erzeuge neue Biene
+//         let tempNewBee = { x: bienenKorbX, y: bienenKorby, g: bienenG, farbe: bienenFarbe };
+//         // Fülle Array mit erzeugter Biene
+//         bees.push(tempNewBee);        
+//    }
 
         
 
@@ -177,8 +176,9 @@ namespace Aufg6_Wiese {
 
             inhalt.putImageData(imgData, 0, 0);
 
-            for (let i: number = 0; i < n; i++) { // die komplette Schleife ist eigentlich falsch.
-
+            for (let i: number = 0; i < bees.length; i++) { 
+                
+                let b: Bee = bees[i];
                 b.x += Math.random() * 4 - 2;
                 b.y += Math.random() * 4 - 2;
                 b.x--;
@@ -197,13 +197,13 @@ namespace Aufg6_Wiese {
 
             }
             
-            // Besser und richtig wäre hier sowas (ersetzt Zeile 196-214):
-            for(let i: number = 0; i < bees.length; i++) { // mit bees.length brauchst du keine Zählvariable zu überwachen und anzupassen.
-             let currentBee: Bee = bees[i];
-                currentBee.x += Math.random() * 4 - 2;
-               // [...] usw. usw.
-                
-            }
+//            // Besser und richtig wäre hier sowas (ersetzt Zeile 196-214):
+//            for(let i: number = 0; i < bees.length; i++) { // mit bees.length brauchst du keine Zählvariable zu überwachen und anzupassen.
+//             let currentBee: Bee = bees[i];
+//                currentBee.x += Math.random() * 4 - 2;
+//               // [...] usw. usw.
+//                
+//            }
             
             
             window.setTimeout(animate, 20);
