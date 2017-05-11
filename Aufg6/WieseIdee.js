@@ -3,9 +3,8 @@ var Aufg6_Wiese;
     window.addEventListener("load", init);
     let inhalt;
     let bees = [];
-    let b = { x: 0, y: 0, g: 0, farbe: "#0000ff" }; // Hier erstellst du eine Biene und arbeitest nur mit dieser....
-    let n = 11;
-    let menge = 1;
+    // Hier erstellst du eine Biene und arbeitest nur mit dieser...
+    let menge = 10;
     let imgData;
     function init(_event) {
         let canvas;
@@ -46,15 +45,14 @@ var Aufg6_Wiese;
         zeichneKorb(1250, 420, 7);
         drawSweetRandom();
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < n; i++) {
-            // Hier änderst Du die eine Biene immer wieder und füllst .... 
+        for (let i = 0; i < menge; i++) {
+            // Hier änderst Du die eine Biene immer wieder und füllst ....
+            let b = { x: 0, y: 0, g: 0, farbe: "#0000ff" };
             b.x = 1250;
             b.y = 420;
             b.g = Math.random() * 5 + 2;
             b.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             bees[i] = b; // ... das Array bees auf.
-            // Schöner lesbar wäre hier evtl. folgender Code (ersetzt Zeilen 80-84):
-            erzeugeBieneAmBienenkorb(); // Funktion in Zeile 161 
         }
         window.setTimeout(animate, 20);
         canvas.addEventListener("click", neueBiene);
@@ -104,26 +102,13 @@ var Aufg6_Wiese;
         inhalt.stroke();
     }
     function neueBiene() {
-        // unschön zu Lesen und nicht elegant. Außerdem wird die Farbe nicht gesetzt!
-        bees.push({ x: 1250, y: 420, g: 0, farbe: "" });
-        n++;
-        // besser wäre hier sowas (ersetzt Zeile 160 & 161):
-        erzeugeBieneAmBienenkorb(); // Zeile 161
-    }
-    function erzeugeBieneAmBienenkorb() {
-        let bienenKorbX = 1250;
-        let bienenKorby = 420;
-        let bienenG = Math.random() * 5 + 2; // Anmerkung: Variablenname g nicht wirklich aussagekräftig. Größe?
-        let bienenFarbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-        // Erzeuge neue Biene
-        let tempNewBee = { x: bienenKorbX, y: bienenKorby, g: bienenG, farbe: bienenFarbe };
-        // Fülle Array mit erzeugter Biene
-        bees.push(tempNewBee);
+        bees.push({ x: 1250, y: 420, g: 7, farbe: "lightblue" });
     }
     function animate() {
         console.log("Animate called");
         inhalt.putImageData(imgData, 0, 0);
-        for (let i = 0; i < n; i++) {
+        for (let i = 0; i < bees.length; i++) {
+            let b = bees[i];
             b.x += Math.random() * 4 - 2;
             b.y += Math.random() * 4 - 2;
             b.x--;
@@ -136,12 +121,7 @@ var Aufg6_Wiese;
             if (b.y > 710) {
                 b.y = 0;
             }
-            biene(b.x, b.y, b.g, b.farbe); // hier benutzt du ständig die eine Biene und zeichnest diese!
-        }
-        // Besser und richtig wäre hier sowas (ersetzt Zeile 196-214):
-        for (let i = 0; i < bees.length; i++) {
-            let currentBee = bees[i];
-            currentBee.x += Math.random() * 4 - 2;
+            biene(b.x, b.y, b.g, b.farbe);
         }
         window.setTimeout(animate, 20);
     }
