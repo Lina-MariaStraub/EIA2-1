@@ -4,16 +4,19 @@ namespace Aufg7_Wiese {
 
         x: number;
         y: number;
-        g: number; // Was ist g?
+        scale: number; // Was ist g?
         farbe: string;
-        
-        
+
+
+           
         constructor(_x: number, _y: number) {
+            console.log("Hey, I'm Bob!");
             this.setRandomStyle();
+            //this.setRandomPosition();
             this.x = _x;
             this.y = _y;
         }
-        
+
         update(): void {
             this.fly();
             this.drawBiene();
@@ -26,14 +29,14 @@ namespace Aufg7_Wiese {
             this.x--;
 
         }
-        
-         setRandomStyle(): void {
-            this.g = Math.random() * 30 + 10;
+
+        setRandomStyle(): void {
+            this.scale = Math.random() * 5 + 2;
             this.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
         }
 
-        fullOutAndIn (): void{
-            
+        fullOutAndIn(): void {
+
             if (this.x < 0) {
                 this.x = 1500;
             }
@@ -43,8 +46,8 @@ namespace Aufg7_Wiese {
             if (this.y > 710) {
                 this.y = 0;
             }
-            
-            }
+
+        }
 
         drawBiene(): void {
 
@@ -52,9 +55,9 @@ namespace Aufg7_Wiese {
             inhalt.fillStyle = "black";
             inhalt.strokeStyle = "black";
             inhalt.moveTo(this.x + 2, this.y - 12);
-            inhalt.arc(this.x + 2, this.y - 12, this.g, 180, 270);
+            inhalt.arc(this.x + 2, this.y - 12, this.scale, 180, 270);
             inhalt.moveTo(this.x + 9, this.y - 12);
-            inhalt.arc(this.x + 9, this.y - 12, this.g, 180, 270);
+            inhalt.arc(this.x + 9, this.y - 12, this.scale, 180, 270);
             inhalt.closePath();
             inhalt.fill();
             inhalt.stroke();
@@ -63,7 +66,7 @@ namespace Aufg7_Wiese {
             inhalt.fillStyle = this.farbe;
             inhalt.strokeStyle = this.farbe;
             inhalt.moveTo(this.x + 9, this.y);
-            inhalt.arc(this.x + 9, this.y, this.g, 180, 270);
+            inhalt.arc(this.x + 9, this.y, this.scale, 180, 270);
             inhalt.closePath();
             inhalt.fill();
             inhalt.stroke();
@@ -72,7 +75,7 @@ namespace Aufg7_Wiese {
             inhalt.fillStyle = "black";
             inhalt.strokeStyle = "black";
             inhalt.moveTo(this.x + 4, this.y);
-            inhalt.arc(this.x + 4, this.y, this.g, 180, 270);
+            inhalt.arc(this.x + 4, this.y, this.scale, 180, 270);
             inhalt.closePath();
             inhalt.fill();
             inhalt.stroke();
@@ -81,7 +84,7 @@ namespace Aufg7_Wiese {
             inhalt.fillStyle = this.farbe;
             inhalt.strokeStyle = this.farbe;
             inhalt.moveTo(this.x, this.y);
-            inhalt.arc(this.x, this.y, this.g, 180, 270);
+            inhalt.arc(this.x, this.y, this.scale, 180, 270);
             inhalt.closePath();
             inhalt.fill();
             inhalt.stroke();
@@ -90,12 +93,12 @@ namespace Aufg7_Wiese {
             inhalt.fillStyle = "black";
             inhalt.strokeStyle = "black";
             inhalt.moveTo(this.x - 5, this.y - 2);
-            inhalt.arc(this.x - 5, this.y - 2, this.g, 180, 270);
+            inhalt.arc(this.x - 5, this.y - 2, this.scale, 180, 270);
             inhalt.closePath();
             inhalt.fill();
             inhalt.stroke();
         }
-      
-        
+
+
     }//ende der Klasse Bee
- } //ende des Namespace
+} //ende des Namespace

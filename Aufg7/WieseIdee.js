@@ -9,6 +9,7 @@ var Aufg7_Wiese;
         canvas = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
         Aufg7_Wiese.inhalt = canvas.getContext("2d");
+        //let bee = new Bee(100, 100);
         zeichneHimmel();
         zeichneBerg(1100, 510, "grey");
         zeichneBerg(900, 510, "darkgrey");
@@ -44,20 +45,21 @@ var Aufg7_Wiese;
         drawSweetRandom();
         imgData = Aufg7_Wiese.inhalt.getImageData(0, 0, canvas.width, canvas.height);
         for (let i = 0; i < menge; i++) {
-            let b = new Aufg7_Wiese.Bee(1250, 420);
-            b.setRandomStyle();
-            bees[i] = b;
+            neueBiene();
         }
         window.setTimeout(animate, 20);
         canvas.addEventListener("click", neueBiene);
     }
     function neueBiene() {
         let b = new Aufg7_Wiese.Bee(1250, 420);
+        b.setRandomStyle();
+        bees.push(b);
     }
     function animate() {
-        console.log("Animate called");
+        //console.log("Animate called");
         Aufg7_Wiese.inhalt.putImageData(imgData, 0, 0);
-        for (let i = 0; i < n; i++) {
+        for (let i = 0; i < bees.length; i++) {
+            console.log(bees);
             let b = bees[i];
             b.update();
             b.fullOutAndIn();

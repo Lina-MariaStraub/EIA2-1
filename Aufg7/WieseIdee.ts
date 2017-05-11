@@ -16,7 +16,7 @@ namespace Aufg7_Wiese {
 
         inhalt = canvas.getContext("2d");
 
-
+        //let bee = new Bee(100, 100);
 
         zeichneHimmel();
 
@@ -63,10 +63,9 @@ namespace Aufg7_Wiese {
         drawSweetRandom();
 
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i: number = 0; i < menge; i++) {   
-            let b: Bee = new Bee(1250, 420);
-            b.setRandomStyle();
-            bees[i] = b; 
+
+        for (let i: number = 0; i < menge; i++) {
+            neueBiene();
         }
 
         window.setTimeout(animate, 20);
@@ -74,21 +73,22 @@ namespace Aufg7_Wiese {
 
     }
 
-
     function neueBiene(): void {
-       
-            let b: Bee = new Bee(1250, 420);
+        let b: Bee = new Bee(1250, 420);
+        b.setRandomStyle();
+        
+        bees.push(b);
     }
 
     function animate(): void {
-        console.log("Animate called");
+        //console.log("Animate called");
         inhalt.putImageData(imgData, 0, 0);
 
-        for (let i: number = 0; i < n; i++) {
+        for (let i: number = 0; i < bees.length; i++) {
+            console.log(bees);
             let b: Bee = bees[i];
             b.update();
             b.fullOutAndIn();
-            
         }
 
         window.setTimeout(animate, 20);

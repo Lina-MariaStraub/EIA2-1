@@ -143,7 +143,7 @@ namespace Aufg6_Wiese {
 
 
     function neueBiene(): void {
-       
+        console.log("click");
         bees.push({ x: 1250, y: 420, g: 7, farbe : "lightblue"})
     }
 
