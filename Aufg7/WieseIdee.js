@@ -2,6 +2,7 @@ var Aufg7_Wiese;
 (function (Aufg7_Wiese) {
     window.addEventListener("load", init);
     let bees = [];
+    let blumis = [];
     let menge = 10;
     let imgData;
     function init(_event) {
@@ -42,7 +43,6 @@ var Aufg7_Wiese;
         baumstamm(1300, 360, 50, 150);
         baumKrone(1270, 340, 35, 0);
         zeichneKorb(1250, 420, 7);
-        drawSweetRandom();
         imgData = Aufg7_Wiese.inhalt.getImageData(0, 0, canvas.width, canvas.height);
         for (let i = 0; i < menge; i++) {
             neueBiene();
@@ -56,7 +56,6 @@ var Aufg7_Wiese;
         bees.push(b);
     }
     function animate() {
-        //console.log("Animate called");
         Aufg7_Wiese.inhalt.putImageData(imgData, 0, 0);
         for (let i = 0; i < bees.length; i++) {
             console.log(bees);
@@ -65,32 +64,6 @@ var Aufg7_Wiese;
             b.fullOutAndIn();
         }
         window.setTimeout(animate, 20);
-    }
-    function drawSweetRandom() {
-        let numberSweets = Math.floor((Math.random() * 30) + 5);
-        let _x;
-        let _y;
-        let _p;
-        let _radius;
-        let _winkel;
-        for (var i = 0; i < numberSweets; i++) {
-            _x = Math.round((Math.random() * Aufg7_Wiese.inhalt.canvas.width) - 30);
-            _y = Math.round((Math.random() * 200) + 520);
-            _p = Math.round((Math.random() * 3) + 0);
-            switch (_p) {
-                case 0:
-                    drawDropsBlume(_x, _y, 10, 0);
-                    break;
-                case 1:
-                    drawBonBon(_x, _y, 12, 0);
-                    break;
-                case 2:
-                    drawlollipop(_x, _y, 5, 0);
-                    break;
-                default:
-                    break;
-            }
-        }
     }
     function zeichneKorb(_x, _y, _radius) {
         Aufg7_Wiese.inhalt.beginPath();
@@ -238,108 +211,6 @@ var Aufg7_Wiese;
         Aufg7_Wiese.inhalt.closePath();
         Aufg7_Wiese.inhalt.fillStyle = " #ffa54f ";
         Aufg7_Wiese.inhalt.fill();
-    }
-    function drawDropsBlume(_x, _y, _radius, _winkel) {
-        Aufg7_Wiese.inhalt.moveTo(0, 0);
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.arc(_x - 3, _y + 10, _radius, _winkel, 2 * Math.PI);
-        Aufg7_Wiese.inhalt.fillStyle = "#e066ff";
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.closePath();
-        Aufg7_Wiese.inhalt.moveTo(0, 0);
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.arc(_x + 7, _y + 9, _radius, _winkel, 2 * Math.PI);
-        Aufg7_Wiese.inhalt.fillStyle = "#ff6347";
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.closePath();
-        Aufg7_Wiese.inhalt.moveTo(0, 0);
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.arc(_x + 10, _y, _radius, _winkel, 2 * Math.PI);
-        Aufg7_Wiese.inhalt.fillStyle = "#e066ff";
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.closePath();
-        Aufg7_Wiese.inhalt.moveTo(0, 0);
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.arc(_x + 3, _y - 8, _radius, _winkel, 2 * Math.PI);
-        Aufg7_Wiese.inhalt.fillStyle = "#ff6347";
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.closePath();
-        Aufg7_Wiese.inhalt.moveTo(0, 0);
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.arc(_x - 8, _y - 8, _radius, _winkel, 2 * Math.PI);
-        Aufg7_Wiese.inhalt.fillStyle = "#e066ff";
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.closePath();
-        Aufg7_Wiese.inhalt.moveTo(0, 0);
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.arc(_x - 12, _y, _radius, _winkel, 2 * Math.PI);
-        Aufg7_Wiese.inhalt.fillStyle = "#ff6347";
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.closePath();
-        Aufg7_Wiese.inhalt.moveTo(0, 0);
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
-        Aufg7_Wiese.inhalt.fillStyle = "#FFFFFF";
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.closePath();
-    }
-    function drawBonBon(_x, _y, _radius, _winkel) {
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.fillStyle = " #c71585 ";
-        Aufg7_Wiese.inhalt.strokeStyle = "#c71585";
-        Aufg7_Wiese.inhalt.moveTo(_x, _y);
-        Aufg7_Wiese.inhalt.lineTo(_x + 15, _y - 15);
-        Aufg7_Wiese.inhalt.lineTo(_x + 15, _y + 15);
-        Aufg7_Wiese.inhalt.closePath();
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.stroke();
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.fillStyle = " #c71585 ";
-        Aufg7_Wiese.inhalt.strokeStyle = "#c71585";
-        Aufg7_Wiese.inhalt.moveTo(_x, _y);
-        Aufg7_Wiese.inhalt.lineTo(_x - 15, _y + 15);
-        Aufg7_Wiese.inhalt.lineTo(_x - 15, _y - 15);
-        Aufg7_Wiese.inhalt.closePath();
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.stroke();
-        Aufg7_Wiese.inhalt.moveTo(0, 0);
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
-        Aufg7_Wiese.inhalt.fillStyle = "#ff69b4";
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.closePath();
-    }
-    function drawlollipop(_x, _y, _radius, _winkel) {
-        Aufg7_Wiese.inhalt.moveTo(0, 0);
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.arc(_x, _y, _radius + 20, _winkel, 2 * Math.PI);
-        Aufg7_Wiese.inhalt.fillStyle = "#8b0000";
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.closePath();
-        Aufg7_Wiese.inhalt.moveTo(0, 0);
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.arc(_x, _y, _radius + 15, _winkel, 2 * Math.PI);
-        Aufg7_Wiese.inhalt.fillStyle = "#FFFFFF";
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.closePath();
-        Aufg7_Wiese.inhalt.moveTo(0, 0);
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.arc(_x, _y, _radius + 10, _winkel, 2 * Math.PI);
-        Aufg7_Wiese.inhalt.fillStyle = "#8b0000";
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.closePath();
-        Aufg7_Wiese.inhalt.moveTo(0, 0);
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.arc(_x, _y, _radius + 5, _winkel, 2 * Math.PI);
-        Aufg7_Wiese.inhalt.fillStyle = "#FFFFFF";
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.closePath();
-        Aufg7_Wiese.inhalt.moveTo(0, 0);
-        Aufg7_Wiese.inhalt.beginPath();
-        Aufg7_Wiese.inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
-        Aufg7_Wiese.inhalt.fillStyle = "#8b0000";
-        Aufg7_Wiese.inhalt.fill();
-        Aufg7_Wiese.inhalt.closePath();
     }
     function baumKrone(_x, _y, _radius, _winkel) {
         Aufg7_Wiese.inhalt.moveTo(0, 0);

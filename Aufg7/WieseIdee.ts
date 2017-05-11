@@ -6,6 +6,7 @@ namespace Aufg7_Wiese {
     export let inhalt: CanvasRenderingContext2D;
 
     let bees: Bee[] = [];
+    let blumis: Blumen[] = [];
     let menge: number = 10;
     let imgData: ImageData;
 
@@ -60,8 +61,6 @@ namespace Aufg7_Wiese {
 
         zeichneKorb(1250, 420, 7);
 
-        drawSweetRandom();
-
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
 
         for (let i: number = 0; i < menge; i++) {
@@ -81,7 +80,7 @@ namespace Aufg7_Wiese {
     }
 
     function animate(): void {
-        //console.log("Animate called");
+
         inhalt.putImageData(imgData, 0, 0);
 
         for (let i: number = 0; i < bees.length; i++) {
@@ -92,35 +91,6 @@ namespace Aufg7_Wiese {
         }
 
         window.setTimeout(animate, 20);
-    }
-
-
-    function drawSweetRandom(): void {
-        let numberSweets: any = Math.floor((Math.random() * 30) + 5);
-        let _x: number;
-        let _y: number;
-        let _p: number;
-        let _radius: number;
-        let _winkel: number;
-
-        for (var i: number = 0; i < numberSweets; i++) {
-            _x = Math.round((Math.random() * inhalt.canvas.width) - 30);
-            _y = Math.round((Math.random() * 200) + 520);
-            _p = Math.round((Math.random() * 3) + 0);
-            switch (_p) {
-                case 0:
-                    drawDropsBlume(_x, _y, 10, 0);
-                    break;
-                case 1:
-                    drawBonBon(_x, _y, 12, 0);
-                    break;
-                case 2:
-                    drawlollipop(_x, _y, 5, 0);
-                    break;
-                default:
-                    break;
-            }
-        }
     }
 
 
@@ -300,128 +270,6 @@ namespace Aufg7_Wiese {
         inhalt.closePath();
         inhalt.fillStyle = " #ffa54f ";
         inhalt.fill();
-    }
-
-
-    function drawDropsBlume(_x: number, _y: number, _radius: number, _winkel: number): void {
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x - 3, _y + 10, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#e066ff";
-        inhalt.fill();
-        inhalt.closePath();
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 7, _y + 9, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#ff6347";
-        inhalt.fill();
-        inhalt.closePath();
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 10, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#e066ff";
-        inhalt.fill();
-        inhalt.closePath();
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x + 3, _y - 8, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#ff6347";
-        inhalt.fill();
-        inhalt.closePath();
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x - 8, _y - 8, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#e066ff";
-        inhalt.fill();
-        inhalt.closePath();
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x - 12, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#ff6347";
-        inhalt.fill();
-        inhalt.closePath();
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
-        inhalt.fill();
-        inhalt.closePath();
-    }
-
-    function drawBonBon(_x: number, _y: number, _radius: number, _winkel: number): void {
-
-        inhalt.beginPath();
-
-        inhalt.fillStyle = " #c71585 ";
-        inhalt.strokeStyle = "#c71585";
-        inhalt.moveTo(_x, _y);
-        inhalt.lineTo(_x + 15, _y - 15);
-        inhalt.lineTo(_x + 15, _y + 15);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-
-        inhalt.beginPath();
-        inhalt.fillStyle = " #c71585 ";
-        inhalt.strokeStyle = "#c71585";
-        inhalt.moveTo(_x, _y);
-        inhalt.lineTo(_x - 15, _y + 15);
-        inhalt.lineTo(_x - 15, _y - 15);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#ff69b4";
-        inhalt.fill();
-        inhalt.closePath();
-    }
-
-    function drawlollipop(_x: number, _y: number, _radius: number, _winkel: number): void {
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius + 20, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#8b0000";
-        inhalt.fill();
-        inhalt.closePath();
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius + 15, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
-        inhalt.fill();
-        inhalt.closePath();
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius + 10, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#8b0000";
-        inhalt.fill();
-        inhalt.closePath();
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius + 5, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#FFFFFF";
-        inhalt.fill();
-        inhalt.closePath();
-
-        inhalt.moveTo(0, 0);
-        inhalt.beginPath();
-        inhalt.arc(_x, _y, _radius, _winkel, 2 * Math.PI);
-        inhalt.fillStyle = "#8b0000";
-        inhalt.fill();
-        inhalt.closePath();
     }
 
     function baumKrone(_x: number, _y: number, _radius: number, _winkel: number): void {
