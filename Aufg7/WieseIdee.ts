@@ -1,22 +1,11 @@
 
-namespace Aufg6_Wiese {
+namespace Aufg7_Wiese {
 
     window.addEventListener("load", init);
 
-    let inhalt: CanvasRenderingContext2D;
-
-    interface Bee {
-
-        x: number;
-        y: number;
-        g: number; // Was ist g?
-        farbe: string;
-
-    }
+    export let inhalt: CanvasRenderingContext2D;
 
     let bees: Bee[] = [];
-
-     // Hier erstellst du eine Biene und arbeitest nur mit dieser...
     let menge: number = 10;
     let imgData: ImageData;
 
@@ -74,14 +63,10 @@ namespace Aufg6_Wiese {
         drawSweetRandom();
 
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i: number = 0; i < menge; i++) {
-            // Hier änderst Du die eine Biene immer wieder und füllst ....
-            let b: Bee = { x: 0, y: 0, g: 0, farbe: "#0000ff" };
-            b.x = 1250;
-            b.y = 420;
-            b.g = Math.random() * 5 + 2;
-            b.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-            bees[i] = b; // ... das Array bees auf.
+        for (let i: number = 0; i < menge; i++) {   
+            let b: Bee = new Bee(1250, 420);
+            b.setRandomStyle();
+            bees[i] = b; 
         }
 
         window.setTimeout(animate, 20);
@@ -90,106 +75,25 @@ namespace Aufg6_Wiese {
     }
 
 
-
-    function biene(_x: number, _y: number, _g: number, _farbe: string): void {
-
-        inhalt.beginPath();
-        inhalt.fillStyle = "black";
-        inhalt.strokeStyle = "black";
-        inhalt.moveTo(_x + 2, _y - 12);
-        inhalt.arc(_x + 2, _y - 12, _g, 180, 270);
-        inhalt.moveTo(_x + 9, _y - 12);
-        inhalt.arc(_x + 9, _y - 12, _g, 180, 270);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-
-        inhalt.beginPath();
-        inhalt.fillStyle = _farbe;
-        inhalt.strokeStyle = _farbe;
-        inhalt.moveTo(_x + 9, _y);
-        inhalt.arc(_x + 9, _y, _g, 180, 270);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-
-        inhalt.beginPath();
-        inhalt.fillStyle = "black";
-        inhalt.strokeStyle = "black";
-        inhalt.moveTo(_x + 4, _y);
-        inhalt.arc(_x + 4, _y, _g, 180, 270);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-
-        inhalt.beginPath();
-        inhalt.fillStyle = _farbe;
-        inhalt.strokeStyle = _farbe;
-        inhalt.moveTo(_x, _y);
-        inhalt.arc(_x, _y, _g, 180, 270);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-
-        inhalt.beginPath();
-        inhalt.fillStyle = "black";
-        inhalt.strokeStyle = "black";
-        inhalt.moveTo(_x - 5, _y - 2);
-        inhalt.arc(_x - 5, _y - 2, _g, 180, 270);
-        inhalt.closePath();
-        inhalt.fill();
-        inhalt.stroke();
-    }
-
-
     function neueBiene(): void {
        
-        bees.push({ x: 1250, y: 420, g: 7, farbe : "lightblue"})
+            let b: Bee = new Bee(1250, 420);
     }
 
     function animate(): void {
         console.log("Animate called");
-
         inhalt.putImageData(imgData, 0, 0);
 
-        for (let i: number = 0; i < bees.length; i++) { // die komplette Schleife ist eigentlich falsch.
+        for (let i: number = 0; i < n; i++) {
             let b: Bee = bees[i];
-            b.x += Math.random() * 4 - 2;
-            b.y += Math.random() * 4 - 2;
-            b.x--;
-
-            if (b.x < 0) {
-                b.x = 1500;
-            }
-            if (b.y < 0) {
-                b.y = 710;
-            }
-            if (b.y > 710) {
-                b.y = 0;
-            }
-
-            biene(b.x, b.y, b.g, b.farbe); 
-
+            b.update();
+            b.fullOutAndIn();
+            
         }
-
 
         window.setTimeout(animate, 20);
     }
 
-
-    function random(_min: number, _max: number): number {
-        return Math.random() * (_max - _min) + _min;
-    }
-
-    function erstelleBienen(menge: number): void {
-        for (let i: number = 0; i < menge; i++) {
-            let b: Bee = bees[i];
-            b.x = random(0, inhalt.canvas.width);
-            b.y = random(0, inhalt.canvas.height);
-
-            biene(b.x, b.y, b.g, b.farbe);
-        }
-    }
 
     function drawSweetRandom(): void {
         let numberSweets: any = Math.floor((Math.random() * 30) + 5);
