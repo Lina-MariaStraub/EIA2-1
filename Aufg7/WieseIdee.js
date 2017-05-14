@@ -2,7 +2,7 @@ var Aufg7_Wiese;
 (function (Aufg7_Wiese) {
     window.addEventListener("load", init);
     let bees = [];
-    let blumis = [];
+    let flowers = [];
     let menge = 10;
     let imgData;
     function init(_event) {
@@ -43,12 +43,36 @@ var Aufg7_Wiese;
         baumstamm(1300, 360, 50, 150);
         baumKrone(1270, 340, 35, 0);
         zeichneKorb(1250, 420, 7);
+        placeRandomFlowers();
         imgData = Aufg7_Wiese.inhalt.getImageData(0, 0, canvas.width, canvas.height);
         for (let i = 0; i < menge; i++) {
             neueBiene();
         }
         window.setTimeout(animate, 20);
         canvas.addEventListener("click", neueBiene);
+    }
+    function placeRandomFlowers() {
+        let numberSweets = Math.floor((Math.random() * 20) + 5);
+        for (let i = 0; i < numberSweets; i++) {
+            let x = Math.round((Math.random() * Aufg7_Wiese.inhalt.canvas.width) - 30);
+            let y = Math.round((Math.random() * 200) + 520);
+            let f = new Aufg7_Wiese.Flower(x, y);
+            let p = Math.round((Math.random() * 3) + 0);
+            switch (p) {
+                case 0:
+                    f.drawDrops();
+                    break;
+                case 1:
+                    f.drawBonBon();
+                    break;
+                case 2:
+                    f.drawLollipop();
+                    break;
+                default:
+                    break;
+            }
+            flowers.push(f);
+        }
     }
     function neueBiene() {
         let b = new Aufg7_Wiese.Bee(1250, 420);
@@ -58,7 +82,6 @@ var Aufg7_Wiese;
     function animate() {
         Aufg7_Wiese.inhalt.putImageData(imgData, 0, 0);
         for (let i = 0; i < bees.length; i++) {
-            console.log(bees);
             let b = bees[i];
             b.update();
             b.fullOutAndIn();

@@ -6,7 +6,7 @@ namespace Aufg7_Wiese {
     export let inhalt: CanvasRenderingContext2D;
 
     let bees: Bee[] = [];
-    let blumis: Blumen[] = [];
+    let flowers: Flower[] = [];
     let menge: number = 10;
     let imgData: ImageData;
 
@@ -61,6 +61,8 @@ namespace Aufg7_Wiese {
 
         zeichneKorb(1250, 420, 7);
 
+        placeRandomFlowers();
+
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
 
         for (let i: number = 0; i < menge; i++) {
@@ -72,10 +74,37 @@ namespace Aufg7_Wiese {
 
     }
 
+    function placeRandomFlowers(): void {
+        let numberSweets: any = Math.floor((Math.random() * 20) + 5);
+
+        for (let i: number = 0; i < numberSweets; i++) {
+            let x: number = Math.round((Math.random() * inhalt.canvas.width) - 30);
+            let y: number = Math.round((Math.random() * 200) + 520);
+            let f: Flower = new Flower(x, y);
+            let p: number = Math.round((Math.random() * 3) + 0);
+            switch (p) {
+                case 0:
+                    f.drawDrops();
+                    break;
+                case 1:
+                    f.drawBonBon();
+                    break;
+                case 2:
+                    f.drawLollipop();
+                    break;
+                default:
+                    break;
+            }
+            
+            flowers.push(f);
+        }
+    }
+
+
     function neueBiene(): void {
         let b: Bee = new Bee(1250, 420);
         b.setRandomStyle();
-        
+
         bees.push(b);
     }
 
@@ -84,7 +113,6 @@ namespace Aufg7_Wiese {
         inhalt.putImageData(imgData, 0, 0);
 
         for (let i: number = 0; i < bees.length; i++) {
-            console.log(bees);
             let b: Bee = bees[i];
             b.update();
             b.fullOutAndIn();
@@ -92,6 +120,7 @@ namespace Aufg7_Wiese {
 
         window.setTimeout(animate, 20);
     }
+
 
 
     function zeichneKorb(_x: number, _y: number, _radius: number): void {

@@ -1,32 +1,13 @@
 var Aufg7_Wiese;
 (function (Aufg7_Wiese) {
-    class Blumen {
+    class Flower {
         constructor(_x, _y) {
+            this.radius = 10;
+            this.winkel = 0;
             this.x = _x;
             this.y = _y;
         }
-        placeRandomFlower() {
-            let numberSweets = Math.floor((Math.random() * 30) + 5);
-            for (let i = 0; i < numberSweets; i++) {
-                this.x = Math.round((Math.random() * Aufg7_Wiese.inhalt.canvas.width) - 30);
-                this.y = Math.round((Math.random() * 200) + 520);
-                this.p = Math.round((Math.random() * 3) + 0);
-                switch (this.p) {
-                    case 0:
-                        this.drawDropsBlume();
-                        break;
-                    case 1:
-                        this.drawBonBon();
-                        break;
-                    case 2:
-                        this.drawlollipop();
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-        drawDropsBlume() {
+        drawDrops() {
             Aufg7_Wiese.inhalt.moveTo(0, 0);
             Aufg7_Wiese.inhalt.beginPath();
             Aufg7_Wiese.inhalt.arc(this.x - 3, this.y + 10, this.radius, this.winkel, 2 * Math.PI);
@@ -96,7 +77,7 @@ var Aufg7_Wiese;
             Aufg7_Wiese.inhalt.fill();
             Aufg7_Wiese.inhalt.closePath();
         }
-        drawlollipop() {
+        drawLollipop() {
             Aufg7_Wiese.inhalt.moveTo(0, 0);
             Aufg7_Wiese.inhalt.beginPath();
             Aufg7_Wiese.inhalt.arc(this.x, this.y, this.radius + 20, this.winkel, 2 * Math.PI);
@@ -129,6 +110,6 @@ var Aufg7_Wiese;
             Aufg7_Wiese.inhalt.closePath();
         }
     }
-    Aufg7_Wiese.Blumen = Blumen;
+    Aufg7_Wiese.Flower = Flower;
 })(Aufg7_Wiese || (Aufg7_Wiese = {}));
 //# sourceMappingURL=WieseIdeeBlumen.js.map
