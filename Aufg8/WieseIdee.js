@@ -10,7 +10,6 @@ var Aufg8_Wiese;
         canvas = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
         Aufg8_Wiese.inhalt = canvas.getContext("2d");
-        //let bee = new Bee(100, 100);
         zeichneHimmel();
         zeichneBerg(1100, 510, "grey");
         zeichneBerg(900, 510, "darkgrey");

@@ -17,7 +17,6 @@ namespace Aufg8_Wiese {
 
         inhalt = canvas.getContext("2d");
 
-        //let bee = new Bee(100, 100);
 
         zeichneHimmel();
 
