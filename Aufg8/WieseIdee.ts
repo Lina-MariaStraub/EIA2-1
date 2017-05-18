@@ -87,7 +87,6 @@ namespace Aufg8_Wiese {
                     let drop: DropsFlower = new DropsFlower(x, y);
                     drop.draw();
                     flowers.push(drop);
-                    
                     break;
                 case 1:
                     let bonBon: BonBonFlower = new BonBonFlower(x, y);
