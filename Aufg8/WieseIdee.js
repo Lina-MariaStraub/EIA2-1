@@ -2,7 +2,7 @@ var Aufg8_Wiese;
 (function (Aufg8_Wiese) {
     window.addEventListener("load", init);
     let bees = [];
-    let flowers = [];
+    Aufg8_Wiese.flowers = [];
     let menge = 10;
     let imgData;
     function init(_event) {
@@ -47,6 +47,10 @@ var Aufg8_Wiese;
         for (let i = 0; i < menge; i++) {
             neueBiene();
         }
+        for (let i = 0; i < 5; i++) {
+            var hb = new Aufg8_Wiese.Honigbiene(1250, 420);
+            bees.push(hb);
+        }
         window.setTimeout(animate, 20);
         canvas.addEventListener("click", neueBiene);
     }
@@ -55,23 +59,22 @@ var Aufg8_Wiese;
         for (let i = 0; i < numberSweets; i++) {
             let x = Math.round((Math.random() * Aufg8_Wiese.inhalt.canvas.width) - 30);
             let y = Math.round((Math.random() * 200) + 520);
-            //let f: Flower = new Flower(x, y);
             let p = Math.round((Math.random() * 3) + 0);
             switch (p) {
                 case 0:
                     let drop = new Aufg8_Wiese.DropsFlower(x, y);
                     drop.draw();
-                    flowers.push(drop);
+                    Aufg8_Wiese.flowers.push(drop);
                     break;
                 case 1:
                     let bonBon = new Aufg8_Wiese.BonBonFlower(x, y);
                     bonBon.draw();
-                    flowers.push(bonBon);
+                    Aufg8_Wiese.flowers.push(bonBon);
                     break;
                 case 2:
                     let lollipop = new Aufg8_Wiese.LollipopFlower(x, y);
                     lollipop.draw();
-                    flowers.push(lollipop);
+                    Aufg8_Wiese.flowers.push(lollipop);
                     break;
                 default:
                     break;

@@ -6,7 +6,7 @@ namespace Aufg8_Wiese {
     export let inhalt: CanvasRenderingContext2D;
 
     let bees: Bee[] = [];
-    let flowers: Flower[] = [];
+    export let flowers: Flower[] = [];
     let menge: number = 10;
     let imgData: ImageData;
 
@@ -67,6 +67,12 @@ namespace Aufg8_Wiese {
         for (let i: number = 0; i < menge; i++) {
             neueBiene();
         }
+        
+
+        for (let i: number = 0; i < 5; i++) {
+            var hb: Honigbiene = new Honigbiene(1250, 420);
+            bees.push(hb);
+        }
 
         window.setTimeout(animate, 20);
         canvas.addEventListener("click", neueBiene);
@@ -79,7 +85,6 @@ namespace Aufg8_Wiese {
         for (let i: number = 0; i < numberSweets; i++) {
             let x: number = Math.round((Math.random() * inhalt.canvas.width) - 30);
             let y: number = Math.round((Math.random() * 200) + 520);
-            //let f: Flower = new Flower(x, y);
             let p: number = Math.round((Math.random() * 3) + 0);
             switch (p) {
                 case 0:
