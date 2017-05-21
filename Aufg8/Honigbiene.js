@@ -5,7 +5,7 @@ var Aufg8_Wiese;
             super(_x, _y);
             this.speed = 0.04;
             this.setStartPosition();
-            this.setRandomTargetPosition();
+            //            this.setRandomTargetPosition();
             console.log("Create Honigbiene");
         }
         draw() {
@@ -55,21 +55,6 @@ var Aufg8_Wiese;
         setStartPosition() {
             this.x = 1250;
             this.y = 420;
-        }
-        setRandomTargetPosition() {
-            let randomtargetflower = Math.round(1) * (Aufg8_Wiese.flowers.length - 3);
-            this.xTarget = Aufg8_Wiese.flowers[randomtargetflower].x;
-            this.yTarget = Aufg8_Wiese.flowers[randomtargetflower].y;
-        }
-        move() {
-            let xDiff = this.xTarget - this.x;
-            let yDiff = this.yTarget - this.y;
-            if (Math.abs(xDiff) < 0.5 && Math.abs(yDiff) < 0.5)
-                this.setRandomTargetPosition();
-            else {
-                this.x += xDiff * this.speed;
-                this.y += yDiff * this.speed;
-            }
         }
     }
     Aufg8_Wiese.Honigbiene = Honigbiene; //ende der Klasse Bee
