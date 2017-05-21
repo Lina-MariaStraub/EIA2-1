@@ -56,6 +56,20 @@ var Aufg8_Wiese;
             this.x = 1250;
             this.y = 420;
         }
+        setRandomTargetPosition() {
+            this.xTarget = Math.random() * Aufg8_Wiese.inhalt.canvas.width;
+            this.yTarget = Math.random() * Aufg8_Wiese.inhalt.canvas.height;
+        }
+        move() {
+            let xDiff = this.xTarget - this.x;
+            let yDiff = this.yTarget - this.y;
+            if (Math.abs(xDiff) < 0.5 && Math.abs(yDiff) < 0.5)
+                this.setRandomTargetPosition();
+            else {
+                this.x += xDiff * this.speed;
+                this.y += yDiff * this.speed;
+            }
+        }
     }
     Aufg8_Wiese.Honigbiene = Honigbiene; //ende der Klasse Bee
 })(Aufg8_Wiese || (Aufg8_Wiese = {})); //ende des Namespace

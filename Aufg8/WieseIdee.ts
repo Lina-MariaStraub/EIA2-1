@@ -80,7 +80,7 @@ namespace Aufg8_Wiese {
     }
 
     function placeRandomFlowers(): void {
-        let numberSweets: any = Math.floor((Math.random() * 20) + 5);
+        let numberSweets: any = Math.floor((Math.random() * 40) + 5);
 
         for (let i: number = 0; i < numberSweets; i++) {
             let x: number = Math.round((Math.random() * inhalt.canvas.width) - 30);

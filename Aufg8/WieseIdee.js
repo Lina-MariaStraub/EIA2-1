@@ -55,7 +55,7 @@ var Aufg8_Wiese;
         canvas.addEventListener("click", neueBiene);
     }
     function placeRandomFlowers() {
-        let numberSweets = Math.floor((Math.random() * 20) + 5);
+        let numberSweets = Math.floor((Math.random() * 40) + 5);
         for (let i = 0; i < numberSweets; i++) {
             let x = Math.round((Math.random() * Aufg8_Wiese.inhalt.canvas.width) - 30);
             let y = Math.round((Math.random() * 200) + 520);
