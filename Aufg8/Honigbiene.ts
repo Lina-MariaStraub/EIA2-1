@@ -13,7 +13,11 @@ namespace Aufg8_Wiese {
             console.log("Create Honigbiene");
         }
         
-
+        update(): void {
+            this.fly();
+            super.drawBiene();
+        }
+        
         draw(): void {
             //abstrakt
         }
@@ -32,7 +36,7 @@ namespace Aufg8_Wiese {
         }
         
 
-        move(): void {
+        fly(): void {
             let xDiff: number = this.xTarget - this.x;
             let yDiff: number = this.yTarget - this.y;
             if (Math.abs(xDiff) < 0.5 && Math.abs(yDiff) < 0.5) 

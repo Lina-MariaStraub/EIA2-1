@@ -8,6 +8,10 @@ var Aufg8_Wiese;
             //            this.setRandomTargetPosition();
             console.log("Create Honigbiene");
         }
+        update() {
+            this.fly();
+            super.drawBiene();
+        }
         draw() {
             //abstrakt
         }
@@ -20,7 +24,7 @@ var Aufg8_Wiese;
             this.xTarget = Aufg8_Wiese.flowers[i].x;
             this.yTarget = Aufg8_Wiese.flowers[i].y;
         }
-        move() {
+        fly() {
             let xDiff = this.xTarget - this.x;
             let yDiff = this.yTarget - this.y;
             if (Math.abs(xDiff) < 0.5 && Math.abs(yDiff) < 0.5)
