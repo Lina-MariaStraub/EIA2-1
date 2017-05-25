@@ -4,7 +4,6 @@ var Aufg8_Wiese;
         constructor(_x, _y) {
             console.log("Hey, I'm Bob!");
             this.setRandomStyle();
-            //this.setRandomPosition();
             this.x = _x;
             this.y = _y;
         }

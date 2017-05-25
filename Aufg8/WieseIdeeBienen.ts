@@ -4,14 +4,13 @@ namespace Aufg8_Wiese {
 
         x: number;
         y: number;
-        scale: number; // Was ist g?
+        scale: number; 
         farbe: string;
 
  
         constructor(_x: number, _y: number) {
             console.log("Hey, I'm Bob!");
             this.setRandomStyle();
-            //this.setRandomPosition();
             this.x = _x;
             this.y = _y;
              
