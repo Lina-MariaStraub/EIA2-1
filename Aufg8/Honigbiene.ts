@@ -12,6 +12,7 @@ namespace Aufg8_Wiese {
 //            this.setRandomTargetPosition();
             console.log("Create Honigbiene");
         }
+        
 
         draw(): void {
             //abstrakt
