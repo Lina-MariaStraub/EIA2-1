@@ -21,8 +21,8 @@ var Aufg8_Wiese;
         }
         setTargetPosition() {
             let i = Math.floor(Math.random() * (Aufg8_Wiese.flowers.length - 1));
-            this.xTarget = Aufg8_Wiese.flowers[i].x;
-            this.yTarget = Aufg8_Wiese.flowers[i].y;
+            this.xTarget = Aufg8_Wiese.flowers[i].x + 8;
+            this.yTarget = Aufg8_Wiese.flowers[i].y - 20;
         }
         fly() {
             let xDiff = this.xTarget - this.x;

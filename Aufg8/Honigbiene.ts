@@ -31,8 +31,8 @@ namespace Aufg8_Wiese {
         
         setTargetPosition(): void {
             let i: number = Math.floor(Math.random() * (flowers.length - 1));
-            this.xTarget = flowers[i].x;
-            this.yTarget = flowers[i].y;
+            this.xTarget = flowers[i].x+8;
+            this.yTarget = flowers[i].y-20;
         }
         
 
