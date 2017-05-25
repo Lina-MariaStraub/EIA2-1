@@ -5,7 +5,7 @@ var Aufg8_Wiese;
             super(_x, _y);
             this.speed = 0.04;
             this.setStartPosition();
-            //            this.setRandomTargetPosition();
+            this.setTargetPosition();
             console.log("Create Honigbiene");
         }
         update() {
