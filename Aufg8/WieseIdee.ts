@@ -71,7 +71,6 @@ namespace Aufg8_Wiese {
 
         for (let i: number = 0; i < 5; i++) {
             var hb: Honigbiene = new Honigbiene(1250, 420);
-            setTargetPosition();
             bees.push(hb);
         }
 
