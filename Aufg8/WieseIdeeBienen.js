@@ -9,7 +9,7 @@ var Aufg8_Wiese;
         }
         update() {
             this.fly();
-            this.draw();
+            this.drawBiene();
         }
         fly() {
             this.x += Math.random() * 4 - 2;
@@ -31,7 +31,7 @@ var Aufg8_Wiese;
                 this.y = 0;
             }
         }
-        draw() {
+        drawBiene() {
             Aufg8_Wiese.inhalt.beginPath();
             Aufg8_Wiese.inhalt.fillStyle = "black";
             Aufg8_Wiese.inhalt.strokeStyle = "black";
