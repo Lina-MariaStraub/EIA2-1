@@ -124,7 +124,7 @@ namespace Aufg8_Wiese {
         for (let i: number = 0; i < bees.length; i++) {
             let b: Bee = bees[i];
             b.update();
-            b.goCompleteInandOutOfTheScreen();
+            b.fullOutAndIn();
         }
 
         window.setTimeout(animate, 20);

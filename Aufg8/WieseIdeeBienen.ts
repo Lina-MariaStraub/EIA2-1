@@ -34,7 +34,7 @@ namespace Aufg8_Wiese {
             this.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
         }
 
-        goCompleteInandOutOfTheScreen(): void {
+        fullOutAndIn(): void {
 
             if (this.x < 0) {
                 this.x = 1500;
