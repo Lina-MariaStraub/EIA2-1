@@ -9,7 +9,7 @@ var Aufg8_Wiese;
         }
         update() {
             this.fly();
-            this.drawBiene();
+            this.draw();
         }
         fly() {
             this.x += Math.random() * 4 - 2;
@@ -20,7 +20,7 @@ var Aufg8_Wiese;
             this.scale = Math.random() * 5 + 2;
             this.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
         }
-        fullOutAndIn() {
+        goCompleteInandOutOfTheScreen() {
             if (this.x < 0) {
                 this.x = 1500;
             }
@@ -31,7 +31,7 @@ var Aufg8_Wiese;
                 this.y = 0;
             }
         }
-        drawBiene() {
+        draw() {
             Aufg8_Wiese.inhalt.beginPath();
             Aufg8_Wiese.inhalt.fillStyle = "black";
             Aufg8_Wiese.inhalt.strokeStyle = "black";

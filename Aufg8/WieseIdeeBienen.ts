@@ -18,7 +18,7 @@ namespace Aufg8_Wiese {
 
         update(): void {
             this.fly();
-            this.drawBiene();
+            this.draw();
         }
 
         fly(): void {
@@ -34,7 +34,7 @@ namespace Aufg8_Wiese {
             this.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
         }
 
-        fullOutAndIn(): void {
+        goCompleteInandOutOfTheScreen(): void {
 
             if (this.x < 0) {
                 this.x = 1500;
@@ -48,7 +48,7 @@ namespace Aufg8_Wiese {
 
         }
 
-        drawBiene(): void {
+        draw(): void {
             inhalt.beginPath();
             inhalt.fillStyle = "black";
             inhalt.strokeStyle = "black";

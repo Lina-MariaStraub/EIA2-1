@@ -91,7 +91,7 @@ var Aufg8_Wiese;
         for (let i = 0; i < bees.length; i++) {
             let b = bees[i];
             b.update();
-            b.fullOutAndIn();
+            b.goCompleteInandOutOfTheScreen();
         }
         window.setTimeout(animate, 20);
     }
