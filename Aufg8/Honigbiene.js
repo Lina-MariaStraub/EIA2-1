@@ -10,7 +10,7 @@ var Aufg8_Wiese;
         }
         update() {
             this.fly();
-            super.drawBiene();
+            super.draw();
         }
         draw() {
             //abstrakt

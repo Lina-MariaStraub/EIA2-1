@@ -15,7 +15,7 @@ namespace Aufg8_Wiese {
         
         update(): void {
             this.fly();
-            super.drawBiene();
+            super.draw();
         }
         
         draw(): void {
