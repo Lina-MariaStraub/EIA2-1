@@ -32,9 +32,6 @@ namespace Aufg8_Wiese {
         setRandomStyle(): void {
             this.scale = Math.random() * 5 + 2;
             this.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-        }
-
-        fullOutAndIn(): void {
 
             if (this.x < 0) {
                 this.x = 1500;
