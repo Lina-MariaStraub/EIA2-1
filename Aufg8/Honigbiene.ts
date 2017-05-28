@@ -12,15 +12,7 @@ namespace Aufg8_Wiese {
             this.setTargetPosition();
             console.log("Create Honigbiene");
         }
-        
-        update(): void {
-            this.fly();
-            super.draw();
-        }
-        
-        draw(): void {
-            //abstrakt
-        }
+         
         
         setStartPosition(): void {
             this.x = 1250;
@@ -31,8 +23,8 @@ namespace Aufg8_Wiese {
         
         setTargetPosition(): void {
             let i: number = Math.floor(Math.random() * (flowers.length - 1));
-            this.xTarget = flowers[i].x+5;
-            this.yTarget = flowers[i].y-20;
+            this.xTarget = flowers[i].x + 5;
+            this.yTarget = flowers[i].y - 20;
         }
         
 

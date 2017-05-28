@@ -8,13 +8,6 @@ var Aufg8_Wiese;
             this.setTargetPosition();
             console.log("Create Honigbiene");
         }
-        update() {
-            this.fly();
-            super.draw();
-        }
-        draw() {
-            //abstrakt
-        }
         setStartPosition() {
             this.x = 1250;
             this.y = 420;
