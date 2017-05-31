@@ -9,36 +9,47 @@
 <body>
 <!-- -->
 	<fieldset id="text">
-		<legend> Text-Input </legend>
-		Simple
-		<input type="text" name="Text" placeholder="type here" required/>
+		<legend> Informationen zum Besteller </legend>
+		Name und Vorname
+		<input type="text" name="Text" placeholder="Hier eintragen" required/>
 		<hr/>
-		Password
-		<input type="password" name="Password" placeholder="type password here"/>
+		Straße und Hausnummer
+		<input type="text" name="Text" placeholder="Hier eintragen" required/>
 		<hr/>
-		Pattern
-		<input type="text" name="Pattern" pattern="[0-9]{3}" placeholder="use RegEx"/>
+		Postleitzahl
+		<input type="text" name="Pattern" pattern="[0-9]{5}" placeholder="Postleitzahl"/>
 		<hr/>
-		Mail
-		<input type="email" name="Mail" placeholder="place @ between"/>
+		E-Mail für die Bestätigung
+		<input type="email" name="Mail" placeholder="platzieren Sie das @ dazwischen"/>
 		<hr/>
-		Url
-		<input type="url" name="Url" placeholder="start with http:"/>
-		<hr/>
-		Area
-		<textarea name="Area" cols="30" rows="3" placeholder="long text here"></textarea>
+		Anmerkungen
+		<textarea name="Area" cols="30" rows="3" placeholder="Bitte hinterlassen Sie hier Ihre Anmerkung."></textarea>
+		<hr>
+		Zahlungsart <select name="Select" id="select">
+			<!-- <optgroup label="OptGroup1"></optgroup> -->
+			<option value="Wähle hier" selected></option>
+			<option value="option1">auf Rechnung</option>
+			<option value="option2">Paypal</option>
+			<option value="option3">an der Kasse</option>
+		<hr>
+
 	</fieldset>
 <!-- -->
 	<fieldset id="radio">
-		<legend> Radiobutton Group </legend>
+		<legend> Lieferoptionen </legend>
 		<input type="radio" name="Radiogroup" value="radio1" id="radio1" />
-		<label for="radio1">Radio Button 1</label>
+		<label for="radio1">Abholung</label>
 		<input type="radio" name="Radiogroup" value="radio2" id="radio2"/>
-		<label for="radio2">Radio Button 2</label>
+		<label for="radio2">Lieferung</label>
 		<input type="radio" name="Radiogroup" value="radio3" id="radio3"/>
-		<label for="radio3">Radio Button 3</label>
-	</fieldset>
+		<label for="radio3">Vertagte Lieferung</label>
+	</fieldset> 
+
 <!-- -->
+	<fieldset id="select">
+		<legend> Sorts</legend>
+		
+
 	<fieldset id="checkbox">
 		<legend> Checkbox Group </legend>
 		<input type="checkbox" name="Checkbox1" value="check1" id="check1"/>
@@ -47,10 +58,9 @@
 		<label for="check2">Checkbox 2</label>
 		<input type="checkbox" name="Checkbox3" value="check3" id="check3"/>
 		<label for="check3">Checkbox 3</label>
-	</fieldset>
-<!-- -->
-	<fieldset id="select">
-		<legend> Selection &amp; Interaction </legend>
+	</fieldset> 
+		
+		
 		Slider
 		<input type="range" name="Slider" min="0" max="1" step="0.1" value="0"/>
 		<hr/>
