@@ -4,12 +4,13 @@ var Aufg8_Wiese;
         constructor(_x, _y) {
             console.log("Hey, I'm Bob!");
             this.setRandomStyle();
+            //this.setRandomPosition();
             this.x = _x;
             this.y = _y;
         }
         update() {
             this.fly();
-            this.draw();
+            this.drawBiene();
         }
         fly() {
             this.x += Math.random() * 4 - 2;
@@ -19,6 +20,8 @@ var Aufg8_Wiese;
         setRandomStyle() {
             this.scale = Math.random() * 5 + 2;
             this.farbe = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+        }
+        fullOutAndIn() {
             if (this.x < 0) {
                 this.x = 1500;
             }
@@ -29,7 +32,7 @@ var Aufg8_Wiese;
                 this.y = 0;
             }
         }
-        draw() {
+        drawBiene() {
             Aufg8_Wiese.inhalt.beginPath();
             Aufg8_Wiese.inhalt.fillStyle = "black";
             Aufg8_Wiese.inhalt.strokeStyle = "black";
