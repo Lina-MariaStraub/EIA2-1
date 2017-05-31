@@ -1,6 +1,8 @@
 var Form;
 (function (Form) {
     window.addEventListener("load", init);
+    let sorts = ["Erdbeere"];
+    let inputs = [];
     function init(_event) {
         console.log("Init");
         let fieldsets = document.getElementsByTagName("fieldset");

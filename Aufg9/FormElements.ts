@@ -1,5 +1,9 @@
 namespace Form {
     window.addEventListener("load", init);
+    
+     let sorts: string[] = ["Erdbeere"];
+    
+     let inputs: HTMLInputElement[] = [];
 
     function init(_event: Event): void {
         console.log("Init");
@@ -11,6 +15,8 @@ namespace Form {
         }
     }
 
+
+    
     function handleChange(_event: Event): void {
         //console.log(_event);
         //*/
