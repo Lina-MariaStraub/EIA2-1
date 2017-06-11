@@ -13,9 +13,9 @@ var OnlineEisdealer;
     let sauces = ["Schoko", "Erdbeer", "Karamell", "Waldfrucht", "Kiwi", "Sahne"];
     //    let toppings: string[] = ["Haselüsse", "Smarties", "Kokusflocken", "Trockene Erdbeeren", "Bunte Streusel"];
     let cone = ["Waffel", "Becher"];
-    let inputSauces = [];
     let inputFlavors = [];
-    let inputToppings = [];
+    let inputSauces = [];
+    //    let inputToppings: HTMLInputElement[] = [];
     let inputCone = [];
     function init() {
         iceCream = document.getElementById("flavors");

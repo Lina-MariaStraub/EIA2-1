@@ -17,11 +17,11 @@ namespace OnlineEisdealer {
 //    let toppings: string[] = ["Haselüsse", "Smarties", "Kokusflocken", "Trockene Erdbeeren", "Bunte Streusel"];
 
     let cone: string[] = ["Waffel", "Becher"];
+    
 
-
-    let inputSauces: HTMLInputElement[] = [];
     let inputFlavors: HTMLInputElement[] = [];
-    let inputToppings: HTMLInputElement[] = [];
+    let inputSauces: HTMLInputElement[] = [];
+//    let inputToppings: HTMLInputElement[] = [];
     let inputCone: HTMLInputElement[] = [];
 
     
