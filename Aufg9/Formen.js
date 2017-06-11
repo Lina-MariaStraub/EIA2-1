@@ -11,7 +11,7 @@ var OnlineEisdealer;
     let flavors = ["Peachpuff", "UnicornSwirls", "Schokolade", "Kinderschokolade",
         "Kastanie", "Zitronensorbe", "Yogurt-Kirsch", "Blaubeere", "Haselnuss"];
     let sauces = ["Schoko", "Erdbeer", "Karamell", "Waldfrucht", "Kiwi", "Sahne"];
-    let toppings = ["Haselüsse", "Smarties", "Kokusflocken", "Trockene Erdbeeren", "Bunte Streusel"];
+    //    let toppings: string[] = ["Haselüsse", "Smarties", "Kokusflocken", "Trockene Erdbeeren", "Bunte Streusel"];
     let cone = ["Waffel", "Becher"];
     let inputSauces = [];
     let inputFlavors = [];
@@ -22,8 +22,8 @@ var OnlineEisdealer;
         iceCream.addEventListener("change", change);
         sosse = document.getElementById("sauces");
         sosse.addEventListener("change", change);
-        topping = document.getElementById("toppings");
-        topping.addEventListener("change", change);
+        //        topping = document.getElementById("toppings"); 
+        //        topping.addEventListener("change", change);
         becher = document.getElementById("cone");
         becher.addEventListener("change", change);
         overview = document.getElementById("overview");
@@ -31,7 +31,7 @@ var OnlineEisdealer;
         button.addEventListener("click", checkOrder);
         createFlavors();
         createSauces();
-        createToppings();
+        //        createToppings(); 
         createCone();
     }
     function createFlavors() {
@@ -67,21 +67,21 @@ var OnlineEisdealer;
         sosse.appendChild(label);
         inputSauces.push(input);
     }
-    function createToppings() {
-        for (let i = 0; i < toppings.length; i++) {
-            createCheckboxT(toppings[i]);
-        }
-    }
-    function createCheckboxT(_Checkboxen) {
-        let label = document.createElement("label");
-        let input = document.createElement("input");
-        label.innerText = _Checkboxen;
-        label.appendChild(input);
-        input.type = "checkbox";
-        label.id = _Checkboxen;
-        topping.appendChild(label);
-        inputToppings.push(input);
-    }
+    //    function createToppings(): void {
+    //        for (let i: number = 0; i < toppings.length; i++) {
+    //            createCheckboxT(toppings[i]);
+    //        }
+    //    }
+    //    function createCheckboxT(_Checkboxen: string): void {
+    //        let label: HTMLLabelElement = document.createElement("label");
+    //        let input: HTMLInputElement = document.createElement("input");
+    //        label.innerText = _Checkboxen;
+    //        label.appendChild(input);
+    //        input.type = "checkbox"; 
+    //        label.id = _Checkboxen;
+    //        topping.appendChild(label);
+    //        inputToppings.push(input);
+    //    }
     function createCone() {
         for (let i = 0; i < cone.length; i++) {
             createRadio(cone[i]);
@@ -111,11 +111,11 @@ var OnlineEisdealer;
                 overview.innerText += sauces[i] + " 0.20 Euro" + "\n";
             }
         }
-        for (let i = 0; i < inputToppings.length; i++) {
-            if (inputToppings[i].checked) {
-                overview.innerText += toppings[i] + " 0.50 Euro" + "\n";
-            }
-        }
+        //        for (let i: number = 0; i < inputToppings.length; i++) {
+        //            if (inputToppings[i].checked) {
+        //                overview.innerText += toppings[i] + " 0.50 Euro" + "\n";
+        //            }
+        //        }
         for (let i = 0; i < inputCone.length; i++) {
             if (inputCone[i].checked) {
                 overview.innerText += cone[i] + "\n";
@@ -133,10 +133,10 @@ var OnlineEisdealer;
             if (inputSauces[i].checked)
                 sum += 0.20;
         }
-        for (let i = 0; i < inputToppings.length; i++) {
-            if (inputToppings[i].checked)
-                sum += 0.50;
-        }
+        //        for (let i: number = 0; i < inputToppings.length; i++) {
+        //            if (inputToppings[i].checked) 
+        //            sum += 0.50;
+        //        }
         changeDelivery(sum);
     }
     function checkOrder() {
@@ -195,13 +195,14 @@ var OnlineEisdealer;
         }
         if (sauces == 0)
             check.push("Sauces \n");
-        let toppings = 0;
-        for (let i = 0; i < inputToppings.length; i++) {
-            if (inputToppings[i].checked)
-                toppings += 1;
-        }
-        if (toppings == 0)
-            check.push("Toppings \n");
+        //        let toppings: number = 0;
+        //        for (let i: number = 0; i < inputToppings.length; i++) {
+        //            if (inputToppings[i].checked)
+        //                toppings += 1;
+        //        }
+        //        if (toppings == 0)
+        //            check.push("Toppings \n");
+        //        
         let cone = 0;
         for (let i = 0; i < inputCone.length; i++) {
             if (inputCone[i].checked)
@@ -211,7 +212,7 @@ var OnlineEisdealer;
             check.push("Cone");
         if (check.length > 0) {
             for (let i = 0; i < check.length; i++)
-                check.push;
+                check.push("");
             alert(check.join(""));
         }
         else {

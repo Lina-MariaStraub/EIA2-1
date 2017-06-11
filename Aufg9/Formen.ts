@@ -14,7 +14,7 @@ namespace OnlineEisdealer {
 
     let sauces: string[] = ["Schoko", "Erdbeer", "Karamell", "Waldfrucht", "Kiwi", "Sahne"];
 
-    let toppings: string[] = ["Haselüsse", "Smarties", "Kokusflocken", "Trockene Erdbeeren", "Bunte Streusel"];
+//    let toppings: string[] = ["Haselüsse", "Smarties", "Kokusflocken", "Trockene Erdbeeren", "Bunte Streusel"];
 
     let cone: string[] = ["Waffel", "Becher"];
 
@@ -34,8 +34,8 @@ namespace OnlineEisdealer {
         sosse = document.getElementById("sauces"); 
         sosse.addEventListener("change", change);
         
-        topping = document.getElementById("toppings"); 
-        topping.addEventListener("change", change);
+//        topping = document.getElementById("toppings"); 
+//        topping.addEventListener("change", change);
 
         becher = document.getElementById("cone"); 
         becher.addEventListener("change", change);
@@ -47,7 +47,7 @@ namespace OnlineEisdealer {
 
         createFlavors();
         createSauces();
-        createToppings(); 
+//        createToppings(); 
         createCone();
     }
 
@@ -89,21 +89,21 @@ namespace OnlineEisdealer {
         inputSauces.push(input);
     }
     
-    function createToppings(): void {
-        for (let i: number = 0; i < toppings.length; i++) {
-            createCheckboxT(toppings[i]);
-        }
-    }
-    function createCheckboxT(_Checkboxen: string): void {
-        let label: HTMLLabelElement = document.createElement("label");
-        let input: HTMLInputElement = document.createElement("input");
-        label.innerText = _Checkboxen;
-        label.appendChild(input);
-        input.type = "checkbox"; 
-        label.id = _Checkboxen;
-        topping.appendChild(label);
-        inputToppings.push(input);
-    }
+//    function createToppings(): void {
+//        for (let i: number = 0; i < toppings.length; i++) {
+//            createCheckboxT(toppings[i]);
+//        }
+//    }
+//    function createCheckboxT(_Checkboxen: string): void {
+//        let label: HTMLLabelElement = document.createElement("label");
+//        let input: HTMLInputElement = document.createElement("input");
+//        label.innerText = _Checkboxen;
+//        label.appendChild(input);
+//        input.type = "checkbox"; 
+//        label.id = _Checkboxen;
+//        topping.appendChild(label);
+//        inputToppings.push(input);
+//    }
 
    
     function createCone(): void {
@@ -141,11 +141,11 @@ namespace OnlineEisdealer {
             }
         }
 
-        for (let i: number = 0; i < inputToppings.length; i++) {
-            if (inputToppings[i].checked) {
-                overview.innerText += toppings[i] + " 0.50 Euro" + "\n";
-            }
-        }
+//        for (let i: number = 0; i < inputToppings.length; i++) {
+//            if (inputToppings[i].checked) {
+//                overview.innerText += toppings[i] + " 0.50 Euro" + "\n";
+//            }
+//        }
         
         for (let i: number = 0; i < inputCone.length; i++) {
             if (inputCone[i].checked) {
@@ -169,10 +169,10 @@ namespace OnlineEisdealer {
             sum += 0.20;
         }
         
-        for (let i: number = 0; i < inputToppings.length; i++) {
-            if (inputToppings[i].checked) 
-            sum += 0.50;
-        }
+//        for (let i: number = 0; i < inputToppings.length; i++) {
+//            if (inputToppings[i].checked) 
+//            sum += 0.50;
+//        }
         changeDelivery(sum);
     }
 
@@ -250,14 +250,14 @@ namespace OnlineEisdealer {
             check.push("Sauces \n");
 
         
-        let toppings: number = 0;
-        for (let i: number = 0; i < inputToppings.length; i++) {
-            if (inputToppings[i].checked)
-                toppings += 1;
-        }
-        if (toppings == 0)
-            check.push("Toppings \n");
-        
+//        let toppings: number = 0;
+//        for (let i: number = 0; i < inputToppings.length; i++) {
+//            if (inputToppings[i].checked)
+//                toppings += 1;
+//        }
+//        if (toppings == 0)
+//            check.push("Toppings \n");
+//        
         
         let cone: number = 0;
         for (let i: number = 0; i < inputCone.length; i++) {
@@ -269,7 +269,7 @@ namespace OnlineEisdealer {
 
         if (check.length > 0) {
             for (let i: number = 0; i < check.length; i++)
-                check.push
+                check.push("");
             alert(check.join(""));
         }
         else {
