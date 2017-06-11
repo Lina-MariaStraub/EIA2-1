@@ -1,14 +1,15 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="de">
 <head>
 <meta charset="utf-8" />
-<title>FormElements</title>
+<title>Eisdealer</title>
 <link rel="stylesheet" href="Formen-Style.css" type="text/css" media="screen"/>
 <script src="Formen.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
 	<header>
-		<h1>Ice-Lover-Onlineshop</h1>
+		<h1>Ice Lover - Online</h1>
 	</header>
 	
 	<main>
@@ -17,52 +18,56 @@
 			<fieldset id="cone">
 				<legend> Behälter </legend>
 			</fieldset>
-	
+			
 
-			<fieldset id="flavors">
-				<legend> Eissorten - je 1€ pro Kugel </legend>
-			</fieldset>
-		</div>
-		<div>
-
-			<fieldset id="sauce">
-			<legend> Zusätze - je 0.30€ </legend>
-			</fieldset>
-	
-
-			<fieldset id="Lieferoptionen">
+			<fieldset id="deliveryOptions">
 				<legend> Lieferoptionen </legend>
-				<select name="Lieferoptionen" id="Lieferoptionen">
-				<option value="Abholen"> Selbstabholung</option>
-				<option value="Lieferung"> Lieferung</option> 
-				<option value="verspaeteteLieferung"> Lieferung auf Termin</option> 
+				<select name="delivery" id="delivery">
+				<option value="Abholung"> Abholung</option>
+				<option value="Lieferung">Lieferung</option> 
+				<option value="LieferungAufZeit">Lieferung zu einem Termin</option> 
 				</select>
 			</fieldset>
 	
-
-			<fieldset id="overview">
-				<legend> Bestelluebersicht </legend>
-				<p id="Warenuebersicht"></p>
-				<h4>Summe:</h4>
-				<p id="Summe"></p>
-       		</fieldset>
 	
+			<fieldset id="overview">
+				<legend> Ihre Bestellung </legend>
+				<p id="orderOvervies"></p>
+				<h4>Sum:</h4>
+				<p id="sum"></p>
+       		</fieldset>
+		</div>
+	
+		<section>
+			<fieldset id="flavors">
+				<legend> Eissorten -  1€ pro Kugel</legend>
+			</fieldset>
+			</section>
 
-			<fieldset id="Kontaktinfo">
-				<legend> Kontaktdaten </legend>
+
+			<section>
+			<fieldset id="sauces">
+			<legend> Extras -  0.40€ </legend>
+			</fieldset>
+			</section>
+			
+
+			<section>
+			<fieldset id="Contact">
+				<legend> Kontaktinformationen</legend>
 				Name
-				<input type="text" name="Name" placeholder="Nachname eingeben" required id="Nachname"/>
+				<input type="text" name="surame" placeholder="Nachname angeben" required id="surname"/>
 				Vorname
-				<input type="text" name="Vorname" placeholder="Vorname eingeben" required id="Vorname"/>
+				<input type="text" name="name" placeholder="Vorname angeben" required id="name"/>
 				Straße
-				<input type="text" name="Straße" placeholder="Straße eingeben" required id="Strasse"/>
+				<input type="text" name="street" placeholder="Straße angeben" required id="street"/>
 				Ort,PLZ
-				<input type="text" name="Ort, Postleitzahl" placeholder="Ort, Postleitzahl eingeben" required id="Ort,PLZ"/>
+				<input type="text" name="city, postcode" placeholder="Ort und Postleitzahl angeben" required id="city,postcode"/>
 				Mail
-				<input type="email" name="Mail" placeholder="E-Mail angeben bitte" id="Email"/>
+				<input type="email" name="Mail" placeholder="Email eintragen" id="Email"/>
 			</fieldset>
 	
-			<button name="Bestellbutton" type="button" id="sendOrder">Bestellung prüfen und abschicken!</button>
-		</div>
+			<button name="button" type="button" id="sendOrder">Überprüfen Sie Ihre Bestellung und geben sie diese ab.</button>
+		</section>
 	</main>
 </body>	

@@ -1,45 +1,57 @@
-var FormElements;
-(function (FormElements) {
+namespace FormElements {
     window.addEventListener("load", init);
+
     //Array aller Eissorten
-    let sorten = ["Peachpuff", "UnicornSwirls", "Schokolade", "Kinderschokolade",
+    let sorten: string[] = ["Peachpuff", "UnicornSwirls", "Schokolade", "Kinderschokolade",
         "Kastanie", "Zitronensorbe", "Yogurt-Kirsch", "Blaubeere", "Haselnuss"];
-    let inputsSorten = [];
+    let inputsSorten: HTMLInputElement[] = [];
+
     //Array aller Zusaetze
-    let extras = ["Schoko", "Erdbeer", "Karamell", "Waldfrucht", "Kiwi", "Sahne"];
-    let inputsExtras = [];
+    let extras: string[] = ["Schoko", "Erdbeer", "Karamell", "Waldfrucht", "Kiwi", "Sahne"];
+    let inputsExtras: HTMLInputElement[] = [];
+
     //Array aller Darreichungsformen
-    let behaelter = ["Waffel", "Becher"];
-    let inputsBehaeltnis = [];
+    let behaelter: string[] = ["Waffel", "Becher"];
+    let inputsBehaeltnis: HTMLInputElement[] = [];
+
     //HTMLElemente kreieren
-    let behaeltnis;
-    let eis;
-    let extra;
-    let uebersichtDerBestellung;
-    let bestellungAufgeben;
-    function init() {
-        eis = document.getElementById("Sorten");
+    let behaeltnis: HTMLElement;
+    let eis: HTMLElement;
+    let extra: HTMLElement;
+    let uebersichtDerBestellung: HTMLElement;
+    let bestellungAufgeben: HTMLElement;
+
+
+    function init(): void {
+        eis = document.getElementById("Sorten"); 
         eis.addEventListener("change", change);
+
         extra = document.getElementById("Extras");
         extra.addEventListener("change", change);
+
         behaeltnis = document.getElementById("Behaelter");
         behaeltnis.addEventListener("change", change);
+
         uebersichtDerBestellung = document.getElementById("UebersichtDerBestellung");
+
         bestellungAufgeben = document.getElementById("BestellungAbschicken");
         bestellungAufgeben.addEventListener("click", BestellungPruefen);
+
         createEis();
         createExtras();
         createBehaelter();
     }
+
+
     //Input Eisssorten kreieren
-    function createEis() {
-        for (let i = 0; i < sorten.length; i++) {
+    function createEis(): void {
+        for (let i: number = 0; i < sorten.length; i++) {
             createInput(sorten[i]);
         }
     }
-    function createInput(_sorte) {
-        let label = document.createElement("label");
-        let input = document.createElement("input");
+    function createInput(_sorte: string): void {
+        let label: HTMLLabelElement = document.createElement("label");
+        let input: HTMLInputElement = document.createElement("input");
         label.innerText = _sorte;
         label.appendChild(input);
         input.type = "number"; //Art des Inputs
@@ -50,15 +62,16 @@ var FormElements;
         eis.appendChild(label);
         inputsSorten.push(input);
     }
+
     //Input Zusaetze kreieren
-    function createExtras() {
-        for (let i = 0; i < extras.length; i++) {
+    function createExtras(): void {
+        for (let i: number = 0; i < extras.length; i++) {
             createCheckbox(extras[i]);
         }
     }
-    function createCheckbox(_Checkboxen) {
-        let label = document.createElement("label");
-        let input = document.createElement("input");
+    function createCheckbox(_Checkboxen: string): void {
+        let label: HTMLLabelElement = document.createElement("label");
+        let input: HTMLInputElement = document.createElement("input");
         label.innerText = _Checkboxen;
         label.appendChild(input);
         input.type = "checkbox"; //Art des Inputs
@@ -66,15 +79,16 @@ var FormElements;
         extra.appendChild(label);
         inputsExtras.push(input);
     }
+
     //Input Darreichungsform kreieren
-    function createBehaelter() {
-        for (let i = 0; i < behaelter.length; i++) {
+    function createBehaelter(): void {
+        for (let i: number = 0; i < behaelter.length; i++) {
             createRadio(behaelter[i]);
         }
     }
-    function createRadio(_Radiobutton) {
-        let label = document.createElement("label");
-        let input = document.createElement("input");
+    function createRadio(_Radiobutton: string): void {
+        let label: HTMLLabelElement = document.createElement("label");
+        let input: HTMLInputElement = document.createElement("input");
         label.innerText = _Radiobutton;
         label.appendChild(input);
         input.type = "radio"; //Art des Inputs
@@ -83,45 +97,56 @@ var FormElements;
         behaeltnis.appendChild(label);
         inputsBehaeltnis.push(input);
     }
+
+
     //Zeigt ausgewählte Produkte mit ihren Preisen in der Bestellübersicht an
-    function aendereUebersicht(_summe) {
-        let bestellungsUebersicht = document.getElementById("Warenuebersicht");
+    function aendereUebersicht(_summe: number): void {
+        let bestellungsUebersicht: HTMLElement = document.getElementById("Warenuebersicht");
         bestellungsUebersicht.innerText = "";
-        for (let i = 0; i < inputsSorten.length; i++) {
+
+        for (let i: number = 0; i < inputsSorten.length; i++) {
             if (parseInt(inputsSorten[i].value) > 0) {
                 bestellungsUebersicht.innerText += sorten[i] + " " + (parseInt(inputsSorten[i].value) * 1) + " €" + "\n";
             }
         }
-        for (let i = 0; i < inputsExtras.length; i++) {
+
+        for (let i: number = 0; i < inputsExtras.length; i++) {
             if (inputsExtras[i].checked) {
                 bestellungsUebersicht.innerText += extras[i] + " 0.30 €" + "\n";
             }
         }
-        for (let i = 0; i < inputsBehaeltnis.length; i++) {
+
+        for (let i: number = 0; i < inputsBehaeltnis.length; i++) {
             if (inputsBehaeltnis[i].checked) {
                 bestellungsUebersicht.innerText += behaelter[i] + "\n";
             }
         }
+
         //Summe wird in HTML geschrieben
-        let summeHtml = document.getElementById("Summe");
+        let summeHtml: HTMLElement = document.getElementById("Summe");
         summeHtml.innerText = _summe.toString() + " Euro";
     }
-    function change() {
-        let summe = 0;
-        for (let i = 0; i < inputsSorten.length; i++) {
-            summe += parseInt(inputsSorten[i].value);
+
+
+    function change(): void {
+        let summe: number = 0;
+        for (let i: number = 0; i < inputsSorten.length; i++) {
+            summe += parseInt(inputsSorten[i].value); 
         }
-        for (let i = 0; i < inputsExtras.length; i++) {
-            if (inputsExtras[i].checked)
-                summe += 0.30;
+        for (let i: number = 0; i < inputsExtras.length; i++) {
+            if (inputsExtras[i].checked) 
+            summe += 0.30;
         }
         aendereUebersicht(summe);
     }
+
+
     //Bestellung wird auf Vollstaendigkeit und Richtigkeit ueberprueft
-    function BestellungPruefen() {
-        let kontrolle = ["Bitte folgende Eingaben ueberpruefen! \n"];
+    function BestellungPruefen(): void {
+        let kontrolle: string[] = ["Bitte folgende Eingaben ueberpruefen! \n"];
+
         //Name
-        let nachname = document.getElementById("Nachname");
+        let nachname: HTMLInputElement = <HTMLInputElement>document.getElementById("Nachname");
         if (nachname.validity.valid == false) {
             kontrolle.push("Name \n");
             nachname.style.backgroundColor = "#FA5858";
@@ -129,8 +154,9 @@ var FormElements;
         else {
             nachname.style.backgroundColor = "white";
         }
+
         //Vorname
-        let vorname = document.getElementById("Vorname");
+        let vorname: HTMLInputElement = <HTMLInputElement>document.getElementById("Vorname");
         if (vorname.validity.valid == false) {
             kontrolle.push("Vorname \n");
             vorname.style.backgroundColor = "#FA5858";
@@ -138,8 +164,9 @@ var FormElements;
         else {
             vorname.style.backgroundColor = "white";
         }
+
         //Straße
-        let strasse = document.getElementById("Strasse");
+        let strasse: HTMLInputElement = <HTMLInputElement>document.getElementById("Strasse");
         if (strasse.validity.valid == false) {
             kontrolle.push("Strasse \n");
             strasse.style.backgroundColor = "#FA5858";
@@ -147,8 +174,9 @@ var FormElements;
         else {
             strasse.style.backgroundColor = "white";
         }
+
         //Ort, PLZ
-        let ortUndPostleitzahl = document.getElementById("Ort,PLZ");
+        let ortUndPostleitzahl: HTMLInputElement = <HTMLInputElement>document.getElementById("Ort,PLZ");
         if (ortUndPostleitzahl.validity.valid == false) {
             kontrolle.push("Ort, PLZ \n");
             ortUndPostleitzahl.style.backgroundColor = "#FA5858";
@@ -156,8 +184,9 @@ var FormElements;
         else {
             ortUndPostleitzahl.style.backgroundColor = "white";
         }
+
         //Email
-        let eMail = document.getElementById("Email");
+        let eMail: HTMLInputElement = <HTMLInputElement>document.getElementById("Email");
         if (eMail.validity.valid == false) {
             kontrolle.push("Email \n");
             eMail.style.backgroundColor = "#FA5858";
@@ -165,35 +194,41 @@ var FormElements;
         else {
             eMail.style.backgroundColor = "white";
         }
-        let eiskugeln = 0;
-        for (let i = 0; i < inputsSorten.length; i++) {
+
+
+        let eiskugeln: number = 0;
+        for (let i: number = 0; i < inputsSorten.length; i++) {
             if (parseInt(inputsSorten[i].value) > 0)
                 eiskugeln += 1;
         }
         if (eiskugeln == 0)
             kontrolle.push("sorten\n");
-        let extras = 0;
-        for (let i = 0; i < inputsExtras.length; i++) {
+
+
+        let extras: number = 0;
+        for (let i: number = 0; i < inputsExtras.length; i++) {
             if (inputsExtras[i].checked)
                 extras += 1;
         }
         if (extras == 0)
             kontrolle.push("extra\n");
-        let behaeltnis = 0;
-        for (let i = 0; i < inputsBehaeltnis.length; i++) {
+
+
+        let behaeltnis: number = 0;
+        for (let i: number = 0; i < inputsBehaeltnis.length; i++) {
             if (inputsBehaeltnis[i].checked)
                 behaeltnis += 1;
         }
         if (behaeltnis == 0)
             kontrolle.push("behaelter");
+
         if (kontrolle.length > 0) {
-            for (let i = 0; i < kontrolle.length; i++)
-                kontrolle.push("");
+            for (let i: number = 0; i < kontrolle.length; i++)
+                kontrolle.push;
             alert(kontrolle.join(""));
         }
         else {
             alert("Vielen Dank fuer Ihre Bestellung! :)");
         }
     }
-})(FormElements || (FormElements = {}));
-//# sourceMappingURL=Fromen2.js.map
+}
