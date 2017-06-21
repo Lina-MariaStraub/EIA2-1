@@ -7,30 +7,33 @@
 
 <p>
 
-1.)	Das Interface AssocStringString beschreibt ein homogenes assoziatives Array. Was bedeutet dies und was ist der Unterschied zu den heterogenen, die Sie bereits kennen?
+1.)	Das Interface AssocStringString beschreibt ein homogenes assoziatives Array. Was bedeutet dies und was ist der Unterschied zu den heterogenen, die Sie bereits kennen? <br>
 Ein assoziatives Array besteht aus einem Schlüssel und einen dazugehörigen Schlüsselwert (key/value Paaren.).
 Die Schlüssel bestehen aus einen Namen, der sprechend ist. Daher wahrscheinlich auch der Name assoziatives Array.Die Zuweisung der Werte (values) zu den Schlüsseln (keys) erfolgt durch den Zuweisungsopertoren.
-
+<br>
 Homogen: nur ein Datentyp
 Heterogen: unterschiedliche Datentypen
-
+<br>
+<br><br>
 
 2.)	Was geschieht in Zeile 27 von NodeTest.ts?
-let query: AssocStringString = Url.parse(_request.url, true).query;
+let query: AssocStringString = Url.parse(_request.url, true).query; 
 
 Der URL string Teil wird, falls true, genommen und verarbeitet. Hierdurch wird ein Objekt ausgegeben. Sprich, die Zeichenkette (string) wird in einzelne Schlüssel und Werte ausgegeben.
-
-3.)	Die for-in-Schleife in Zeile 30 ist ein Ihnen wahrscheinlich unbekanntes Konstrukt, wie arbeitet sie?
+<br>
+<br><br>
+3.)	Die for-in-Schleife in Zeile 30 ist ein Ihnen wahrscheinlich unbekanntes Konstrukt, wie arbeitet sie?<br>
 Eigenschaften des Objektes z.B.document  werden ausgegeben. Mit jedem Schleifendurchgang wird dann eine Variable z.B. Ausgabe um eine Objekteigenschaft erweitert. Die Schleife läuft so lange, wie es verfügbare Objekteigenschaften gibt - dies bedeutet das for in. Sprich, die Eigenschaften (values) der Objekte (Schlüssel) aus dem URL-string werden ausgegeben bis es keine mehr hat.
-
+<br>
+<br><br>
 4.)	Was bewirkt die Header-Information "Access-Control-Allow-Origin"?
 
 Eine Ressource stellt  cross-origin HTTP Anfragen, wenn er diese von einer anderen Domain, Port oder Protokoll braucht als seiner eigenen. Standardmäßig wird dies von Browsern durch Skripte blockiert, sodass die Domain diese Anfragen in dem Header mit „Access-Control-Allow-Origin“ erlauben muss.
-
+<br><br><br>
 5.)	Was bedeutet Ajax? Was macht die Klasse XMLHttpRequest bzw. deren Objekte?
 AJAX - Asynchronous JavaScript and XML sorgen für den Benutzerfluss des Servers.
 Das Objekt "XMLHttpRequest" ermöglich das weitere Arbeiten auf dem Server, während im Hintergrund die bereits vorhandenen Informationen bearbeitet werden.
-Sprich, man muss nicht immer eine Anfrage senden, damit etwas passiert.
+Sprich, man muss nicht immer eine Anfrage senden, damit etwas passiert.<br>
 
 
 </p>
