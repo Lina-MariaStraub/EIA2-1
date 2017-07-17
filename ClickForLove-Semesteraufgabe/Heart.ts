@@ -7,13 +7,13 @@ namespace Love {
         radius: number;
         winkel: number;
 
-        constructor(_x, _y, _radius, _winkel) {
+        constructor(_x: number, _y: number, _radius: number, _winkel: number) {
 
             this.setStartPosition();
             this.x = _x;
             this.y = _y;
 
-           }
+        }
         
         setStartPosition(): void {
             this.x = 750;
@@ -49,3 +49,5 @@ namespace Love {
 
 
     }//ende drawHeart
+}
+    }
