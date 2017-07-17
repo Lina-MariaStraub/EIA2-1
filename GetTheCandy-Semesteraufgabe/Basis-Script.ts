@@ -22,7 +22,7 @@ namespace Semesteraufgabe {
     
         
         placeRandomSweets();
-                drawMonster();
+        drawMonster();
 
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);        
         window.setTimeout(animate, 20);

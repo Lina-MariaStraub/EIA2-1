@@ -73,21 +73,21 @@ namespace Semesteraufgabe {
             inhalt.fillStyle = "black";
             inhalt.strokeStyle = "black";
             inhalt.moveTo(this.x + 2, this.y - 12);
-            inhalt.arc(this.x -20, this.y - 12, this.scale+25, 180, 270);
+            inhalt.arc(this.x - 20, this.y - 12, this.scale + 25, 180, 270);
             inhalt.closePath();
             inhalt.fill();
             inhalt.stroke();
 
-            
+
             inhalt.moveTo(this.x + 2, this.y - 12);
             inhalt.beginPath();
-            inhalt.arc(this.x-25, this.y-18, this.scale+5, 0, 2 * Math.PI);
+            inhalt.arc(this.x - 25, this.y - 18, this.scale + 5, 0, 2 * Math.PI);
             inhalt.fillStyle = "#FFFFFF";
             inhalt.fill();
             inhalt.closePath();
-            
 
 
-            }
+
         }
+    }
 }
