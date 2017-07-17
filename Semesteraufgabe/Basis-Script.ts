@@ -26,11 +26,11 @@ namespace Semesteraufgabe {
     }
 
     function placeRandomSweets(): void {
-        let numberSweets: any = Math.floor((Math.random() * 40) + 5);
+        let numberSweets: any = Math.floor((Math.random() * 30) + 20);
 
         for (let i: number = 0; i < numberSweets; i++) {
-            let x: number = Math.round((Math.random() * inhalt.canvas.width) - 30);
-            let y: number = Math.round((Math.random() * inhalt.canvas.height) - 60);
+            let x: number = Math.round((Math.random() * 1300)+ 100);
+            let y: number = Math.round((Math.random() * 600) + 30);
             let p: number = Math.round((Math.random() * 3) + 0);
             switch (p) {
                 case 0:
@@ -54,17 +54,15 @@ namespace Semesteraufgabe {
 
         }
     }
+    
+        let biest: Monster = new Monster(x, y);
+        biest.draw();
+        monsters.push(biest);
 
 
     function animate(): void {
 
         inhalt.putImageData(imgData, 0, 0);
-
-        for (let i: number = 0; i < monsters.length; i++) {
-            let b: Monster = monsters[i];
-            b.update();
-        }
-
         window.setTimeout(animate, 20);
     }
 

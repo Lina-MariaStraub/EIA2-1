@@ -16,10 +16,10 @@ var Semesteraufgabe;
         window.setTimeout(animate, 20);
     }
     function placeRandomSweets() {
-        let numberSweets = Math.floor((Math.random() * 40) + 5);
+        let numberSweets = Math.floor((Math.random() * 30) + 20);
         for (let i = 0; i < numberSweets; i++) {
-            let x = Math.round((Math.random() * Semesteraufgabe.inhalt.canvas.width) - 30);
-            let y = Math.round((Math.random() * Semesteraufgabe.inhalt.canvas.height) - 60);
+            let x = Math.round((Math.random() * 1300) + 100);
+            let y = Math.round((Math.random() * 600) + 30);
             let p = Math.round((Math.random() * 3) + 0);
             switch (p) {
                 case 0:
@@ -42,12 +42,11 @@ var Semesteraufgabe;
             }
         }
     }
+    let biest = new Semesteraufgabe.Monster(x, y);
+    biest.draw();
+    monsters.push(biest);
     function animate() {
         Semesteraufgabe.inhalt.putImageData(imgData, 0, 0);
-        for (let i = 0; i < monsters.length; i++) {
-            let b = monsters[i];
-            b.update();
-        }
         window.setTimeout(animate, 20);
     }
     function zeichneHimmel() {
