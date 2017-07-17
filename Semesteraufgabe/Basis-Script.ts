@@ -4,9 +4,9 @@ namespace Semesteraufgabe {
 
     export let inhalt: CanvasRenderingContext2D;
 
-    let bees: Monster[] = [];
+    let monsters: Monster[] = [];
     export let sweets: Sweet[] = [];
-    let menge: number = 10;
+    let menge: number = 1;
     let imgData: ImageData;
 
     function init(_event: Event): void {
@@ -16,19 +16,12 @@ namespace Semesteraufgabe {
 
         inhalt = canvas.getContext("2d");
 
-
+        zeichneHimmel();
     
         placeRandomSweets();
 
-        imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
-
-        for (let i: number = 0; i < menge; i++) {
-            neueBiene();
-        }
-        
-
+        imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);        
         window.setTimeout(animate, 20);
-        canvas.addEventListener("click", neueBiene);
 
     }
 
@@ -63,24 +56,23 @@ namespace Semesteraufgabe {
     }
 
 
-    function neueBiene(): void {
-        let b: Monster = new Monster(1250, 420);
-        b.setRandomStyle();
-
-        bees.push(b);
-    }
-
     function animate(): void {
 
         inhalt.putImageData(imgData, 0, 0);
 
-        for (let i: number = 0; i < bees.length; i++) {
-            let b: Monster = bees[i];
+        for (let i: number = 0; i < monsters.length; i++) {
+            let b: Monster = monsters[i];
             b.update();
         }
 
         window.setTimeout(animate, 20);
     }
 
-
+    function zeichneHimmel(): void {
+        inhalt.beginPath();
+        inhalt.rect(0, 0, inhalt.canvas.width, inhalt.canvas.height);
+        inhalt.closePath();
+        inhalt.fillStyle = "#C4E4F5";
+        inhalt.fill();
+    }
 }
