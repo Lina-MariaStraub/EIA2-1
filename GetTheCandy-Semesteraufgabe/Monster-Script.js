@@ -50,12 +50,16 @@ var Semesteraufgabe;
             Semesteraufgabe.inhalt.fillStyle = "black";
             Semesteraufgabe.inhalt.strokeStyle = "black";
             Semesteraufgabe.inhalt.moveTo(this.x + 2, this.y - 12);
-            Semesteraufgabe.inhalt.arc(this.x + 2, this.y - 12, this.scale, 180, 270);
-            Semesteraufgabe.inhalt.moveTo(this.x + 9, this.y - 12);
-            Semesteraufgabe.inhalt.arc(this.x + 9, this.y - 12, this.scale, 180, 270);
+            Semesteraufgabe.inhalt.arc(this.x - 20, this.y - 12, this.scale + 25, 180, 270);
             Semesteraufgabe.inhalt.closePath();
             Semesteraufgabe.inhalt.fill();
             Semesteraufgabe.inhalt.stroke();
+            Semesteraufgabe.inhalt.moveTo(this.x + 2, this.y - 12);
+            Semesteraufgabe.inhalt.beginPath();
+            Semesteraufgabe.inhalt.arc(this.x - 25, this.y - 18, this.scale + 5, 0, 2 * Math.PI);
+            Semesteraufgabe.inhalt.fillStyle = "#FFFFFF";
+            Semesteraufgabe.inhalt.fill();
+            Semesteraufgabe.inhalt.closePath();
         }
     }
     Semesteraufgabe.Monster = Monster;

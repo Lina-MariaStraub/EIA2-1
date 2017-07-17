@@ -1,7 +1,6 @@
 var Semesteraufgabe;
 (function (Semesteraufgabe) {
     window.addEventListener("load", init);
-    let monsters = [];
     Semesteraufgabe.sweets = [];
     let menge = 1;
     let imgData;
@@ -10,13 +9,10 @@ var Semesteraufgabe;
         canvas = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
         Semesteraufgabe.inhalt = canvas.getContext("2d");
-        alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst.");
+        //    alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst.");
         zeichneHimmel();
-        //        for (let i: number = 0; i < 1; i++) {
-        //            drawMonster();
-        //        }
-        //        
         placeRandomSweets();
+        drawMonster();
         imgData = Semesteraufgabe.inhalt.getImageData(0, 0, canvas.width, canvas.height);
         window.setTimeout(animate, 20);
     }
@@ -50,7 +46,6 @@ var Semesteraufgabe;
     function drawMonster() {
         let beast = new Semesteraufgabe.Monster(1450, 690);
         beast.draw();
-        monsters.push(beast);
     }
     function animate() {
         Semesteraufgabe.inhalt.putImageData(imgData, 0, 0);

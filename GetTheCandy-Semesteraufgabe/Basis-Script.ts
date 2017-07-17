@@ -4,7 +4,6 @@ namespace Semesteraufgabe {
 
     export let inhalt: CanvasRenderingContext2D;
 
-    let monsters: Monster[] = [];
     export let sweets: Sweet[] = [];
     let menge: number = 1;
     let imgData: ImageData;
@@ -16,16 +15,14 @@ namespace Semesteraufgabe {
 
         inhalt = canvas.getContext("2d");
         
-        alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst.");
+    //    alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst.");
         
 
         zeichneHimmel();
     
-//        for (let i: number = 0; i < 1; i++) {
-//            drawMonster();
-//        }
-//        
+        
         placeRandomSweets();
+                drawMonster();
 
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);        
         window.setTimeout(animate, 20);
@@ -65,8 +62,6 @@ namespace Semesteraufgabe {
         function drawMonster(): void {
         let beast: Monster = new Monster(1450, 690);
         beast.draw();
-
-        monsters.push(beast);
     }
 
 
@@ -83,4 +78,6 @@ namespace Semesteraufgabe {
         inhalt.fillStyle = "#C4E4F5";
         inhalt.fill();
     }
+    
+
 }
