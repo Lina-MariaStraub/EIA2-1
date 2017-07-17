@@ -4,7 +4,7 @@ namespace Semesteraufgabe {
 
     export let inhalt: CanvasRenderingContext2D;
 
-    let bees: Bee[] = [];
+    let bees: Monster[] = [];
     export let sweets: Sweet[] = [];
     let menge: number = 10;
     let imgData: ImageData;
@@ -64,7 +64,7 @@ namespace Semesteraufgabe {
 
 
     function neueBiene(): void {
-        let b: Bee = new Bee(1250, 420);
+        let b: Monster = new Monster(1250, 420);
         b.setRandomStyle();
 
         bees.push(b);
@@ -75,7 +75,7 @@ namespace Semesteraufgabe {
         inhalt.putImageData(imgData, 0, 0);
 
         for (let i: number = 0; i < bees.length; i++) {
-            let b: Bee = bees[i];
+            let b: Monster = bees[i];
             b.update();
         }
 

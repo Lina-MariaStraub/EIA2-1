@@ -1,6 +1,6 @@
 namespace Semesteraufgabe {
 
-    export class Bee {
+    export class Monster {
 
         x: number;
         y: number;
@@ -9,7 +9,6 @@ namespace Semesteraufgabe {
 
  
         constructor(_x: number, _y: number) {
-            console.log("Hey, I'm Bob!");
             this.setRandomStyle();
             this.x = _x;
             this.y = _y;
@@ -17,11 +16,11 @@ namespace Semesteraufgabe {
         }
 
         update(): void {
-            this.fly();
+            this.move();
             this.draw();
         }
 
-        fly(): void {
+        move(): void {
 
             this.x += Math.random() * 4 - 2;
             this.y += Math.random() * 4 - 2;

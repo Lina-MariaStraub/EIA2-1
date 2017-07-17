@@ -1,17 +1,16 @@
 var Semesteraufgabe;
 (function (Semesteraufgabe) {
-    class Bee {
+    class Monster {
         constructor(_x, _y) {
-            console.log("Hey, I'm Bob!");
             this.setRandomStyle();
             this.x = _x;
             this.y = _y;
         }
         update() {
-            this.fly();
+            this.move();
             this.draw();
         }
-        fly() {
+        move() {
             this.x += Math.random() * 4 - 2;
             this.y += Math.random() * 4 - 2;
             this.x--;
@@ -74,6 +73,6 @@ var Semesteraufgabe;
             Semesteraufgabe.inhalt.stroke();
         }
     }
-    Semesteraufgabe.Bee = Bee;
+    Semesteraufgabe.Monster = Monster;
 })(Semesteraufgabe || (Semesteraufgabe = {}));
 //# sourceMappingURL=Monster-Script.js.map

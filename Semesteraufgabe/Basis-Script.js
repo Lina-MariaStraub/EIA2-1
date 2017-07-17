@@ -46,7 +46,7 @@ var Semesteraufgabe;
         }
     }
     function neueBiene() {
-        let b = new Semesteraufgabe.Bee(1250, 420);
+        let b = new Semesteraufgabe.Monster(1250, 420);
         b.setRandomStyle();
         bees.push(b);
     }
