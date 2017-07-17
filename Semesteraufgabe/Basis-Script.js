@@ -11,6 +11,10 @@ var Semesteraufgabe;
         console.log(canvas);
         Semesteraufgabe.inhalt = canvas.getContext("2d");
         zeichneHimmel();
+        //        for (let i: number = 0; i < 1; i++) {
+        //            drawMonster();
+        //        }
+        //        
         placeRandomSweets();
         imgData = Semesteraufgabe.inhalt.getImageData(0, 0, canvas.width, canvas.height);
         window.setTimeout(animate, 20);
@@ -42,9 +46,11 @@ var Semesteraufgabe;
             }
         }
     }
-    let biest = new Semesteraufgabe.Monster(x, y);
-    biest.draw();
-    monsters.push(biest);
+    function drawMonster() {
+        let beast = new Semesteraufgabe.Monster(1450, 690);
+        beast.draw();
+        monsters.push(beast);
+    }
     function animate() {
         Semesteraufgabe.inhalt.putImageData(imgData, 0, 0);
         window.setTimeout(animate, 20);

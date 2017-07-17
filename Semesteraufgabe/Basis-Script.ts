@@ -18,6 +18,10 @@ namespace Semesteraufgabe {
 
         zeichneHimmel();
     
+//        for (let i: number = 0; i < 1; i++) {
+//            drawMonster();
+//        }
+//        
         placeRandomSweets();
 
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);        
@@ -55,9 +59,12 @@ namespace Semesteraufgabe {
         }
     }
     
-        let biest: Monster = new Monster(x, y);
-        biest.draw();
-        monsters.push(biest);
+        function drawMonster(): void {
+        let beast: Monster = new Monster(1450, 690);
+        beast.draw();
+
+        monsters.push(beast);
+    }
 
 
     function animate(): void {
