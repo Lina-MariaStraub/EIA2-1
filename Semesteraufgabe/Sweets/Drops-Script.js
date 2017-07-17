@@ -1,9 +1,9 @@
 var Semesteraufgabe;
 (function (Semesteraufgabe) {
-    class DropsFlower extends Semesteraufgabe.Flower {
+    class DropsSweet extends Semesteraufgabe.Sweet {
         constructor(_x, _y) {
             super(_x, _y);
-            console.log("Create Honigbiene");
+            console.log("Create Drops");
         }
         draw() {
             Semesteraufgabe.inhalt.moveTo(0, 0);
@@ -50,6 +50,6 @@ var Semesteraufgabe;
             Semesteraufgabe.inhalt.closePath();
         }
     }
-    Semesteraufgabe.DropsFlower = DropsFlower; //ende der Klasse Bee
+    Semesteraufgabe.DropsSweet = DropsSweet; //ende der Klasse Bee
 })(Semesteraufgabe || (Semesteraufgabe = {})); //ende des Namespace
 //# sourceMappingURL=Drops-Script.js.map

@@ -1,9 +1,9 @@
 namespace Semesteraufgabe {
-    export class DropsFlower extends Flower {
+    export class DropsSweet extends Sweet {
 
         constructor(_x: number, _y: number) {
             super(_x, _y);
-            console.log("Create Honigbiene");
+            console.log("Create Drops");
         }
 
         draw(): void {

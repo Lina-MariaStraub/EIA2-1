@@ -1,9 +1,9 @@
 var Semesteraufgabe;
 (function (Semesteraufgabe) {
-    class LollipopFlower extends Semesteraufgabe.Flower {
+    class LollipopSweet extends Semesteraufgabe.Sweet {
         constructor(_x, _y) {
             super(_x, _y);
-            console.log("Create Honigbiene");
+            console.log("Create Lollipop");
         }
         draw() {
             Semesteraufgabe.inhalt.moveTo(0, 0);
@@ -38,6 +38,6 @@ var Semesteraufgabe;
             Semesteraufgabe.inhalt.closePath();
         }
     }
-    Semesteraufgabe.LollipopFlower = LollipopFlower;
+    Semesteraufgabe.LollipopSweet = LollipopSweet;
 })(Semesteraufgabe || (Semesteraufgabe = {}));
 //# sourceMappingURL=Lollipop-Script.js.map

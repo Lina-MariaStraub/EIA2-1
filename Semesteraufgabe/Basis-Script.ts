@@ -5,7 +5,7 @@ namespace Semesteraufgabe {
     export let inhalt: CanvasRenderingContext2D;
 
     let bees: Bee[] = [];
-    export let flowers: Flower[] = [];
+    export let sweets: Sweet[] = [];
     let menge: number = 10;
     let imgData: ImageData;
 
@@ -18,7 +18,7 @@ namespace Semesteraufgabe {
 
 
     
-        placeRandomFlowers();
+        placeRandomSweets();
 
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
 
@@ -27,17 +27,12 @@ namespace Semesteraufgabe {
         }
         
 
-        for (let i: number = 0; i < 5; i++) {
-            var hb: Honigbiene = new Honigbiene(1250, 420);
-            bees.push(hb);
-        }
-
         window.setTimeout(animate, 20);
         canvas.addEventListener("click", neueBiene);
 
     }
 
-    function placeRandomFlowers(): void {
+    function placeRandomSweets(): void {
         let numberSweets: any = Math.floor((Math.random() * 40) + 5);
 
         for (let i: number = 0; i < numberSweets; i++) {
@@ -46,19 +41,19 @@ namespace Semesteraufgabe {
             let p: number = Math.round((Math.random() * 3) + 0);
             switch (p) {
                 case 0:
-                    let drop: DropsFlower = new DropsFlower(x, y);
+                    let drop: DropsSweet = new DropsSweet(x, y);
                     drop.draw();
-                    flowers.push(drop);
+                    sweets.push(drop);
                     break;
                 case 1:
-                    let bonBon: BonBonFlower = new BonBonFlower(x, y);
+                    let bonBon: BonBonSweet = new BonBonSweet(x, y);
                     bonBon.draw();
-                    flowers.push(bonBon);
+                    sweets.push(bonBon);
                     break;
                 case 2:
-                    let lollipop: LollipopFlower = new LollipopFlower(x, y);
+                    let lollipop: LollipopSweet = new LollipopSweet(x, y);
                     lollipop.draw();
-                    flowers.push(lollipop);
+                    sweets.push(lollipop);
                     break;
                 default:
                     break;

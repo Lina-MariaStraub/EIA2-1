@@ -1,6 +1,6 @@
 namespace Semesteraufgabe {
 
-    export class Flower {
+    export class Sweet {
 
         x: number;
         y: number;

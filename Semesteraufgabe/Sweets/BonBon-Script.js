@@ -1,9 +1,9 @@
 var Semesteraufgabe;
 (function (Semesteraufgabe) {
-    class BonBonFlower extends Semesteraufgabe.Flower {
+    class BonBonSweet extends Semesteraufgabe.Sweet {
         constructor(_x, _y) {
             super(_x, _y);
-            console.log("Create Honigbiene");
+            console.log("Create BonBon");
         }
         draw() {
             Semesteraufgabe.inhalt.beginPath();
@@ -32,6 +32,6 @@ var Semesteraufgabe;
             Semesteraufgabe.inhalt.closePath();
         }
     }
-    Semesteraufgabe.BonBonFlower = BonBonFlower;
+    Semesteraufgabe.BonBonSweet = BonBonSweet;
 })(Semesteraufgabe || (Semesteraufgabe = {}));
 //# sourceMappingURL=BonBon-Script.js.map

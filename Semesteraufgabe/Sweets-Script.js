@@ -1,6 +1,6 @@
 var Semesteraufgabe;
 (function (Semesteraufgabe) {
-    class Flower {
+    class Sweet {
         constructor(_x, _y) {
             this.radius = 10;
             this.winkel = 0;
@@ -11,6 +11,6 @@ var Semesteraufgabe;
             //abtrakt
         }
     }
-    Semesteraufgabe.Flower = Flower;
+    Semesteraufgabe.Sweet = Sweet;
 })(Semesteraufgabe || (Semesteraufgabe = {}));
 //# sourceMappingURL=Sweets-Script.js.map
