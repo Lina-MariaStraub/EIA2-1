@@ -52,9 +52,10 @@ var Semesteraufgabe;
         Semesteraufgabe.inhalt.putImageData(imgData, 0, 0);
         window.setTimeout(animate, 20);
         for (let i = 0; i < monsters.length; i++) {
-            let beast = new Semesteraufgabe.Monster(1450, 690);
+            let beast = monsters[i];
             beast.update();
         }
+        //        
     }
     function zeichneHimmel() {
         Semesteraufgabe.inhalt.beginPath();

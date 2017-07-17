@@ -72,10 +72,11 @@ namespace Semesteraufgabe {
         window.setTimeout(animate, 20);  
             
         for (let i: number = 0; i < monsters.length; i++) {
-            let beast: Monster = new Monster(1450, 690);
+            let beast: Monster = monsters[i];
             beast.update();
-        
-    }
+        }
+//        
+    
         }
 
     function zeichneHimmel(): void {
