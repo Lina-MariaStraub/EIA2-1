@@ -1,5 +1,5 @@
 
-namespace Semesteraufgabe {
+namespace Aufg8_Wiese {
 
     window.addEventListener("load", init);
 

@@ -1,6 +1,6 @@
-var Aufg8_Wiese;
-(function (Aufg8_Wiese) {
-    class Flower {
+var Semesteraufgabe;
+(function (Semesteraufgabe) {
+    class Sweet {
         constructor(_x, _y) {
             this.radius = 10;
             this.winkel = 0;
@@ -11,6 +11,6 @@ var Aufg8_Wiese;
             //abtrakt
         }
     }
-    Aufg8_Wiese.Flower = Flower;
-})(Aufg8_Wiese || (Aufg8_Wiese = {}));
+    Semesteraufgabe.Sweet = Sweet;
+})(Semesteraufgabe || (Semesteraufgabe = {}));
 //# sourceMappingURL=WieseIdeeBlumen.js.map

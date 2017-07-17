@@ -1,4 +1,4 @@
-namespace Semesteraufgabe {
+namespace Aufg8_Wiese {
     export class BonBonFlower extends Flower {
 
         constructor(_x: number, _y: number) {
