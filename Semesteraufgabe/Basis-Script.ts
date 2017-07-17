@@ -30,7 +30,7 @@ namespace Semesteraufgabe {
 
         for (let i: number = 0; i < numberSweets; i++) {
             let x: number = Math.round((Math.random() * inhalt.canvas.width) - 30);
-            let y: number = Math.round((Math.random() * inhalt.canvas.height) - 30);
+            let y: number = Math.round((Math.random() * inhalt.canvas.height) - 60);
             let p: number = Math.round((Math.random() * 3) + 0);
             switch (p) {
                 case 0:

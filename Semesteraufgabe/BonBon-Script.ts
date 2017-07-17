@@ -32,7 +32,7 @@ namespace Semesteraufgabe {
 
             inhalt.moveTo(0, 0);
             inhalt.beginPath();
-            inhalt.arc(this.x, this.y, this.radius, this.winkel, 2 * Math.PI);
+            inhalt.arc(this.x, this.y, this.radius-3, this.winkel, 2 * Math.PI);
             inhalt.fillStyle = "#ff69b4";
             inhalt.fill();
             inhalt.closePath();

@@ -10,35 +10,35 @@ namespace Semesteraufgabe {
 
             inhalt.moveTo(0, 0);
             inhalt.beginPath();
-            inhalt.arc(this.x, this.y, this.radius + 20, this.winkel, 2 * Math.PI);
+            inhalt.arc(this.x, this.y, this.radius + 17, this.winkel, 2 * Math.PI);
             inhalt.fillStyle = "#8b0000";
             inhalt.fill();
             inhalt.closePath();
 
             inhalt.moveTo(0, 0);
             inhalt.beginPath();
-            inhalt.arc(this.x, this.y, this.radius + 15, this.winkel, 2 * Math.PI);
+            inhalt.arc(this.x, this.y, this.radius + 12, this.winkel, 2 * Math.PI);
             inhalt.fillStyle = "#FFFFFF";
             inhalt.fill();
             inhalt.closePath();
 
             inhalt.moveTo(0, 0);
             inhalt.beginPath();
-            inhalt.arc(this.x, this.y, this.radius + 10, this.winkel, 2 * Math.PI);
+            inhalt.arc(this.x, this.y, this.radius + 7, this.winkel, 2 * Math.PI);
             inhalt.fillStyle = "#8b0000";
             inhalt.fill();
             inhalt.closePath();
 
             inhalt.moveTo(0, 0);
             inhalt.beginPath();
-            inhalt.arc(this.x, this.y, this.radius + 5, this.winkel, 2 * Math.PI);
+            inhalt.arc(this.x, this.y, this.radius + 2, this.winkel, 2 * Math.PI);
             inhalt.fillStyle = "#FFFFFF";
             inhalt.fill();
             inhalt.closePath();
 
             inhalt.moveTo(0, 0);
             inhalt.beginPath();
-            inhalt.arc(this.x, this.y, this.radius, this.winkel, 2 * Math.PI);
+            inhalt.arc(this.x, this.y, this.radius-5, this.winkel, 2 * Math.PI);
             inhalt.fillStyle = "#8b0000";
             inhalt.fill();
             inhalt.closePath();

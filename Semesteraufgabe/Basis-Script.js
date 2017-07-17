@@ -19,7 +19,7 @@ var Semesteraufgabe;
         let numberSweets = Math.floor((Math.random() * 40) + 5);
         for (let i = 0; i < numberSweets; i++) {
             let x = Math.round((Math.random() * Semesteraufgabe.inhalt.canvas.width) - 30);
-            let y = Math.round((Math.random() * Semesteraufgabe.inhalt.canvas.height) - 30);
+            let y = Math.round((Math.random() * Semesteraufgabe.inhalt.canvas.height) - 60);
             let p = Math.round((Math.random() * 3) + 0);
             switch (p) {
                 case 0:

@@ -26,7 +26,7 @@ var Semesteraufgabe;
             Semesteraufgabe.inhalt.stroke();
             Semesteraufgabe.inhalt.moveTo(0, 0);
             Semesteraufgabe.inhalt.beginPath();
-            Semesteraufgabe.inhalt.arc(this.x, this.y, this.radius, this.winkel, 2 * Math.PI);
+            Semesteraufgabe.inhalt.arc(this.x, this.y, this.radius - 3, this.winkel, 2 * Math.PI);
             Semesteraufgabe.inhalt.fillStyle = "#ff69b4";
             Semesteraufgabe.inhalt.fill();
             Semesteraufgabe.inhalt.closePath();
