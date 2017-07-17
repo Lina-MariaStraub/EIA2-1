@@ -2,6 +2,7 @@ var Semesteraufgabe;
 (function (Semesteraufgabe) {
     window.addEventListener("load", init);
     Semesteraufgabe.sweets = [];
+    let monsters = [];
     let menge = 1;
     let imgData;
     function init(_event) {
@@ -50,6 +51,10 @@ var Semesteraufgabe;
     function animate() {
         Semesteraufgabe.inhalt.putImageData(imgData, 0, 0);
         window.setTimeout(animate, 20);
+        for (let i = 0; i < monsters.length; i++) {
+            let beast = new Semesteraufgabe.Monster(1450, 690);
+            beast.update();
+        }
     }
     function zeichneHimmel() {
         Semesteraufgabe.inhalt.beginPath();

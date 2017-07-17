@@ -5,6 +5,7 @@ namespace Semesteraufgabe {
     export let inhalt: CanvasRenderingContext2D;
 
     export let sweets: Sweet[] = [];
+    let monsters: Monster [] = [];
     let menge: number = 1;
     let imgData: ImageData;
 
@@ -68,8 +69,14 @@ namespace Semesteraufgabe {
     function animate(): void {
 
         inhalt.putImageData(imgData, 0, 0);
-        window.setTimeout(animate, 20);
+        window.setTimeout(animate, 20);  
+            
+        for (let i: number = 0; i < monsters.length; i++) {
+            let beast: Monster = new Monster(1450, 690);
+            beast.update();
+        
     }
+        }
 
     function zeichneHimmel(): void {
         inhalt.beginPath();
