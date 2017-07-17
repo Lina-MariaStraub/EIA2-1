@@ -10,6 +10,7 @@ var Semesteraufgabe;
         canvas = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
         Semesteraufgabe.inhalt = canvas.getContext("2d");
+        alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst.");
         zeichneHimmel();
         //        for (let i: number = 0; i < 1; i++) {
         //            drawMonster();

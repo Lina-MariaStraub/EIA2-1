@@ -15,6 +15,9 @@ namespace Semesteraufgabe {
         console.log(canvas);
 
         inhalt = canvas.getContext("2d");
+        
+        alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst.");
+        
 
         zeichneHimmel();
     
