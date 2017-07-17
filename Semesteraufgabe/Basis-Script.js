@@ -20,7 +20,7 @@ var Semesteraufgabe;
         window.setTimeout(animate, 20);
     }
     function placeRandomSweets() {
-        let numberSweets = Math.floor((Math.random() * 30) + 20);
+        let numberSweets = Math.floor((Math.random() * 15) + 10);
         for (let i = 0; i < numberSweets; i++) {
             let x = Math.round((Math.random() * 1300) + 100);
             let y = Math.round((Math.random() * 600) + 30);

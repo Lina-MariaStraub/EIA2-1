@@ -30,10 +30,10 @@ namespace Semesteraufgabe {
     }
 
     function placeRandomSweets(): void {
-        let numberSweets: any = Math.floor((Math.random() * 30) + 20);
+        let numberSweets: any = Math.floor((Math.random() * 15) + 10);
 
         for (let i: number = 0; i < numberSweets; i++) {
-            let x: number = Math.round((Math.random() * 1300)+ 100);
+            let x: number = Math.round((Math.random() * 1300) + 100);
             let y: number = Math.round((Math.random() * 600) + 30);
             let p: number = Math.round((Math.random() * 3) + 0);
             switch (p) {
