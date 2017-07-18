@@ -9,45 +9,75 @@ namespace Semesteraufgabe {
         xTarget: number;
         yTarget: number;
         speed: number;
+        targetSweet:number;
+
 
  
         constructor(_x: number, _y: number) {
             this.setRandomStyle();
             this.x = _x;
             this.y = _y;
-            this.speed = 0.04;
+            this.speed =3;
             this.setStartPosition();
             this.setTargetPosition();
+       
             console.log("Create Monster");
              
         }
         
         setStartPosition(): void {
-            this.x = 1250;
-            this.y = 420;          
+            this.x = 1450;
+            this.y = 680;          
             
         }
         
         setTargetPosition(): void {
-            let i: number = Math.floor(Math.random() * (sweets.length - 1));
-            this.xTarget = sweets[i].x + 5;
-            this.yTarget = sweets[i].y - 20;
+
+            this.targetSweet = Math.floor(Math.random() * (sweets.length - 1));
+            console.log("candynummer: " + this.targetSweet);
+            this.xTarget = sweets[this.targetSweet].x + 5;
+            this.yTarget = sweets[this.targetSweet].y - 20;
         }
 
         update(): void {
             this.move();
+            this.search();
             this.draw();
         }
 
-        move(): void {
+        search(): void {
 
+            //ankommen
+            let maxDistance: number = 10;
             let xDiff: number = this.xTarget - this.x;
             let yDiff: number = this.yTarget - this.y;
-            if (Math.abs(xDiff) < 0.5 && Math.abs(yDiff) < 0.5) 
+            console.log("x:  " +xDiff + " - y: " + yDiff);
+            
+            if (Math.abs(xDiff) <= maxDistance && Math.abs(yDiff) <= maxDistance) {
+                console.log(sweets);
+                // fressen
+                sweets.splice(this.targetSweet, 1);
+            
+            // neues target
                 this.setTargetPosition();
+
+                }
+    
+        }
+
+        move(): void {
+            
+            let xDiff: number = this.xTarget - this.x;
+            let yDiff: number = this.yTarget - this.y;
+            let distance: number= 0.5;
+            if (Math.abs(xDiff) < distance && Math.abs(yDiff) < distance){ 
+                this.x= this.xTarget;
+                this.y= this.yTarget;
+                }
             else {
-                    this.x += xDiff * this.speed;
-                    this.y += yDiff * this.speed;
+                    
+                    this.x += Math.sign(xDiff) * this.speed;
+                    this.y += Math.sign(yDiff) * this.speed;
                 }
             
 

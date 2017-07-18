@@ -5,32 +5,51 @@ var Semesteraufgabe;
             this.setRandomStyle();
             this.x = _x;
             this.y = _y;
-            this.speed = 0.04;
+            this.speed = 3;
             this.setStartPosition();
             this.setTargetPosition();
             console.log("Create Monster");
         }
         setStartPosition() {
-            this.x = 1250;
-            this.y = 420;
+            this.x = 1450;
+            this.y = 680;
         }
         setTargetPosition() {
-            let i = Math.floor(Math.random() * (Semesteraufgabe.sweets.length - 1));
-            this.xTarget = Semesteraufgabe.sweets[i].x + 5;
-            this.yTarget = Semesteraufgabe.sweets[i].y - 20;
+            this.targetSweet = Math.floor(Math.random() * (Semesteraufgabe.sweets.length - 1));
+            console.log("candynummer: " + this.targetSweet);
+            this.xTarget = Semesteraufgabe.sweets[this.targetSweet].x + 5;
+            this.yTarget = Semesteraufgabe.sweets[this.targetSweet].y - 20;
         }
         update() {
             this.move();
+            this.search();
             this.draw();
+        }
+        search() {
+            //ankommen
+            let maxDistance = 10;
+            let xDiff = this.xTarget - this.x;
+            let yDiff = this.yTarget - this.y;
+            console.log("x:  " + xDiff + " - y: " + yDiff);
+            if (Math.abs(xDiff) <= maxDistance && Math.abs(yDiff) <= maxDistance) {
+                console.log(Semesteraufgabe.sweets);
+                // fressen
+                Semesteraufgabe.sweets.splice(this.targetSweet, 1);
+                // neues target
+                this.setTargetPosition();
+            }
         }
         move() {
             let xDiff = this.xTarget - this.x;
             let yDiff = this.yTarget - this.y;
-            if (Math.abs(xDiff) < 0.5 && Math.abs(yDiff) < 0.5)
-                this.setTargetPosition();
+            let distance = 0.5;
+            if (Math.abs(xDiff) < distance && Math.abs(yDiff) < distance) {
+                this.x = this.xTarget;
+                this.y = this.yTarget;
+            }
             else {
-                this.x += xDiff * this.speed;
-                this.y += yDiff * this.speed;
+                this.x += Math.sign(xDiff) * this.speed;
+                this.y += Math.sign(yDiff) * this.speed;
             }
         }
         setRandomStyle() {

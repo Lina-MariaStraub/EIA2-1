@@ -2,7 +2,7 @@ var Semesteraufgabe;
 (function (Semesteraufgabe) {
     window.addEventListener("load", init);
     Semesteraufgabe.sweets = [];
-    let monsters = [];
+    Semesteraufgabe.monsters = [];
     let menge = 1;
     let imgData;
     function init(_event) {
@@ -26,17 +26,17 @@ var Semesteraufgabe;
             switch (p) {
                 case 0:
                     let drop = new Semesteraufgabe.DropsSweet(x, y);
-                    drop.draw();
+                    //                    drop.draw();
                     Semesteraufgabe.sweets.push(drop);
                     break;
                 case 1:
                     let bonBon = new Semesteraufgabe.BonBonSweet(x, y);
-                    bonBon.draw();
+                    //                    bonBon.draw();
                     Semesteraufgabe.sweets.push(bonBon);
                     break;
                 case 2:
                     let lollipop = new Semesteraufgabe.LollipopSweet(x, y);
-                    lollipop.draw();
+                    //                    lollipop.draw();
                     Semesteraufgabe.sweets.push(lollipop);
                     break;
                 default:
@@ -46,13 +46,16 @@ var Semesteraufgabe;
     }
     function drawMonster() {
         let beast = new Semesteraufgabe.Monster(1450, 690);
-        beast.draw();
+        Semesteraufgabe.monsters.push(beast);
     }
     function animate() {
         Semesteraufgabe.inhalt.putImageData(imgData, 0, 0);
         window.setTimeout(animate, 20);
-        for (let i = 0; i < monsters.length; i++) {
-            let beast = monsters[i];
+        for (let i = 0; i < Semesteraufgabe.sweets.length; i++) {
+            Semesteraufgabe.sweets[i].draw();
+        }
+        for (let i = 0; i < 1; i++) {
+            let beast = Semesteraufgabe.monsters[i];
             beast.update();
         }
         //        

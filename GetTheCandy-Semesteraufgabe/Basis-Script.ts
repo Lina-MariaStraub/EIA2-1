@@ -5,7 +5,7 @@ namespace Semesteraufgabe {
     export let inhalt: CanvasRenderingContext2D;
 
     export let sweets: Sweet[] = [];
-    let monsters: Monster [] = [];
+    export let monsters: Monster [] = [];
     let menge: number = 1;
     let imgData: ImageData;
 
@@ -40,17 +40,17 @@ namespace Semesteraufgabe {
             switch (p) {
                 case 0:
                     let drop: DropsSweet = new DropsSweet(x, y);
-                    drop.draw();
+//                    drop.draw();
                     sweets.push(drop);
                     break;
                 case 1:
                     let bonBon: BonBonSweet = new BonBonSweet(x, y);
-                    bonBon.draw();
+//                    bonBon.draw();
                     sweets.push(bonBon);
                     break;
                 case 2:
                     let lollipop: LollipopSweet = new LollipopSweet(x, y);
-                    lollipop.draw();
+//                    lollipop.draw();
                     sweets.push(lollipop);
                     break;
                 default:
@@ -62,16 +62,22 @@ namespace Semesteraufgabe {
     
         function drawMonster(): void {
         let beast: Monster = new Monster(1450, 690);
-        beast.draw();
+        monsters.push(beast);
+
     }
 
 
     function animate(): void {
 
         inhalt.putImageData(imgData, 0, 0);
-        window.setTimeout(animate, 20);  
+        window.setTimeout(animate, 20); 
+        
+        for( let i :number =0; i<sweets.length; i++){
+            sweets[i].draw();
             
-        for (let i: number = 0; i < monsters.length; i++) {
+            }
+            
+        for (let i: number = 0; i < 1; i++) {
             let beast: Monster = monsters[i];
             beast.update();
         }
