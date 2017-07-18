@@ -42,21 +42,21 @@ namespace Semesteraufgabe {
 
         setTargetPosition(): void {
 
-            if (sweets.length==0){
+            if (sweets.length == 0) {
                 this.stop();
             }
-            else{
-            this.targetSweet = Math.floor(Math.random() * (sweets.length - 1));
-            console.log("candynummer: " + this.targetSweet);
-            this.xTarget = sweets[this.targetSweet].x + 5;
-            this.yTarget = sweets[this.targetSweet].y - 20;
+            else {
+                this.targetSweet = Math.floor(Math.random() * (sweets.length - 1));
+                console.log("candynummer: " + this.targetSweet);
+                this.xTarget = sweets[this.targetSweet].x + 5;
+                this.yTarget = sweets[this.targetSweet].y - 20;
 
-            let xDiff: number = this.xTarget - this.x;
-            let yDiff: number = this.yTarget - this.y;
-            this.xDirection = xDiff / (Math.sqrt(xDiff * xDiff + yDiff * yDiff));
-            this.yDirection = yDiff / (Math.sqrt(xDiff * xDiff + yDiff * yDiff));
+                let xDiff: number = this.xTarget - this.x;
+                let yDiff: number = this.yTarget - this.y;
+                this.xDirection = xDiff / (Math.sqrt(xDiff * xDiff + yDiff * yDiff));
+                this.yDirection = yDiff / (Math.sqrt(xDiff * xDiff + yDiff * yDiff));
             }
-            
+
         }
 
         update(): void {
@@ -64,7 +64,7 @@ namespace Semesteraufgabe {
                 this.move(); //bewegt sich
                 this.search(); //sucht sich sein fressen,frisst, neues fressen suchen
             }
-            this.draw();// zeichnet monster
+            this.draw(); // zeichnet monster
         }
 
         search(): void {
