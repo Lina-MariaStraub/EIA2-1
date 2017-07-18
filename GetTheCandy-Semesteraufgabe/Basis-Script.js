@@ -26,17 +26,14 @@ var Semesteraufgabe;
             switch (p) {
                 case 0:
                     let drop = new Semesteraufgabe.DropsSweet(x, y);
-                    //                    drop.draw();
                     Semesteraufgabe.sweets.push(drop);
                     break;
                 case 1:
                     let bonBon = new Semesteraufgabe.BonBonSweet(x, y);
-                    //                    bonBon.draw();
                     Semesteraufgabe.sweets.push(bonBon);
                     break;
                 case 2:
                     let lollipop = new Semesteraufgabe.LollipopSweet(x, y);
-                    //                    lollipop.draw();
                     Semesteraufgabe.sweets.push(lollipop);
                     break;
                 default:

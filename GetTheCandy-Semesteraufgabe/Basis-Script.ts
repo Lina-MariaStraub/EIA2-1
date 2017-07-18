@@ -33,6 +33,7 @@ namespace Semesteraufgabe {
     function placeRandomSweets(): void {
         let numberSweets: any = Math.floor((Math.random() * 15) + 10);
 
+
         for (let i: number = 0; i < numberSweets; i++) {
             let x: number = Math.round((Math.random() * 1300) + 100);
             let y: number = Math.round((Math.random() * 600) + 30);
@@ -40,17 +41,14 @@ namespace Semesteraufgabe {
             switch (p) {
                 case 0:
                     let drop: DropsSweet = new DropsSweet(x, y);
-//                    drop.draw();
                     sweets.push(drop);
                     break;
                 case 1:
                     let bonBon: BonBonSweet = new BonBonSweet(x, y);
-//                    bonBon.draw();
                     sweets.push(bonBon);
                     break;
                 case 2:
                     let lollipop: LollipopSweet = new LollipopSweet(x, y);
-//                    lollipop.draw();
                     sweets.push(lollipop);
                     break;
                 default:

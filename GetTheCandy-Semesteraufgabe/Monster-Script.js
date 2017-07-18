@@ -8,22 +8,37 @@ var Semesteraufgabe;
             this.speed = 3;
             this.setStartPosition();
             this.setTargetPosition();
+            this.active = true;
             console.log("Create Monster");
         }
         setStartPosition() {
             this.x = 1450;
             this.y = 680;
         }
+        stop() {
+            this.active = false;
+        }
         setTargetPosition() {
-            this.targetSweet = Math.floor(Math.random() * (Semesteraufgabe.sweets.length - 1));
-            console.log("candynummer: " + this.targetSweet);
-            this.xTarget = Semesteraufgabe.sweets[this.targetSweet].x + 5;
-            this.yTarget = Semesteraufgabe.sweets[this.targetSweet].y - 20;
+            if (Semesteraufgabe.sweets.length == 0) {
+                this.stop();
+            }
+            else {
+                this.targetSweet = Math.floor(Math.random() * (Semesteraufgabe.sweets.length - 1));
+                console.log("candynummer: " + this.targetSweet);
+                this.xTarget = Semesteraufgabe.sweets[this.targetSweet].x + 5;
+                this.yTarget = Semesteraufgabe.sweets[this.targetSweet].y - 20;
+                let xDiff = this.xTarget - this.x;
+                let yDiff = this.yTarget - this.y;
+                this.xDirection = xDiff / (Math.sqrt(xDiff * xDiff + yDiff * yDiff));
+                this.yDirection = yDiff / (Math.sqrt(xDiff * xDiff + yDiff * yDiff));
+            }
         }
         update() {
-            this.move();
-            this.search();
-            this.draw();
+            if (this.active == true) {
+                this.move(); //bewegt sich
+                this.search(); //sucht sich sein fressen,frisst, neues fressen suchen
+            }
+            this.draw(); // zeichnet monster
         }
         search() {
             //ankommen
@@ -48,8 +63,8 @@ var Semesteraufgabe;
                 this.y = this.yTarget;
             }
             else {
-                this.x += Math.sign(xDiff) * this.speed;
-                this.y += Math.sign(yDiff) * this.speed;
+                this.x += this.xDirection * this.speed;
+                this.y += this.yDirection * this.speed;
             }
         }
         setRandomStyle() {

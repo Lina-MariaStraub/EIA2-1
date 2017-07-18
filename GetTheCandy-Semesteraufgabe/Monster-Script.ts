@@ -4,45 +4,67 @@ namespace Semesteraufgabe {
 
         x: number;
         y: number;
-        scale: number; 
+        scale: number;
         farbe: string;
         xTarget: number;
         yTarget: number;
         speed: number;
-        targetSweet:number;
+        targetSweet: number;
+        xDirection: number;
+        yDirection: number;
+        active: boolean;
 
 
- 
+
         constructor(_x: number, _y: number) {
             this.setRandomStyle();
             this.x = _x;
             this.y = _y;
-            this.speed =3;
+            this.speed = 3;
             this.setStartPosition();
             this.setTargetPosition();
-       
+            this.active = true;
+
             console.log("Create Monster");
-             
+
         }
-        
+
         setStartPosition(): void {
             this.x = 1450;
-            this.y = 680;          
-            
+            this.y = 680;
+
         }
-        
+
+        stop(): void {
+            this.active = false;
+
+        }
+
         setTargetPosition(): void {
 
+            if (sweets.length==0){
+                this.stop();
+            }
+            else{
             this.targetSweet = Math.floor(Math.random() * (sweets.length - 1));
             console.log("candynummer: " + this.targetSweet);
             this.xTarget = sweets[this.targetSweet].x + 5;
             this.yTarget = sweets[this.targetSweet].y - 20;
+
+            let xDiff: number = this.xTarget - this.x;
+            let yDiff: number = this.yTarget - this.y;
+            this.xDirection = xDiff / (Math.sqrt(xDiff * xDiff + yDiff * yDiff));
+            this.yDirection = yDiff / (Math.sqrt(xDiff * xDiff + yDiff * yDiff));
+            }
+            
         }
 
         update(): void {
-            this.move();
-            this.search();
-            this.draw();
+            if (this.active == true) {
+                this.move(); //bewegt sich
+                this.search(); //sucht sich sein fressen,frisst, neues fressen suchen
+            }
+            this.draw();// zeichnet monster
         }
 
         search(): void {
@@ -51,35 +73,35 @@ namespace Semesteraufgabe {
             let maxDistance: number = 10;
             let xDiff: number = this.xTarget - this.x;
             let yDiff: number = this.yTarget - this.y;
-            console.log("x:  " +xDiff + " - y: " + yDiff);
-            
+            console.log("x:  " + xDiff + " - y: " + yDiff);
+
             if (Math.abs(xDiff) <= maxDistance && Math.abs(yDiff) <= maxDistance) {
                 console.log(sweets);
                 // fressen
                 sweets.splice(this.targetSweet, 1);
-            
-            // neues target
+
+                // neues target
                 this.setTargetPosition();
 
-                }
-    
+            }
+
         }
 
         move(): void {
-            
+
             let xDiff: number = this.xTarget - this.x;
             let yDiff: number = this.yTarget - this.y;
-            let distance: number= 0.5;
-            if (Math.abs(xDiff) < distance && Math.abs(yDiff) < distance){ 
-                this.x= this.xTarget;
-                this.y= this.yTarget;
-                }
+            let distance: number = 0.5;
+            if (Math.abs(xDiff) < distance && Math.abs(yDiff) < distance) {
+                this.x = this.xTarget;
+                this.y = this.yTarget;
+            }
             else {
-                    
-                    this.x += Math.sign(xDiff) * this.speed;
-                    this.y += Math.sign(yDiff) * this.speed;
-                }
-            
+
+                this.x += this.xDirection * this.speed;
+                this.y += this.yDirection * this.speed;
+            }
+
 
         }
 
