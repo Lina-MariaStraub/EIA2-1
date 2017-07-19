@@ -5,7 +5,7 @@ namespace Semesteraufgabe {
     export let inhalt: CanvasRenderingContext2D;
 
     export let sweets: Sweet[] = [];
-    export let monsters: Monster [] = [];
+    export let beast: Monster;
     let menge: number = 1;
     let imgData: ImageData;
 
@@ -13,22 +13,23 @@ namespace Semesteraufgabe {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
-
+        canvas.addEventListener("click", function(event){canvasClicked(event,canvas);});
         inhalt = canvas.getContext("2d");
         
     //    alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst.");
         
-
         zeichneHimmel();
     
         
         placeRandomSweets();
         drawMonster();
 
+
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);        
         window.setTimeout(animate, 20);
 
     }
+   
 
     function placeRandomSweets(): void {
         let numberSweets: any = Math.floor((Math.random() * 15) + 10);
@@ -59,10 +60,23 @@ namespace Semesteraufgabe {
     }
     
         function drawMonster(): void {
-        let beast: Monster = new Monster(1450, 690);
-        monsters.push(beast);
+        beast= new Monster(1450, 690);
 
     }
+    
+        function canvasClicked(event: MouseEvent, canvas: any): void {
+            //Calculate actual x y positions on canvas
+            let rect = canvas.getBoundingClientRect();
+            let x: number = event.clientX - rect.left;
+            let y: number = event.clientY - rect.top;
+            for (let i: number = 0; i < sweets.length; i++) {
+                if ( sweets[i].hit(x, y)){                                  
+                   sweets.splice( i, 1);   
+                    beast.sweetChanged(i); 
+                                   
+                    }
+            }
+        }
 
 
     function animate(): void {
@@ -73,12 +87,9 @@ namespace Semesteraufgabe {
         for( let i :number =0; i<sweets.length; i++){
             sweets[i].draw();
             
-            }
-            
-        for (let i: number = 0; i < 1; i++) {
-            let beast: Monster = monsters[i];
+            }     
             beast.update();
-        }
+        
 //        
     
         }
@@ -92,4 +103,59 @@ namespace Semesteraufgabe {
     }
     
 
-}
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+
+    
+        function start(_event: Event): void {
+        let canvas: HTMLCanvasElement;
+        canvas = document.getElementsByTagName("canvas")[0];
+        canvas.width = 1300;
+        canvas.height = 700;
+        console.log(canvas);
+        canvas.addEventListener("click", startTutorial);
+        inhalt = canvas.getContext("2d");
+        console.log(inhalt);
+
+        zeichneHimmel();
+
+        // Text 
+        inhalt.stroke();
+        inhalt.fillStyle = "black";
+        inhalt.font = "100px Arial";
+        inhalt.fillText("Get the Candy", 250, 250);
+        inhalt.font = "60px Arial";
+        inhalt.fillText("Bitte klicken Sie ein Mal.", 250, 450);
+
+
+    
+
+    function startTutorial(_event: Event): void {
+
+        let canvas: HTMLCanvasElement;
+        canvas = document.getElementsByTagName("canvas")[0];
+        canvas.width = 1500;
+        canvas.height = 710;
+        console.log(canvas);
+        canvas.removeEventListener("click", startTutorial);
+        canvas.addEventListener("click", init);
+        
+        inhalt = canvas.getContext("2d");
+        console.log(inhalt);
+
+        zeichneHimmel();
+
+        // Schrift
+        inhalt.stroke();
+        inhalt.fillStyle = "black";
+        inhalt.font = "35px Arial";
+        inhalt.fillText("Lösche die Süßigkeiten(mit klicken) aus, bevor das Monster sie frisst. ", 50, 250);
+        inhalt.fillText("Frisst das Monster drei Süßigkeiten, ist das Spiel vorbei. ", 50, 530);
+        inhalt.fillText("Klicke um das Spiel zu starten.", 50, 620);
+
+
+
+    };
+
+
+}}

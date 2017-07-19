@@ -73,15 +73,28 @@ namespace Semesteraufgabe {
             let maxDistance: number = 10;
             let xDiff: number = this.xTarget - this.x;
             let yDiff: number = this.yTarget - this.y;
-            console.log("x:  " + xDiff + " - y: " + yDiff);
 
             if (Math.abs(xDiff) <= maxDistance && Math.abs(yDiff) <= maxDistance) {
-                console.log(sweets);
+
                 // fressen
                 sweets.splice(this.targetSweet, 1);
 
                 // neues target
                 this.setTargetPosition();
+                
+            }
+
+        }
+        
+        sweetChanged(_i: number): void {
+            let n: number = this.targetSweet;
+            if (n == _i) {
+
+                this.setTargetPosition();
+            }
+            if (_i < this.targetSweet) {
+
+                this.targetSweet--;
 
             }
 

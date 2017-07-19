@@ -6,6 +6,7 @@ var Semesteraufgabe;
             console.log("Create BonBon");
         }
         draw() {
+            //            inhalt.fillRect(this.x-this.width/2, this.y-this.height/2, this.width, this.height);
             Semesteraufgabe.inhalt.beginPath();
             Semesteraufgabe.inhalt.fillStyle = " #c71585 ";
             Semesteraufgabe.inhalt.strokeStyle = "#c71585";

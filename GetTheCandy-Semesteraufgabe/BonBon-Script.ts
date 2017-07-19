@@ -8,6 +8,8 @@ namespace Semesteraufgabe {
         
         
         draw(): void {
+            
+//            inhalt.fillRect(this.x-this.width/2, this.y-this.height/2, this.width, this.height);
 
             inhalt.beginPath();
 

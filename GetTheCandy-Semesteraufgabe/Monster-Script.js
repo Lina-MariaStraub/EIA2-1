@@ -45,13 +45,20 @@ var Semesteraufgabe;
             let maxDistance = 10;
             let xDiff = this.xTarget - this.x;
             let yDiff = this.yTarget - this.y;
-            console.log("x:  " + xDiff + " - y: " + yDiff);
             if (Math.abs(xDiff) <= maxDistance && Math.abs(yDiff) <= maxDistance) {
-                console.log(Semesteraufgabe.sweets);
                 // fressen
                 Semesteraufgabe.sweets.splice(this.targetSweet, 1);
                 // neues target
                 this.setTargetPosition();
+            }
+        }
+        sweetChanged(_i) {
+            let n = this.targetSweet;
+            if (n == _i) {
+                this.setTargetPosition();
+            }
+            if (_i < this.targetSweet) {
+                this.targetSweet--;
             }
         }
         move() {
