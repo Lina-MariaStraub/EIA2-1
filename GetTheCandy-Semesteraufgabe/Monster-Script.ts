@@ -9,10 +9,11 @@ namespace Semesteraufgabe {
         xTarget: number;
         yTarget: number;
         speed: number;
-        targetSweet: number;
+        targetSweet: Sweet;
         xDirection: number;
         yDirection: number;
         active: boolean;
+        maxEatenCandy:number = 1;
 
 
 
@@ -46,10 +47,11 @@ namespace Semesteraufgabe {
                 this.stop();
             }
             else {
-                this.targetSweet = Math.floor(Math.random() * (sweets.length - 1));
-                console.log("candynummer: " + this.targetSweet);
-                this.xTarget = sweets[this.targetSweet].x + 5;
-                this.yTarget = sweets[this.targetSweet].y - 20;
+               
+                let n:number = Math.floor(Math.random() * (sweets.length - 1));
+                this.targetSweet= sweets[n];
+                this.xTarget = sweets[n].x + 5;
+                this.yTarget = sweets[n].y - 20;
 
                 let xDiff: number = this.xTarget - this.x;
                 let yDiff: number = this.yTarget - this.y;
@@ -76,8 +78,9 @@ namespace Semesteraufgabe {
 
             if (Math.abs(xDiff) <= maxDistance && Math.abs(yDiff) <= maxDistance) {
 
-                // fressen
-                sweets.splice(this.targetSweet, 1);
+                // fressen               
+                sweets.splice(sweets.indexOf(this.targetSweet) , 1);
+                
 
                 // neues target
                 this.setTargetPosition();
@@ -86,20 +89,18 @@ namespace Semesteraufgabe {
 
         }
         
-        sweetChanged(_i: number): void {
-            let n: number = this.targetSweet;
-            if (n == _i) {
+        sweetChanged(_i: Sweet): void {
 
+                console.log(this.targetSweet);
+            if (_i==this.targetSweet){
+                
                 this.setTargetPosition();
-            }
-            if (_i < this.targetSweet) {
-
-                this.targetSweet--;
-
-            }
-
-        }
-
+                
+                }
+            
+            
+                }
+  
         move(): void {
 
             let xDiff: number = this.xTarget - this.x;

@@ -9,31 +9,31 @@ namespace Semesteraufgabe {
     let menge: number = 1;
     let imgData: ImageData;
 
+
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
-        canvas.addEventListener("click", function(event){canvasClicked(event,canvas);});
+        canvas.addEventListener("click", function(event) { canvasClicked(event, canvas); });
         inhalt = canvas.getContext("2d");
-        
-    //    alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst.");
-        
+
+        //    alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst."    
         zeichneHimmel();
-    
-        
+
+
         placeRandomSweets();
         drawMonster();
 
 
-        imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);        
+        imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
         window.setTimeout(animate, 20);
 
     }
-   
+
 
     function placeRandomSweets(): void {
-        let numberSweets: any = Math.floor((Math.random() * 15) + 10);
-
+        //        let numberSweets: any = Math.floor((Math.random() * 15) + 10);
+        let numberSweets: any = 7;
 
         for (let i: number = 0; i < numberSweets; i++) {
             let x: number = Math.round((Math.random() * 1300) + 100);
@@ -58,41 +58,43 @@ namespace Semesteraufgabe {
 
         }
     }
-    
-        function drawMonster(): void {
-        beast= new Monster(1450, 690);
+
+    function drawMonster(): void {
+        beast = new Monster(1450, 690);
 
     }
-    
-        function canvasClicked(event: MouseEvent, canvas: any): void {
-            //Calculate actual x y positions on canvas
-            let rect = canvas.getBoundingClientRect();
-            let x: number = event.clientX - rect.left;
-            let y: number = event.clientY - rect.top;
-            for (let i: number = 0; i < sweets.length; i++) {
-                if ( sweets[i].hit(x, y)){                                  
-                   sweets.splice( i, 1);   
-                    beast.sweetChanged(i); 
-                                   
-                    }
+
+    function canvasClicked(event: MouseEvent, canvas: any): void {
+        //Calculate actual x y positions on canvas
+        let rect = canvas.getBoundingClientRect();
+        let x: number = event.clientX - rect.left;
+        let y: number = event.clientY - rect.top;
+        for (let i: number = 0; i < sweets.length; i++) {
+            if (sweets[i].hit(x, y)) {
+                let object: Sweet = sweets[i];
+                sweets.splice(i, 1);
+                beast.sweetChanged(object);
+                break;
+
             }
         }
+    }
 
 
     function animate(): void {
 
         inhalt.putImageData(imgData, 0, 0);
-        window.setTimeout(animate, 20); 
-        
-        for( let i :number =0; i<sweets.length; i++){
+        window.setTimeout(animate, 20);
+
+        for (let i: number = 0; i < sweets.length; i++) {
             sweets[i].draw();
-            
-            }     
-            beast.update();
-        
-//        
-    
+
         }
+        beast.update();
+
+        //    
+    
+    }
 
     function zeichneHimmel(): void {
         inhalt.beginPath();
@@ -101,13 +103,10 @@ namespace Semesteraufgabe {
         inhalt.fillStyle = "#C4E4F5";
         inhalt.fill();
     }
-    
 
- //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
 
-    
-        function start(_event: Event): void {
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////      
+    function start(_event: Event): void {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.width = 1300;
@@ -128,34 +127,35 @@ namespace Semesteraufgabe {
         inhalt.fillText("Bitte klicken Sie ein Mal.", 250, 450);
 
 
-    
-
-    function startTutorial(_event: Event): void {
-
-        let canvas: HTMLCanvasElement;
-        canvas = document.getElementsByTagName("canvas")[0];
-        canvas.width = 1500;
-        canvas.height = 710;
-        console.log(canvas);
-        canvas.removeEventListener("click", startTutorial);
-        canvas.addEventListener("click", init);
-        
-        inhalt = canvas.getContext("2d");
-        console.log(inhalt);
-
-        zeichneHimmel();
-
-        // Schrift
-        inhalt.stroke();
-        inhalt.fillStyle = "black";
-        inhalt.font = "35px Arial";
-        inhalt.fillText("Lösche die Süßigkeiten(mit klicken) aus, bevor das Monster sie frisst. ", 50, 250);
-        inhalt.fillText("Frisst das Monster drei Süßigkeiten, ist das Spiel vorbei. ", 50, 530);
-        inhalt.fillText("Klicke um das Spiel zu starten.", 50, 620);
 
 
+        function startTutorial(_event: Event): void {
 
-    };
+            let canvas: HTMLCanvasElement;
+            canvas = document.getElementsByTagName("canvas")[0];
+            canvas.width = 1500;
+            canvas.height = 710;
+            console.log(canvas);
+            canvas.removeEventListener("click", startTutorial);
+            canvas.addEventListener("click", init);
+
+            inhalt = canvas.getContext("2d");
+            console.log(inhalt);
+
+            zeichneHimmel();
+
+            // Schrift
+            inhalt.stroke();
+            inhalt.fillStyle = "black";
+            inhalt.font = "35px Arial";
+            inhalt.fillText("Lösche die Süßigkeiten(mit klicken) aus, bevor das Monster sie frisst. ", 50, 250);
+            inhalt.fillText("Frisst das Monster drei Süßigkeiten, ist das Spiel vorbei. ", 50, 530);
+            inhalt.fillText("Klicke um das Spiel zu starten.", 50, 620);
 
 
-}}
+
+        };
+
+
+    }
+}

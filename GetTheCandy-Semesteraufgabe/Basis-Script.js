@@ -10,7 +10,7 @@ var Semesteraufgabe;
         console.log(canvas);
         canvas.addEventListener("click", function (event) { canvasClicked(event, canvas); });
         Semesteraufgabe.inhalt = canvas.getContext("2d");
-        //    alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst.");
+        //    alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst."    
         zeichneHimmel();
         placeRandomSweets();
         drawMonster();
@@ -18,7 +18,8 @@ var Semesteraufgabe;
         window.setTimeout(animate, 20);
     }
     function placeRandomSweets() {
-        let numberSweets = Math.floor((Math.random() * 15) + 10);
+        //        let numberSweets: any = Math.floor((Math.random() * 15) + 10);
+        let numberSweets = 7;
         for (let i = 0; i < numberSweets; i++) {
             let x = Math.round((Math.random() * 1300) + 100);
             let y = Math.round((Math.random() * 600) + 30);
@@ -51,8 +52,10 @@ var Semesteraufgabe;
         let y = event.clientY - rect.top;
         for (let i = 0; i < Semesteraufgabe.sweets.length; i++) {
             if (Semesteraufgabe.sweets[i].hit(x, y)) {
+                let object = Semesteraufgabe.sweets[i];
                 Semesteraufgabe.sweets.splice(i, 1);
-                Semesteraufgabe.beast.sweetChanged(i);
+                Semesteraufgabe.beast.sweetChanged(object);
+                break;
             }
         }
     }
@@ -63,7 +66,7 @@ var Semesteraufgabe;
             Semesteraufgabe.sweets[i].draw();
         }
         Semesteraufgabe.beast.update();
-        //        
+        //    
     }
     function zeichneHimmel() {
         Semesteraufgabe.inhalt.beginPath();
@@ -72,7 +75,7 @@ var Semesteraufgabe;
         Semesteraufgabe.inhalt.fillStyle = "#C4E4F5";
         Semesteraufgabe.inhalt.fill();
     }
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////   
     function start(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];

@@ -2,6 +2,7 @@ var Semesteraufgabe;
 (function (Semesteraufgabe) {
     class Monster {
         constructor(_x, _y) {
+            this.maxEatenCandy = 1;
             this.setRandomStyle();
             this.x = _x;
             this.y = _y;
@@ -23,10 +24,10 @@ var Semesteraufgabe;
                 this.stop();
             }
             else {
-                this.targetSweet = Math.floor(Math.random() * (Semesteraufgabe.sweets.length - 1));
-                console.log("candynummer: " + this.targetSweet);
-                this.xTarget = Semesteraufgabe.sweets[this.targetSweet].x + 5;
-                this.yTarget = Semesteraufgabe.sweets[this.targetSweet].y - 20;
+                let n = Math.floor(Math.random() * (Semesteraufgabe.sweets.length - 1));
+                this.targetSweet = Semesteraufgabe.sweets[n];
+                this.xTarget = Semesteraufgabe.sweets[n].x + 5;
+                this.yTarget = Semesteraufgabe.sweets[n].y - 20;
                 let xDiff = this.xTarget - this.x;
                 let yDiff = this.yTarget - this.y;
                 this.xDirection = xDiff / (Math.sqrt(xDiff * xDiff + yDiff * yDiff));
@@ -46,19 +47,16 @@ var Semesteraufgabe;
             let xDiff = this.xTarget - this.x;
             let yDiff = this.yTarget - this.y;
             if (Math.abs(xDiff) <= maxDistance && Math.abs(yDiff) <= maxDistance) {
-                // fressen
-                Semesteraufgabe.sweets.splice(this.targetSweet, 1);
+                // fressen               
+                Semesteraufgabe.sweets.splice(Semesteraufgabe.sweets.indexOf(this.targetSweet), 1);
                 // neues target
                 this.setTargetPosition();
             }
         }
         sweetChanged(_i) {
-            let n = this.targetSweet;
-            if (n == _i) {
+            console.log(this.targetSweet);
+            if (_i == this.targetSweet) {
                 this.setTargetPosition();
-            }
-            if (_i < this.targetSweet) {
-                this.targetSweet--;
             }
         }
         move() {
