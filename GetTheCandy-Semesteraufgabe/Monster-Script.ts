@@ -21,7 +21,7 @@ namespace Semesteraufgabe {
             this.scale= 3;
             this.x = _x;
             this.y = _y;
-            this.speed = 4;
+            this.speed = 5;
             this.setTargetPosition();
             this.active = true;
 
