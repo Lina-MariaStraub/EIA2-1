@@ -13,7 +13,7 @@ namespace Semesteraufgabe {
         xDirection: number;
         yDirection: number;
         active: boolean;
-        maxEatenCandy: number = 1;
+        eatenCandy: number = 0;
 
 
 
@@ -64,12 +64,12 @@ namespace Semesteraufgabe {
         update(): void {
             if (this.active == true) {
                 this.move(); //bewegt sich
-                this.search(); //sucht sich sein fressen,frisst, neues fressen suchen
+                this.eatCandyIfClose(); //sucht sich sein fressen,frisst, neues fressen suchen
             }
             this.draw(); // zeichnet monster
         }
 
-        search(): void {
+        eatCandyIfClose(): void {
 
             //ankommen
             let maxDistance: number = 10;
@@ -80,14 +80,15 @@ namespace Semesteraufgabe {
                 // fressen               
                 sweets.splice(sweets.indexOf(this.targetSweet) , 1);
                 // neues target
-                this.setTargetPosition();         
+                this.setTargetPosition();  
+                
+                this.eatenCandy += 1;
             }
-//            if (this.sweets.splice == 3){
-//                
-//                this.stop();
-//                
-//                }
+            if (this.eatenCandy == 3) {
 
+                this.stop();
+                alert("Du has leider verloren. Ich hab dich am Anfang des Spiels gewarnt!" + "Lade das Spiel neu, um es erneut zu versuchen.");
+            }
         }
         
         sweetChanged(_i: Sweet): void {

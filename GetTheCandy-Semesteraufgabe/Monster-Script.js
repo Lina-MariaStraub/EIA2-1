@@ -2,7 +2,7 @@ var Semesteraufgabe;
 (function (Semesteraufgabe) {
     class Monster {
         constructor(_x, _y) {
-            this.maxEatenCandy = 1;
+            this.eatenCandy = 0;
             this.setRandomStyle();
             this.x = _x;
             this.y = _y;
@@ -37,11 +37,11 @@ var Semesteraufgabe;
         update() {
             if (this.active == true) {
                 this.move(); //bewegt sich
-                this.search(); //sucht sich sein fressen,frisst, neues fressen suchen
+                this.eatCandyIfClose(); //sucht sich sein fressen,frisst, neues fressen suchen
             }
             this.draw(); // zeichnet monster
         }
-        search() {
+        eatCandyIfClose() {
             //ankommen
             let maxDistance = 10;
             let xDiff = this.xTarget - this.x;
@@ -51,12 +51,12 @@ var Semesteraufgabe;
                 Semesteraufgabe.sweets.splice(Semesteraufgabe.sweets.indexOf(this.targetSweet), 1);
                 // neues target
                 this.setTargetPosition();
+                this.eatenCandy += 1;
             }
-            //            if (this.sweets.splice == 3){
-            //                
-            //                this.stop();
-            //                
-            //                }
+            if (this.eatenCandy == 3) {
+                this.stop();
+                alert("Du has leider verloren. Ich hab dich am Anfang des Spiels gewarnt!" + "Lade das Spiel neu, um es erneut zu versuchen.");
+            }
         }
         sweetChanged(_i) {
             console.log(this.targetSweet);
