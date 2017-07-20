@@ -6,7 +6,7 @@ var Semesteraufgabe;
             this.setRandomStyle();
             this.x = _x;
             this.y = _y;
-            this.speed = 3;
+            this.speed = 5;
             this.setStartPosition();
             this.setTargetPosition();
             this.active = true;
@@ -52,6 +52,11 @@ var Semesteraufgabe;
                 // neues target
                 this.setTargetPosition();
             }
+            //            if (this.sweets.splice == 3){
+            //                
+            //                this.stop();
+            //                
+            //                }
         }
         sweetChanged(_i) {
             console.log(this.targetSweet);

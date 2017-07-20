@@ -13,7 +13,7 @@ namespace Semesteraufgabe {
         xDirection: number;
         yDirection: number;
         active: boolean;
-        maxEatenCandy:number = 1;
+        maxEatenCandy: number = 1;
 
 
 
@@ -21,7 +21,7 @@ namespace Semesteraufgabe {
             this.setRandomStyle();
             this.x = _x;
             this.y = _y;
-            this.speed = 3;
+            this.speed = 5;
             this.setStartPosition();
             this.setTargetPosition();
             this.active = true;
@@ -47,9 +47,9 @@ namespace Semesteraufgabe {
                 this.stop();
             }
             else {
-               
-                let n:number = Math.floor(Math.random() * (sweets.length - 1));
-                this.targetSweet= sweets[n];
+
+                let n: number = Math.floor(Math.random() * (sweets.length - 1));
+                this.targetSweet = sweets[n];
                 this.xTarget = sweets[n].x + 5;
                 this.yTarget = sweets[n].y - 20;
 
@@ -77,26 +77,27 @@ namespace Semesteraufgabe {
             let yDiff: number = this.yTarget - this.y;
 
             if (Math.abs(xDiff) <= maxDistance && Math.abs(yDiff) <= maxDistance) {
-
                 // fressen               
                 sweets.splice(sweets.indexOf(this.targetSweet) , 1);
-                
-
                 // neues target
-                this.setTargetPosition();
-                
+                this.setTargetPosition();         
             }
+//            if (this.sweets.splice == 3){
+//                
+//                this.stop();
+//                
+//                }
 
         }
         
         sweetChanged(_i: Sweet): void {
 
-                console.log(this.targetSweet);
-            if (_i==this.targetSweet){
-                
+            console.log(this.targetSweet);
+            if (_i == this.targetSweet) {
+
                 this.setTargetPosition();
-                
-                }
+
+            }
             
             
                 }
