@@ -58,6 +58,7 @@ namespace Semesteraufgabe {
 
         }
     }
+    
 
     function drawMonster(): void {
         beast = new Monster(1450, 690);
@@ -76,8 +77,13 @@ namespace Semesteraufgabe {
                 beast.sweetChanged(object);
                 break;
 
-            }
+            }        
         }
+        if (sweets.length==0){
+            
+            alert("Klasse! Du hast gewonnen. Vielleicht bekommst du eine Süßigkeit von mir, wenn du es nachweisen kannst.");
+            
+            }
     }
 
 

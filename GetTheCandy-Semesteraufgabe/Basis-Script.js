@@ -58,6 +58,9 @@ var Semesteraufgabe;
                 break;
             }
         }
+        if (Semesteraufgabe.sweets.length == 0) {
+            alert("Klasse! Du hast gewonnen. Vielleicht bekommst du eine Süßigkeit von mir, wenn du es nachweisen kannst.");
+        }
     }
     function animate() {
         Semesteraufgabe.inhalt.putImageData(imgData, 0, 0);
