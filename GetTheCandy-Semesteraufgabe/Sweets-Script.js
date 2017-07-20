@@ -12,6 +12,7 @@ var Semesteraufgabe;
         draw() {
             //abtrakt
         }
+        // Teil der Boundingbox, hier wird die "Box" definiert, in die geklickt werden kann
         hit(x, y) {
             //verschieben von der hitbox ins zentrum
             let middleXAx = this.x - this.width / 2;

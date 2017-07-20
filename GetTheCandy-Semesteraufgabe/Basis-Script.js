@@ -9,7 +9,8 @@ var Semesteraufgabe;
         resizeCanvas();
         canvas = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
-        canvas.addEventListener("click", function (event) { canvasClicked(event, canvas); });
+        //Canvas klickbar gemacht 
+        canvas.addEventListener("click", canvasClicked);
         Semesteraufgabe.inhalt = canvas.getContext("2d");
         alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst.");
         zeichneHimmel();
@@ -21,11 +22,9 @@ var Semesteraufgabe;
     function placeRandomSweets() {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
-        //        let numberSweets: any = Math.floor((Math.random() * 15) + 10);
+        //let numberSweets: any = Math.floor((Math.random() * 15) + 10);
         let numberSweets = 15;
         for (let i = 0; i < numberSweets; i++) {
-            //            let x: number = Math.round((Math.random() * 1300) + 100);
-            //            let y: number = Math.round((Math.random() * 600) + 30);
             let x = Math.round((Math.random() * (canvas.width - 200)) + 100);
             let y = Math.round((Math.random() * (canvas.height - 110)) + 55);
             let p = Math.round((Math.random() * 3) + 0);
@@ -47,6 +46,7 @@ var Semesteraufgabe;
             }
         }
     }
+    // Die Größe des Canvas wird auf die Größe des Fensters/der Ansicht skaliert
     function resizeCanvas() {
         let margin = 50;
         let canvas;
@@ -57,8 +57,11 @@ var Semesteraufgabe;
     function drawMonster() {
         Semesteraufgabe.beast = new Semesteraufgabe.Monster(100, 100);
     }
-    function canvasClicked(event, canvas) {
-        //Calculate actual x y positions on canvas
+    //Korrigiert. Wir bekommen die richtige Position des Klicks auf dem Canvas, dadurch das der Browser einen bestimmten Margin, etc. hat 
+    function canvasClicked(event) {
+        let canvas;
+        canvas = document.getElementsByTagName("canvas")[0];
+        // Implementiert nach: http://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/
         let rect = canvas.getBoundingClientRect();
         console.log(rect);
         console.log(event);

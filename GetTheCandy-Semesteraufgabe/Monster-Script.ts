@@ -18,10 +18,10 @@ namespace Semesteraufgabe {
 
 
         constructor(_x: number, _y: number) {
-            this.setRandomStyle();
+            this.scale= 3;
             this.x = _x;
             this.y = _y;
-            this.speed = 0;
+            this.speed = 4;
             this.setTargetPosition();
             this.active = true;
 
@@ -34,6 +34,8 @@ namespace Semesteraufgabe {
 
         }
 
+        
+        // Ein zufälliges Ziel wird aus dem Array bestimmt, welches dann vom Monster angestrebt wird
         setTargetPosition(): void {
 
             if (sweets.length == 0) {
@@ -42,10 +44,12 @@ namespace Semesteraufgabe {
             else {
 
                 let n: number = Math.floor(Math.random() * (sweets.length - 1));
+                // targetSweet ist nun das angestrebte Ziel, sprich die nte Stelle des Arrays
                 this.targetSweet = sweets[n];
                 this.xTarget = sweets[n].x + 5;
                 this.yTarget = sweets[n].y - 20;
 
+                // gibt dem sich linear bewegenden Monster an, in welche Richtung es sich bewegen soll
                 let xDiff: number = this.xTarget - this.x;
                 let yDiff: number = this.yTarget - this.y;
                 this.xDirection = xDiff / (Math.sqrt(xDiff * xDiff + yDiff * yDiff));
@@ -64,7 +68,7 @@ namespace Semesteraufgabe {
 
         eatCandyIfClose(): void {
 
-            //ankommen
+            //ankommen am Ziel durch Berechnung der Differenz der aktuellen Position und der Position des Sweets (maxDistance= kleiner Puffer)
             let maxDistance: number = 10;
             let xDiff: number = this.xTarget - this.x;
             let yDiff: number = this.yTarget - this.y;
@@ -74,60 +78,30 @@ namespace Semesteraufgabe {
                 sweets.splice(sweets.indexOf(this.targetSweet) , 1);
                 // neues target
                 this.setTargetPosition();  
-                
+                       
                 this.eatenCandy += 1;
             }
+            // es darf nur 3 Stück essen, dann ist das Spiel vorbei
             if (this.eatenCandy == 3) {
 
                 this.stop();
                 alert("Du has leider verloren. Ich hab dich am Anfang des Spiels gewarnt!" + "Lade das Spiel neu, um es erneut zu versuchen.");
             }
         }
-        
+        // dem Monster wird mittgeteilt, ob sein Ziel schon vor dem fressen vernichtet wurde, falls ja, neues Ziel
+        // Aufruf bei jedem klick
         sweetChanged(_i: Sweet): void {
-
-            console.log(this.targetSweet);
             if (_i == this.targetSweet) {
-
                 this.setTargetPosition();
-
             }
-            
-            
-                }
-  
+        }
+
         move(): void {
 
-            let xDiff: number = this.xTarget - this.x;
-            let yDiff: number = this.yTarget - this.y;
-            let distance: number = 0.5;
-            if (Math.abs(xDiff) < distance && Math.abs(yDiff) < distance) {
-                this.x = this.xTarget;
-                this.y = this.yTarget;
-            }
-            else {
-
-                this.x += this.xDirection * this.speed;
-                this.y += this.yDirection * this.speed;
-            }
-
-
+            this.x += this.xDirection * this.speed;
+            this.y += this.yDirection * this.speed;
         }
 
-        setRandomStyle(): void {
-            this.scale = Math.random() * 5 + 2;
-
-            if (this.x < 0) {
-                this.x = 1500;
-            }
-            if (this.y < 0) {
-                this.y = 710;
-            }
-            if (this.y > 710) {
-                this.y = 0;
-            }
-
-        }
 
         draw(): void {
             inhalt.beginPath();
