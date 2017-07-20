@@ -68,7 +68,7 @@ namespace Semesteraufgabe {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.width = window.innerWidth - margin;
-        canvas.height = window.innerHeight- margin;
+        canvas.height = window.innerHeight - margin;
     }
 
     function drawMonster(): void {
@@ -76,12 +76,12 @@ namespace Semesteraufgabe {
 
     }
 
-    
+
     //Korrigiert. Wir bekommen die richtige Position des Klicks auf dem Canvas, dadurch das der Browser einen bestimmten Margin, etc. hat 
     function canvasClicked(event: MouseEvent): void {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
-        
+
         // Implementiert nach: http://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/
         let rect = canvas.getBoundingClientRect();
         console.log(rect);
@@ -117,7 +117,7 @@ namespace Semesteraufgabe {
         beast.update();
 
         //    
-    
+
     }
 
     function zeichneHimmel(): void {
@@ -129,4 +129,4 @@ namespace Semesteraufgabe {
     }
 
 
-   }
+}

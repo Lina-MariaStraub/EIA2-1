@@ -18,7 +18,7 @@ namespace Semesteraufgabe {
 
 
         constructor(_x: number, _y: number) {
-            this.scale= 3;
+            this.scale = 3;
             this.x = _x;
             this.y = _y;
             this.speed = 5;
@@ -34,7 +34,7 @@ namespace Semesteraufgabe {
 
         }
 
-        
+
         // Ein zufälliges Ziel wird aus dem Array bestimmt, welches dann vom Monster angestrebt wird
         setTargetPosition(): void {
 
@@ -75,10 +75,10 @@ namespace Semesteraufgabe {
 
             if (Math.abs(xDiff) <= maxDistance && Math.abs(yDiff) <= maxDistance) {
                 // fressen               
-                sweets.splice(sweets.indexOf(this.targetSweet) , 1);
+                sweets.splice(sweets.indexOf(this.targetSweet), 1);
                 // neues target
-                this.setTargetPosition();  
-                       
+                this.setTargetPosition();
+
                 this.eatenCandy += 1;
             }
             // es darf nur 3 Stück essen, dann ist das Spiel vorbei
