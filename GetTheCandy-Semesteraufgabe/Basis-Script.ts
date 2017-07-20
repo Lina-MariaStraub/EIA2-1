@@ -33,7 +33,7 @@ namespace Semesteraufgabe {
 
     function placeRandomSweets(): void {
         //        let numberSweets: any = Math.floor((Math.random() * 15) + 10);
-        let numberSweets: any = 7;
+        let numberSweets: any = 20;
 
         for (let i: number = 0; i < numberSweets; i++) {
             let x: number = Math.round((Math.random() * 1300) + 100);
