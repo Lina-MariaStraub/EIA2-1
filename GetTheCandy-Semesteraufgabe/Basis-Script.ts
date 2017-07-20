@@ -12,18 +12,17 @@ namespace Semesteraufgabe {
 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement;
+        resizeCanvas();
         canvas = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
         canvas.addEventListener("click", function(event) { canvasClicked(event, canvas); });
         inhalt = canvas.getContext("2d");
-
-        //    alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst."    
+        alert("Willkomen bei Get The Candy!" + " Aufgabe: Sammle alle Süßigkeiten bevor das Monster sie erreichen kann, indem du auf sie drauf klickst.");
         zeichneHimmel();
 
 
         placeRandomSweets();
         drawMonster();
-
 
         imgData = inhalt.getImageData(0, 0, canvas.width, canvas.height);
         window.setTimeout(animate, 20);
@@ -32,12 +31,16 @@ namespace Semesteraufgabe {
 
 
     function placeRandomSweets(): void {
+        let canvas: HTMLCanvasElement;
+        canvas = document.getElementsByTagName("canvas")[0];
         //        let numberSweets: any = Math.floor((Math.random() * 15) + 10);
-        let numberSweets: any = 20;
+        let numberSweets: any = 15;
 
         for (let i: number = 0; i < numberSweets; i++) {
-            let x: number = Math.round((Math.random() * 1300) + 100);
-            let y: number = Math.round((Math.random() * 600) + 30);
+            //            let x: number = Math.round((Math.random() * 1300) + 100);
+            //            let y: number = Math.round((Math.random() * 600) + 30);
+            let x: number = Math.round((Math.random() * (canvas.width - 200)) + 100);
+            let y: number = Math.round((Math.random() * (canvas.height - 110)) + 55);
             let p: number = Math.round((Math.random() * 3) + 0);
             switch (p) {
                 case 0:
@@ -58,16 +61,26 @@ namespace Semesteraufgabe {
 
         }
     }
-    
+
+    function resizeCanvas(): void {
+
+        let margin: number = 50;
+        let canvas: HTMLCanvasElement;
+        canvas = document.getElementsByTagName("canvas")[0];
+        canvas.width = window.innerWidth - margin;
+        canvas.height = window.innerHeight- margin;
+    }
 
     function drawMonster(): void {
-        beast = new Monster(1450, 690);
+        beast = new Monster(100, 100);
 
     }
 
     function canvasClicked(event: MouseEvent, canvas: any): void {
         //Calculate actual x y positions on canvas
         let rect = canvas.getBoundingClientRect();
+        console.log(rect);
+        console.log(event);
         let x: number = event.clientX - rect.left;
         let y: number = event.clientY - rect.top;
         for (let i: number = 0; i < sweets.length; i++) {
@@ -111,57 +124,4 @@ namespace Semesteraufgabe {
     }
 
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////      
-    function start(_event: Event): void {
-        let canvas: HTMLCanvasElement;
-        canvas = document.getElementsByTagName("canvas")[0];
-        canvas.width = 1300;
-        canvas.height = 700;
-        console.log(canvas);
-        canvas.addEventListener("click", startTutorial);
-        inhalt = canvas.getContext("2d");
-        console.log(inhalt);
-
-        zeichneHimmel();
-
-        // Text 
-        inhalt.stroke();
-        inhalt.fillStyle = "black";
-        inhalt.font = "100px Arial";
-        inhalt.fillText("Get the Candy", 250, 250);
-        inhalt.font = "60px Arial";
-        inhalt.fillText("Bitte klicken Sie ein Mal.", 250, 450);
-
-
-
-
-        function startTutorial(_event: Event): void {
-
-            let canvas: HTMLCanvasElement;
-            canvas = document.getElementsByTagName("canvas")[0];
-            canvas.width = 1500;
-            canvas.height = 710;
-            console.log(canvas);
-            canvas.removeEventListener("click", startTutorial);
-            canvas.addEventListener("click", init);
-
-            inhalt = canvas.getContext("2d");
-            console.log(inhalt);
-
-            zeichneHimmel();
-
-            // Schrift
-            inhalt.stroke();
-            inhalt.fillStyle = "black";
-            inhalt.font = "35px Arial";
-            inhalt.fillText("Lösche die Süßigkeiten(mit klicken) aus, bevor das Monster sie frisst. ", 50, 250);
-            inhalt.fillText("Frisst das Monster drei Süßigkeiten, ist das Spiel vorbei. ", 50, 530);
-            inhalt.fillText("Klicke um das Spiel zu starten.", 50, 620);
-
-
-
-        };
-
-
-    }
-}
+   }

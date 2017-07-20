@@ -6,15 +6,10 @@ var Semesteraufgabe;
             this.setRandomStyle();
             this.x = _x;
             this.y = _y;
-            this.speed = 5;
-            this.setStartPosition();
+            this.speed = 0;
             this.setTargetPosition();
             this.active = true;
             console.log("Create Monster");
-        }
-        setStartPosition() {
-            this.x = 1450;
-            this.y = 680;
         }
         stop() {
             this.active = false;
